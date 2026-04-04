@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+  RScott Sites — Portfolio & Web Services
+  Author: Ryan Scott
+
+  Deployment security note:
+  Add these HTTP response headers in your hosting config
+  (Netlify _headers, Vercel vercel.json, Apache .htaccess, Nginx server block, etc.):
+
+  Content-Security-Policy:
+    default-src 'self';
+    script-src 'self';
+    style-src 'self';
+    font-src 'self';
+    img-src 'self' data:;
+    form-action 'self';
+    frame-ancestors 'none';
+    base-uri 'self';
+    upgrade-insecure-requests;
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="RScott Sites — Accessible, high-quality web development and design by Ryan Scott. Web development, accessibility audits, and accessibility enhancements."
+    />
+    <title>RScott Sites | Accessible Web Development by Ryan Scott</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
