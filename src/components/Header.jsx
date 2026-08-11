@@ -1,16 +1,18 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 
 const NAV_LINKS = [
-  { href: '#home',     label: 'Home' },
-  { href: '#about',    label: 'About' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#contact',  label: 'Contact', cta: true },
+  { to: '/',          label: 'Home' },
+  { to: '/services',  label: 'Services & Packages' },
+  { to: '/about',     label: 'About' },
+  { to: '/examples',  label: 'Examples' },
+  { to: '/contact',   label: 'Request Mini-Audit', cta: true },
 ];
 
-export default function Header({ activeSection }) {
-  const [isOpen, setIsOpen]   = useState(false);
-  const headerRef             = useRef(null);
-  const toggleRef             = useRef(null);
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const headerRef = useRef(null);
+  const toggleRef = useRef(null);
 
   const closeMenu = useCallback(() => setIsOpen(false), []);
 
@@ -44,11 +46,12 @@ export default function Header({ activeSection }) {
   return (
     <header ref={headerRef} className="site-header">
       <div className="container header-inner">
-        <a href="#home" className="brand" aria-label="RScott Sites — go to homepage">
+        <Link to="/" className="brand" aria-label="RScott Sites — go to homepage" onClick={closeMenu}>
           <span className="brand-name">
             RScott <span className="brand-accent">Sites</span>
           </span>
-        </a>
+          <span className="brand-subtitle">Accessibility Engineering</span>
+        </Link>
 
         <button
           ref={toggleRef}
@@ -67,16 +70,17 @@ export default function Header({ activeSection }) {
           aria-label="Primary navigation"
         >
           <ul role="list">
-            {NAV_LINKS.map(({ href, label, cta }) => (
-              <li key={href}>
-                <a
-                  href={href}
-                  className={cta ? 'nav-cta' : undefined}
-                  aria-current={activeSection === href.slice(1) ? 'page' : undefined}
+            {NAV_LINKS.map(({ to, label, cta }) => (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  className={({ isActive }) =>
+                    `${cta ? 'nav-cta' : 'nav-link'}${isActive ? ' active' : ''}`
+                  }
                   onClick={closeMenu}
                 >
                   {label}
-                </a>
+                </NavLink>
               </li>
             ))}
           </ul>

@@ -1,70 +1,24 @@
-const EXPERTISE = [
-  'WCAG 2.2 AA compliance & auditing',
-  'Semantic HTML & ARIA authoring patterns',
-  'Responsive, mobile-first CSS',
-  'Keyboard navigation & focus management',
-  'Screen reader testing (NVDA, VoiceOver, JAWS)',
-  'Performance-focused front-end development',
-  'iOS / Swift mobile development',
-  'Python scripting & automation',
-];
-
-const STATS = [
-  { label: 'Experience', value: '5+ Years' },
-  { label: 'Focus',      value: 'Accessibility' },
-  { label: 'Standard',   value: 'WCAG 2.2 AA' },
-];
-
 export default function About() {
   return (
-    <section id="about" className="section section-about" aria-labelledby="about-heading">
-      <div className="container about-inner">
-
-        <div className="about-content">
-          <h2 id="about-heading">About Ryan Scott</h2>
-          <p className="lead">
-            Ryan Scott is a Web Developer with 5+ years of experience building accessible
-            websites and applications.
-          </p>
-          <p>
-            He has a proven ability to design, develop, and test web content that meets
-            Web Content Accessibility Guidelines (WCAG) 2.2 AA standards, and deep
-            expertise using accessibility auditing tools and techniques to identify and
-            fix accessibility issues across a wide range of platforms.
-          </p>
-          <p>
-            Ryan is passionate about making the web more accessible for everyone — not
-            because it is a compliance checkbox, but because inclusive design produces
-            better experiences for all users. He brings that conviction to every project
-            he touches.
-          </p>
-
-          <h3 className="about-subheading">Areas of Expertise</h3>
-          <ul className="expertise-list" role="list">
-            {EXPERTISE.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-
-        <aside className="about-sidebar" aria-label="Quick facts about Ryan Scott">
-          <div className="about-card">
-            <dl className="about-stats">
-              {STATS.map(({ label, value }) => (
-                <div key={label} className="stat-item">
-                  <dt>{label}</dt>
-                  <dd>{value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-
-          <div className="about-card about-cta-card">
-            <p>Ready to build something great together?</p>
-            <a href="#contact" className="btn btn-primary">Let&rsquo;s Talk</a>
-          </div>
-        </aside>
-
+    <section id="about" className="about-section">
+      <div className="container">
+        <h2 className="section-heading">About Me</h2>
+        <h3>Bridging the gap between compliance and code.</h3>
+        <p>
+          Hi, I’m Ryan Scott—an End-to-End Digital Accessibility Engineer.
+        </p>
+        <p>
+          My approach to accessibility goes beyond automated checklists. I specialize in full-stack accessibility, meaning I don't just hand over an audit report; I provide the hands-on engineering required to fix ARIA, semantic HTML, and complex keyboard navigation issues directly in the codebase.
+        </p>
+        <p>
+          Having honed my expertise in WCAG compliance and inclusive design at an enterprise scale—including my experience working on digital accessibility at PayPal—I understand the complexities of integrating accessible practices into fast-moving engineering teams without slowing down deployment.
+        </p>
+        <p>
+          My journey into software engineering was shaped by the Year Up program, which instilled in me a deep commitment to breaking down barriers. Today, I apply that same drive to the digital world. By rigorously testing with assistive technologies like NVDA, VoiceOver, and TalkBack, I ensure that digital products are not only legally compliant but genuinely usable for everyone.
+        </p>
+        <p>
+          Whether you need to mitigate legal risk, train your development team, or remediate a backlog of critical violations, I partner with forward-thinking companies to build an inclusive web.
+        </p>
       </div>
     </section>
   );
