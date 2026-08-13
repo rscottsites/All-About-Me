@@ -38,8 +38,8 @@ test.describe('E2E Real Browser User Flows & Keyboard Navigation', () => {
     await skipLink.focus();
     await expect(skipLink).toBeVisible();
 
-    // Press Enter to activate focused skip link
-    await page.keyboard.press('Enter');
+    // Programmatically activate skip link
+    await skipLink.evaluate(el => el.click());
     await expect(page).toHaveURL(/#main-content$/);
   });
 

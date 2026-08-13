@@ -14,7 +14,18 @@ export default function Header() {
   const headerRef = useRef(null);
   const toggleRef = useRef(null);
 
-  const closeMenu = useCallback(() => setIsOpen(false), []);
+  const closeMenu = useCallback(() => {
+    setIsOpen(false);
+    document.body.style.overflow = '';
+  }, []);
+
+  const toggleMenu = useCallback(() => {
+    setIsOpen((prev) => {
+      const next = !prev;
+      document.body.style.overflow = next ? 'hidden' : '';
+      return next;
+    });
+  }, []);
 
   // Close on Escape and return focus to toggle button
   useEffect(() => {
@@ -25,7 +36,10 @@ export default function Header() {
       }
     };
     document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = '';
+    };
   }, [isOpen, closeMenu]);
 
   // Close when focus moves outside the header (keyboard users)
@@ -59,10 +73,18 @@ export default function Header() {
           aria-controls="primary-nav"
           aria-expanded={isOpen}
           aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          onClick={() => setIsOpen((prev) => !prev)}
+          onClick={toggleMenu}
         >
           <span className="hamburger" aria-hidden="true" />
         </button>
+
+        {isOpen && (
+          <div
+            className="nav-backdrop"
+            onClick={closeMenu}
+            aria-hidden="true"
+          />
+        )}
 
         <nav
           id="primary-nav"
