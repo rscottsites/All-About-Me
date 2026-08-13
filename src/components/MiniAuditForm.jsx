@@ -66,6 +66,7 @@ export default function MiniAuditForm({ initialPackage = '' }) {
     setSubmitting(true);
 
     try {
+      // Step 1: Try primary Vercel serverless route /api/contact
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -78,28 +79,62 @@ export default function MiniAuditForm({ initialPackage = '' }) {
         data = await res.json();
       }
 
-      if (!res.ok || data.success === false) {
-        const friendlyError =
-          data.error ||
-          (res.status === 404
-            ? 'Form server route is not available locally. You can send your request directly via email.'
-            : 'We could not dispatch your request automatically. Please email rscott.sites@gmail.com directly.');
-        throw new Error(friendlyError);
+      if (res.ok && data.success !== false) {
+        setSubmitted(true);
+        return;
       }
 
-      setSubmitted(true);
-    } catch (err) {
-      console.warn('Form submission notice:', err.message);
+      // Step 2: Fallback to Web3Forms direct email dispatch if /api/contact is unavailable or unconfigured
+      console.warn('Primary /api/contact route notice:', data.error || res.statusText);
 
-      // In local development mode, simulate success if backend server route is not running locally
+      const web3Res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'b9423c10-82a8-48b4-9279-8809f6d634db', // Web3Forms direct email key
+          subject: `[Mini-Audit Request] ${formData.name.trim()} - ${formData.platform.toUpperCase()}`,
+          from_name: formData.name.trim(),
+          email: formData.email.trim(),
+          to_email: 'rscott.sites@gmail.com',
+          message: `
+New Free Mini-Audit Request from RScott Sites Website
+
+Details:
+- Name: ${formData.name.trim()}
+- Email: ${formData.email.trim()}
+- Website/App URL: ${formData.websiteUrl.trim()}
+- Platform Type: ${formData.platform}
+- Service Package Interest: ${formData.selectedPackage}
+- Primary Objective: ${formData.primaryGoal}
+- Message: ${formData.message.trim() || 'None provided.'}
+          `.trim(),
+        }),
+      });
+
+      const web3Data = await web3Res.json();
+
+      if (web3Res.ok && web3Data.success) {
+        setSubmitted(true);
+        return;
+      }
+
+      // Step 3: If both APIs fail, prompt with friendly error and 1-click mailto button
+      throw new Error(
+        web3Data.message ||
+          data.error ||
+          'Automatic email dispatch is currently unconfigured. Please send your request via email using the button below.'
+      );
+    } catch (err) {
+      console.warn('Form submission dispatch notice:', err.message);
+
       if (import.meta.env.DEV) {
         console.log('Dev mode: Simulated successful mini-audit submission:', formData);
         setSubmitted(true);
       } else {
-        setServerError(
-          err.message ||
-            'We encountered a problem sending your request. Please email rscott.sites@gmail.com directly.'
-        );
+        setServerError(err.message);
         setTimeout(() => {
           errorSummaryRef.current?.focus();
         }, 50);
@@ -189,13 +224,16 @@ export default function MiniAuditForm({ initialPackage = '' }) {
           {serverError ? (
             <div className="server-error-content">
               <p style={{ margin: 0, fontWeight: 600 }}>{serverError}</p>
-              <p style={{ marginTop: '8px', fontSize: '0.9rem' }}>
-                Or click here to{' '}
-                <a href={mailtoLink} style={{ textDecoration: 'underline', fontWeight: 700 }}>
-                  email rscott.sites@gmail.com directly with 1-click
-                </a>
-                .
+              <p style={{ marginTop: '12px', fontSize: '0.95rem' }}>
+                Click below to send your request details directly to <strong>rscott.sites@gmail.com</strong>:
               </p>
+              <a
+                href={mailtoLink}
+                className="btn btn-primary"
+                style={{ marginTop: '8px', display: 'inline-flex', width: '100%', justifyContent: 'center' }}
+              >
+                Send Request via Email App (1-Click)
+              </a>
             </div>
           ) : (
             <ul>
