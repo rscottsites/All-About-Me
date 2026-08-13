@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { coreServices } from '../data/businessData';
+import { coreServices, sampleAuditDeliverable } from '../data/businessData';
 import PackagesTable from '../components/PackagesTable';
 
 export default function ServicesPage() {
@@ -66,6 +66,32 @@ export default function ServicesPage() {
                 </div>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Sample Deliverable Section ───────────────────────────── */}
+      <section className="section section-deliverable" aria-labelledby="deliverable-heading">
+        <div className="container">
+          <div className="section-header">
+            <h2 id="deliverable-heading" className="section-heading">
+              {sampleAuditDeliverable.title}
+            </h2>
+            <p className="section-description">
+              {sampleAuditDeliverable.subtitle}
+            </p>
+          </div>
+
+          <div className="deliverable-card">
+            <div className="deliverable-grid">
+              {sampleAuditDeliverable.components.map((comp, idx) => (
+                <div key={idx} className="deliverable-item">
+                  <span className="deliverable-num" aria-hidden="true">0{idx + 1}</span>
+                  <h3>{comp.title}</h3>
+                  <p>{comp.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

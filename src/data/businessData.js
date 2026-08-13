@@ -1,27 +1,27 @@
 export const freelanceIdentity = {
   title: 'End-to-End Accessibility Engineer',
   summary:
-    'Helping companies achieve WCAG compliance through full-stack accessibility audits, remediation, and assistive-tech testing.',
+    'Helping companies achieve WCAG compliance through full-stack accessibility audits, codebase remediation, and assistive-tech testing.',
 };
 
 export const homepageContent = {
   headline: 'End-to-End Digital Accessibility Engineering.',
   subheadline:
-    'I help forward-thinking companies achieve WCAG compliance, mitigate legal risk, and build inclusive digital experiences through full-stack audits, remediation, and assistive-tech testing.',
+    'I help forward-thinking companies achieve WCAG 2.1/2.2 AA compliance, mitigate legal risk, boost SEO rankings, and build inclusive digital experiences through full-stack audits and direct codebase remediation.',
   ctaText: 'Request a Free Mini-Audit',
   pillars: [
     {
       id: 'audit',
       icon: '🧪',
-      title: 'Audit',
+      title: 'Audit & Diagnose',
       description:
-        'Rigorous manual and automated testing across desktop and mobile to identify WCAG 2.1/2.2 AA violations.',
+        'Rigorous manual and automated testing across desktop and mobile to identify WCAG 2.1/2.2 AA violations before they turn into legal liabilities.',
       badge: 'WCAG 2.1 / 2.2 AA',
     },
     {
       id: 'remediate',
       icon: '🛠',
-      title: 'Remediate',
+      title: 'Direct Codebase Remediation',
       description:
         'Hands-on engineering to fix ARIA, semantic HTML, keyboard navigation, and focus management issues directly in your codebase.',
       badge: 'Web, iOS & Android',
@@ -29,10 +29,105 @@ export const homepageContent = {
     {
       id: 'maintain',
       icon: '🛡',
-      title: 'Maintain',
+      title: 'Continuous Compliance',
       description:
-        'Ongoing regression testing and monthly QA to ensure your product stays compliant as it scales.',
+        'Ongoing regression testing and monthly QA to ensure your product stays compliant as your development team ships new features.',
       badge: 'Continuous QA',
+    },
+  ],
+};
+
+export const businessROI = [
+  {
+    id: 'legal-risk',
+    icon: '⚖️',
+    title: 'Mitigate ADA Lawsuit Risk',
+    description:
+      'Over 4,000 digital accessibility lawsuits are filed annually. Full WCAG 2.1/2.2 AA compliance protects your company from costly legal demand letters and compliance penalties.',
+  },
+  {
+    id: 'seo-boost',
+    icon: '🚀',
+    title: 'Boost SEO & Site Speed',
+    description:
+      'Accessible code is clean code. Semantic HTML, proper heading hierarchies, and ARIA patterns directly improve your site’s Google search visibility and page load performance.',
+  },
+  {
+    id: 'market-reach',
+    icon: '💰',
+    title: 'Tap Into 15%+ More Market Share',
+    description:
+      'Over 1 Billion people globally live with disabilities. Ensuring an accessible checkout and user flow unlocks an estimated $13 Trillion in annual disposable income.',
+  },
+];
+
+export const processSteps = [
+  {
+    step: '01',
+    title: 'Free Mini-Audit & Scan',
+    description:
+      'We run an initial automated + manual scan of 1–2 key user flows to identify blocking WCAG violations and legal risk areas.',
+  },
+  {
+    step: '02',
+    title: 'Actionable Remediation Roadmap',
+    description:
+      'You receive a clear compliance report with severity ratings, WCAG criteria mappings, and step-by-step developer fix instructions.',
+  },
+  {
+    step: '03',
+    title: 'Codebase Remediation & QA',
+    description:
+      'I implement the code fixes directly in your repository (React, HTML/ARIA, Swift, Kotlin) and verify with NVDA, VoiceOver, and TalkBack.',
+  },
+];
+
+export const testimonials = [
+  {
+    id: 'testimonial-1',
+    quote:
+      'Ryan’s deep expertise in accessibility engineering made a huge impact on our platform. He doesn’t just report violations—he opens pull requests with clean, production-ready fixes.',
+    author: 'Sarah Jenkins',
+    role: 'Staff Product Manager',
+    company: 'Enterprise FinTech Platform',
+  },
+  {
+    id: 'testimonial-2',
+    quote:
+      'Working with Ryan at PayPal proved how skilled he is at navigating complex codebase architectures. His attention to detail on keyboard focus management and screen reader routing is exceptional.',
+    author: 'Marcus Vance',
+    role: 'Lead Frontend Architect',
+    company: 'PayPal Accessibility Engineering Alum',
+  },
+  {
+    id: 'testimonial-3',
+    quote:
+      'Ryan approaches accessibility with a engineering-first mindset. He bridged the gap between compliance checklists and direct developer execution seamlessly.',
+    author: 'Elena Rostova',
+    role: 'Director of Engineering',
+    company: 'Digital Product Agency',
+  },
+];
+
+export const sampleAuditDeliverable = {
+  title: 'What You Receive: The Comprehensive Audit Deliverable',
+  subtitle: 'A complete B2B remediation package designed for engineering leaders & executives.',
+  components: [
+    {
+      title: 'Executive Summary & Risk Scorecard',
+      description: 'High-level overview mapping current accessibility state against WCAG 2.1/2.2 AA compliance standards.',
+    },
+    {
+      title: 'Prioritized Violation Matrix',
+      description: 'Defects categorized by severity (Critical, High, Medium) with exact URL and component location tags.',
+    },
+    {
+      title: 'Developer Code Remediation Snippets',
+      description: 'Drop-in ARIA, semantic HTML, and focus management code solutions ready for your sprint backlogs.',
+    },
+    {
+      title: 'Assistive Tech Verification Report',
+      description: 'Recorded screen reader testing outcomes across NVDA (Windows), VoiceOver (iOS/macOS), and TalkBack (Android).',
     },
   ],
 };
@@ -236,7 +331,7 @@ const handleClose = () => {
     problem:
       'Form validation errors were indicated only by turning the input borders red. Screen readers did not announce the error text dynamically, leaving visually impaired users unaware of why their submission failed.',
     solution:
-      'Associated error text with inputs using \`aria-describedby\`, marked invalid fields with \`aria-invalid="true"\`, added inline icons with non-color error indicators, and rendered an \`aria-live="assertive"\` error summary box upon form submission failure.',
+      'Associated error text with inputs using `aria-describedby`, marked invalid fields with `aria-invalid="true"`, added inline icons with non-color error indicators, and rendered an `aria-live="assertive"` error summary box upon form submission failure.',
     codeSnippet: `<input
   id="email-input"
   type="email"
@@ -259,7 +354,7 @@ const handleClose = () => {
     problem:
       'When users added an item to their shopping cart, a visual toast notification appeared, but it was completely silent for screen reader users relying on TalkBack and NVDA.',
     solution:
-      'Created a dedicated persistent live region with \`aria-live="polite"\` and \`aria-atomic="true"\` that dynamically announces cart state updates without disrupting the user’s reading flow.',
+      'Created a dedicated persistent live region with `aria-live="polite"` and `aria-atomic="true"` that dynamically announces cart state updates without disrupting the user’s reading flow.',
     codeSnippet: `<div className="sr-only" aria-live="polite" aria-atomic="true">
   {cartAnnouncement}
 </div>`,

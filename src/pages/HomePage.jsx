@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import {
   freelanceIdentity,
   homepageContent,
+  businessROI,
+  processSteps,
+  testimonials,
   coreServices,
   caseStudies,
-  servicePackages,
 } from '../data/businessData';
 
 export default function HomePage() {
@@ -48,6 +50,32 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ─── Business ROI & Bottom-Line Section ────────────────────── */}
+      <section className="section section-roi" aria-labelledby="roi-heading">
+        <div className="container">
+          <div className="section-header">
+            <h2 id="roi-heading" className="section-heading">
+              Why Accessibility Matters to Your Bottom Line
+            </h2>
+            <p className="section-description">
+              Web accessibility is more than compliance—it directly protects revenue, improves search engine rankings, and expands your market reach.
+            </p>
+          </div>
+
+          <div className="roi-grid">
+            {businessROI.map((item) => (
+              <div key={item.id} className="roi-card">
+                <div className="roi-icon" aria-hidden="true">
+                  {item.icon}
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── Value Proposition Pillars ───────────────────────────── */}
       <section className="section section-pillars" aria-labelledby="pillars-heading">
         <div className="container">
@@ -75,39 +103,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Services Overview Teaser ─────────────────────────────── */}
-      <section className="section section-services-teaser" aria-labelledby="services-teaser-heading">
+      {/* ─── 3-Step Process Flow ─────────────────────────────────── */}
+      <section className="section section-process" aria-labelledby="process-heading">
         <div className="container">
           <div className="section-header">
-            <h2 id="services-teaser-heading" className="section-heading">
-              Core Services &amp; Packages
+            <h2 id="process-heading" className="section-heading">
+              How We Work: Simple 3-Step Engagement
             </h2>
             <p className="section-description">
-              From platform audits to codebase remediation and continuous sprint testing.
+              From low-friction initial audit to hands-on code remediation and verified WCAG compliance.
             </p>
           </div>
 
-          <div className="services-teaser-grid">
-            {coreServices.map((service) => (
-              <div key={service.id} className="service-teaser-card">
-                <span className="service-icon" aria-hidden="true">{service.icon}</span>
-                <h3>{service.title}</h3>
-                <p className="service-platforms">
-                  <strong>Platforms:</strong> {service.platforms.join(', ')}
-                </p>
-                <p>{service.summary}</p>
-                <div className="service-card-meta">
-                  <span className="meta-price">{service.pricing}</span>
-                  <span className="meta-time">{service.timeframe}</span>
-                </div>
+          <div className="process-grid">
+            {processSteps.map((step) => (
+              <div key={step.step} className="process-card">
+                <span className="step-num" aria-hidden="true">{step.step}</span>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
               </div>
             ))}
-          </div>
-
-          <div className="center-cta">
-            <Link to="/services" className="btn btn-primary">
-              Explore All Services &amp; Packages &rarr;
-            </Link>
           </div>
         </div>
       </section>
@@ -120,7 +135,7 @@ export default function HomePage() {
               Accessibility Remediation Portfolio
             </h2>
             <p className="section-description">
-              Examples of complex keyboard navigation, ARIA live region, and screen reader defect fixes.
+              Real-world examples of complex keyboard navigation, ARIA live region, and screen reader defect fixes.
             </p>
           </div>
 
@@ -146,6 +161,32 @@ export default function HomePage() {
             <Link to="/examples" className="btn btn-secondary">
               View Full Portfolio &amp; Engineering Details &rarr;
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Social Proof & Testimonials ──────────────────────────── */}
+      <section className="section section-testimonials" aria-labelledby="testimonials-heading">
+        <div className="container">
+          <div className="section-header">
+            <h2 id="testimonials-heading" className="section-heading">
+              Client &amp; Colleague Endorsements
+            </h2>
+            <p className="section-description">
+              Trusted by engineering managers, architects, and product leaders.
+            </p>
+          </div>
+
+          <div className="testimonials-grid">
+            {testimonials.map((t) => (
+              <blockquote key={t.id} className="testimonial-card">
+                <p className="quote-text">&ldquo;{t.quote}&rdquo;</p>
+                <footer className="quote-footer">
+                  <cite className="author-name">{t.author}</cite>
+                  <span className="author-role">{t.role}, <strong>{t.company}</strong></span>
+                </footer>
+              </blockquote>
+            ))}
           </div>
         </div>
       </section>

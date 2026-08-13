@@ -499,6 +499,168 @@ p { max-width: 68ch; }
   background-color: var(--color-bg);
 }
 
+/* ─── BUSINESS ROI & BOTTOM LINE ─────────────────────────── */
+.roi-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.roi-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.roi-icon {
+  font-size: 2.2rem;
+  margin-bottom: var(--space-xs);
+}
+
+.roi-card h3 {
+  color: var(--color-primary-dark);
+}
+
+.roi-card p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ─── 3-STEP PROCESS FLOW ────────────────────────────────── */
+.process-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.process-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  position: relative;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.step-num {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  opacity: 0.85;
+}
+
+.process-card h3 {
+  color: var(--color-primary-dark);
+}
+
+.process-card p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* ─── TESTIMONIALS & SOCIAL PROOF ───────────────────────── */
+.testimonials-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.testimonial-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin: 0;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.quote-text {
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1.65;
+}
+
+.quote-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-md);
+}
+
+.author-name {
+  font-weight: 700;
+  font-style: normal;
+  color: var(--color-primary-dark);
+}
+
+.author-role {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* ─── SAMPLE AUDIT DELIVERABLE ───────────────────────────── */
+.deliverable-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+.deliverable-grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.deliverable-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.deliverable-num {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+}
+
+.deliverable-item h3 {
+  color: var(--color-primary-dark);
+}
+
+.deliverable-item p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+@media (min-width: 900px) {
+  .roi-grid,
+  .process-grid,
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .deliverable-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .pillars-grid {
   display: grid;
   gap: var(--space-lg);
