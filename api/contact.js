@@ -1,3 +1,5 @@
+import nodemailer from 'nodemailer';
+
 export default async function handler(req, res) {
   // 1. Only allow POST requests
   if (req.method !== 'POST') {
@@ -19,7 +21,6 @@ export default async function handler(req, res) {
 
     // 2. Honeypot check for spam bots
     if (bot_field) {
-      // Silently accept without sending email to trap bots
       return res.status(200).json({ success: true, message: 'Request received' });
     }
 
@@ -34,10 +35,14 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, error: 'Website or App URL is required.' });
     }
 
-    // 4. Construct Email Content
+    // 4. Construct Email Details
+    const recipientEmail = process.env.TO_EMAIL || process.env.GMAIL_USER || 'rscott.sites@gmail.com';
+    const gmailUser = process.env.GMAIL_USER || recipientEmail;
+    const gmailAppPass = process.env.GMAIL_APP_PASS || process.env.GMAIL_APP_PASSWORD;
+    const resendKey = process.env.RESEND_API_KEY;
+    const web3Key = process.env.WEB3FORMS_KEY;
+
     const emailSubject = `[Mini-Audit Request] ${name.trim()} - ${platform.toUpperCase()}`;
-    const recipientEmail = process.env.TO_EMAIL || 'rscott.sites@gmail.com';
-    const senderEmail = process.env.FROM_EMAIL || 'RScott Sites <onboarding@resend.dev>';
 
     const emailText = `
 New Free Mini-Audit Request from RScott Sites Website
@@ -92,53 +97,85 @@ Submitted Details:
       </div>
     `;
 
-    // 5. Send transactional email via Resend API if API Key is provided
-    const apiKey = process.env.RESEND_API_KEY;
-
-    if (!apiKey) {
-      console.warn('RESEND_API_KEY is not set in environment variables. Form submission:', {
-        name,
-        email,
-        websiteUrl,
-        platform,
-        selectedPackage,
+    // 5. Priority 1: Gmail SMTP via Nodemailer
+    if (gmailAppPass) {
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: gmailUser,
+          pass: gmailAppPass.replace(/\s+/g, ''), // Strip spaces if copied from Google UI
+        },
       });
-      return res.status(200).json({
-        success: true,
-        message: 'Submission received (dev mode: RESEND_API_KEY pending in Vercel env)',
-      });
-    }
 
-    const response = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: senderEmail,
-        to: [recipientEmail],
-        reply_to: email.trim(),
+      const mailOptions = {
+        from: `"RScott Sites Form" <${gmailUser}>`,
+        to: recipientEmail,
+        replyTo: email.trim(),
         subject: emailSubject,
-        html: emailHtml,
         text: emailText,
-      }),
-    });
+        html: emailHtml,
+      };
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      console.error('Resend API Error:', data);
-      return res.status(500).json({
-        success: false,
-        error: data.message || 'Failed to dispatch notification email via provider.',
-      });
+      const info = await transporter.sendMail(mailOptions);
+      return res.status(200).json({ success: true, messageId: info.messageId });
     }
 
-    return res.status(200).json({ success: true, id: data.id });
+    // Priority 2: Resend API
+    if (resendKey) {
+      const senderEmail = process.env.FROM_EMAIL || 'RScott Sites <onboarding@resend.dev>';
+      const response = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${resendKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: senderEmail,
+          to: [recipientEmail],
+          reply_to: email.trim(),
+          subject: emailSubject,
+          html: emailHtml,
+          text: emailText,
+        }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || 'Resend API error');
+      }
+      return res.status(200).json({ success: true, id: data.id });
+    }
+
+    // Priority 3: Web3Forms API
+    if (web3Key) {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: web3Key,
+          subject: emailSubject,
+          from_name: name.trim(),
+          email: email.trim(),
+          to_email: recipientEmail,
+          message: emailText,
+        }),
+      });
+
+      const data = await response.json();
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || 'Web3Forms error');
+      }
+      return res.status(200).json({ success: true, id: data.result?.id });
+    }
+
+    // Dev / fallback notice if no key is configured yet
+    return res.status(200).json({
+      success: true,
+      message: 'Form submission received (notice: add GMAIL_APP_PASS to Vercel environment variables for live Gmail dispatch)',
+    });
   } catch (err) {
     console.error('Server error processing contact form:', err);
-    return res.status(500).json({ success: false, error: 'Internal server error' });
+    return res.status(500).json({ success: false, error: err.message || 'Internal server error' });
   }
 }
 
