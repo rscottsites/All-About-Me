@@ -80,14 +80,6 @@ export default function Header() {
           <span className="hamburger" aria-hidden="true" />
         </button>
 
-        {isOpen && (
-          <div
-            className="nav-backdrop"
-            onClick={closeMenu}
-            aria-hidden="true"
-          />
-        )}
-
         <nav
           id="primary-nav"
           className={`primary-nav${isOpen ? ' is-open' : ''}`}
@@ -110,6 +102,14 @@ export default function Header() {
           </ul>
         </nav>
       </div>
+
+      {isOpen && (
+        <div
+          className="nav-backdrop"
+          onClick={closeMenu}
+          aria-hidden="true"
+        />
+      )}
 
       {isHomePage && (
         <aside className="top-lead-banner" aria-label="Free Resource Announcement">
