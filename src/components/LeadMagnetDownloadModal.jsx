@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { leadMagnetInfo } from '../data/leadMagnetData';
 import LeadMagnetGuideModal from './LeadMagnetGuideModal';
+import { trackEvent } from '../utils/analytics';
 
 export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({ name: '', email: '', bot_field: '' });
@@ -111,6 +112,11 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
+      });
+
+      trackEvent('pdf_guide_downloaded', {
+        formType: 'modal',
+        resource: leadMagnetInfo.title,
       });
 
       setDownloaded(true);

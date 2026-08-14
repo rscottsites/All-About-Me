@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { trackEvent } from '../utils/analytics';
 
 export default function MiniAuditForm({ initialPackage = '' }) {
   const [formData, setFormData] = useState({
@@ -80,6 +81,11 @@ export default function MiniAuditForm({ initialPackage = '' }) {
       }
 
       if (res.ok && data.success !== false) {
+        trackEvent('mini_audit_submitted', {
+          package: formData.selectedPackage,
+          platform: formData.platform,
+          goal: formData.primaryGoal,
+        });
         setSubmitted(true);
         return;
       }
@@ -117,6 +123,11 @@ Details:
       const web3Data = await web3Res.json();
 
       if (web3Res.ok && web3Data.success) {
+        trackEvent('mini_audit_submitted', {
+          package: formData.selectedPackage,
+          platform: formData.platform,
+          goal: formData.primaryGoal,
+        });
         setSubmitted(true);
         return;
       }

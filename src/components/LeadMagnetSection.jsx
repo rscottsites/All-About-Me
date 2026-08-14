@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { leadMagnetInfo } from '../data/leadMagnetData';
 import LeadMagnetGuideModal from './LeadMagnetGuideModal';
+import { trackEvent } from '../utils/analytics';
 
 export default function LeadMagnetSection({ compact = false, className = '' }) {
   const [formData, setFormData] = useState({
@@ -79,6 +80,11 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
       });
 
       const data = await res.json().catch(() => ({}));
+
+      trackEvent('pdf_guide_downloaded', {
+        formType: compact ? 'compact-section' : 'lead-section',
+        resource: leadMagnetInfo.title,
+      });
 
       if (res.ok && data.success) {
         setDownloaded(true);
