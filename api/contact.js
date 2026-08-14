@@ -36,9 +36,12 @@ export default async function handler(req, res) {
     }
 
     // 4. Construct Email Details
-    const recipientEmail = process.env.TO_EMAIL || process.env.GMAIL_USER || 'rscott.sites@gmail.com';
-    const gmailUser = process.env.GMAIL_USER || recipientEmail;
-    const gmailAppPass = process.env.GMAIL_APP_PASS || process.env.GMAIL_APP_PASSWORD;
+    const recipientEmail = process.env.TO_EMAIL || process.env.ICLOUD_USER || 'ryanscott@rscottsites.com';
+    const icloudUser = process.env.ICLOUD_USER || recipientEmail;
+    const icloudAppPass = process.env.ICLOUD_APP_PASS || process.env.ICLOUD_APP_PASSWORD;
+    const smtpHost = process.env.SMTP_HOST;
+    const smtpUser = process.env.SMTP_USER || recipientEmail;
+    const smtpPass = process.env.SMTP_PASS || process.env.SMTP_PASSWORD;
     const resendKey = process.env.RESEND_API_KEY;
     const web3Key = process.env.WEB3FORMS_KEY;
 
@@ -97,18 +100,20 @@ Submitted Details:
       </div>
     `;
 
-    // 5. Priority 1: Gmail SMTP via Nodemailer
-    if (gmailAppPass) {
+    // 5. Priority 1: iCloud SMTP via Nodemailer
+    if (icloudAppPass) {
       const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: 'smtp.mail.me.com',
+        port: 587,
+        secure: false, // TLS via STARTTLS
         auth: {
-          user: gmailUser,
-          pass: gmailAppPass.replace(/\s+/g, ''), // Strip spaces if copied from Google UI
+          user: icloudUser,
+          pass: icloudAppPass.replace(/\s+/g, ''),
         },
       });
 
       const mailOptions = {
-        from: `"RScott Sites Form" <${gmailUser}>`,
+        from: `"RScott Sites" <${icloudUser}>`,
         to: recipientEmail,
         replyTo: email.trim(),
         subject: emailSubject,
@@ -120,7 +125,32 @@ Submitted Details:
       return res.status(200).json({ success: true, messageId: info.messageId });
     }
 
-    // Priority 2: Resend API
+    // Priority 2: Custom / Generic SMTP via Nodemailer
+    if (smtpHost && smtpPass) {
+      const transporter = nodemailer.createTransport({
+        host: smtpHost,
+        port: Number(process.env.SMTP_PORT) || 587,
+        secure: process.env.SMTP_SECURE === 'true',
+        auth: {
+          user: smtpUser,
+          pass: smtpPass.replace(/\s+/g, ''),
+        },
+      });
+
+      const mailOptions = {
+        from: `"RScott Sites" <${smtpUser}>`,
+        to: recipientEmail,
+        replyTo: email.trim(),
+        subject: emailSubject,
+        text: emailText,
+        html: emailHtml,
+      };
+
+      const info = await transporter.sendMail(mailOptions);
+      return res.status(200).json({ success: true, messageId: info.messageId });
+    }
+
+    // Priority 3: Resend API
     if (resendKey) {
       const senderEmail = process.env.FROM_EMAIL || 'RScott Sites <onboarding@resend.dev>';
       const response = await fetch('https://api.resend.com/emails', {
@@ -146,7 +176,7 @@ Submitted Details:
       return res.status(200).json({ success: true, id: data.id });
     }
 
-    // Priority 3: Web3Forms API
+    // Priority 4: Web3Forms API
     if (web3Key) {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -168,10 +198,10 @@ Submitted Details:
       return res.status(200).json({ success: true, id: data.result?.id });
     }
 
-    // Dev / fallback notice if no key is configured yet
+    // Fallback notice if no email provider key is configured
     return res.status(200).json({
       success: true,
-      message: 'Form submission received (notice: add GMAIL_APP_PASS to Vercel environment variables for live Gmail dispatch)',
+      message: 'Form submission received (notice: add ICLOUD_APP_PASS to Vercel environment variables for live iCloud dispatch)',
     });
   } catch (err) {
     console.error('Server error processing contact form:', err);

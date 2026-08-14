@@ -9,7 +9,7 @@ export default function Contact() {
         </p>
         <div className="contact-info">
           <p>
-            <strong>Email:</strong> <a href="mailto:rscott.sites@gmail.com">rscott.sites@gmail.com</a>
+            <strong>Email:</strong> <a href="mailto:ryanscott@rscottsites.com">ryanscott@rscottsites.com</a>
           </p>
           <p>We typically respond to inquiries within 1-2 business days.</p>
         </div>

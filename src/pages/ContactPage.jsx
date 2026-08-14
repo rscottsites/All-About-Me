@@ -66,8 +66,8 @@ export default function ContactPage() {
               <h3>Direct Contact Information</h3>
               <p className="contact-info-line">
                 <strong>Email:</strong>{' '}
-                <a href="mailto:rscott.sites@gmail.com" className="contact-link">
-                  rscott.sites@gmail.com
+                <a href="mailto:ryanscott@rscottsites.com" className="contact-link">
+                  ryanscott@rscottsites.com
                 </a>
               </p>
               <p className="contact-info-line">
