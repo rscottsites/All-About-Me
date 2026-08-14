@@ -6,9 +6,16 @@ import {
   servicePackages,
   aboutContent,
   caseStudies,
+  expertBio,
 } from './businessData';
 
 describe('businessData Integrity Tests', () => {
+  it('expertBio contains name, role, bioSummary, and highlights', () => {
+    expect(expertBio.name).toBe('Ryan Scott');
+    expect(expertBio.role).toBe('Senior Digital Accessibility Engineer');
+    expect(expertBio.bioSummary).toContain('enterprise');
+    expect(expertBio.highlights.length).toBeGreaterThan(0);
+  });
   it('freelanceIdentity contains title and summary', () => {
     expect(freelanceIdentity.title).toBe('End-to-End Accessibility Engineer');
     expect(freelanceIdentity.summary).toContain('WCAG compliance');
@@ -44,22 +51,25 @@ describe('businessData Integrity Tests', () => {
     });
   });
 
-  it('aboutContent includes bio paragraphs, PayPal experience, and Year Up foundation', () => {
+  it('aboutContent includes bio paragraphs, enterprise experience, and Year Up foundation', () => {
     expect(aboutContent.headline).toBe('Bridging the gap between compliance and code.');
     const fullText = aboutContent.paragraphs.join(' ');
-    expect(fullText).toContain('PayPal');
+    expect(fullText).toContain('enterprise scale');
     expect(fullText).toContain('Year Up');
     expect(fullText).toContain('NVDA, VoiceOver, and TalkBack');
   });
 
-  it('caseStudies includes critical WCAG violation case studies', () => {
+  it('caseStudies includes critical WCAG violation case studies with business impact and metrics', () => {
     expect(caseStudies.length).toBeGreaterThanOrEqual(3);
     caseStudies.forEach((study) => {
       expect(study.id).toBeDefined();
       expect(study.title).toBeDefined();
       expect(study.wcag).toBeDefined();
       expect(study.severity).toBeDefined();
+      expect(study.severity).toMatch(/Severity$/);
       expect(study.problem).toBeDefined();
+      expect(study.businessImpact).toBeDefined();
+      expect(study.metrics).toBeDefined();
     });
   });
 });

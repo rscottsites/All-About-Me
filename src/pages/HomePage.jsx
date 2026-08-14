@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
+import LeadMagnetSection from '../components/LeadMagnetSection';
 import {
   freelanceIdentity,
   homepageContent,
   businessROI,
   processSteps,
-  testimonials,
   coreServices,
   caseStudies,
+  expertBio,
 } from '../data/businessData';
 
 export default function HomePage() {
@@ -117,7 +118,7 @@ export default function HomePage() {
 
           <div className="process-grid">
             {processSteps.map((step) => (
-              <div key={step.step} className="process-card">
+              <div key={step.step} className="process-card" aria-label={`Step ${step.step}`}>
                 <span className="step-num" aria-hidden="true">{step.step}</span>
                 <h3>{step.title}</h3>
                 <p>{step.description}</p>
@@ -143,8 +144,8 @@ export default function HomePage() {
             {caseStudies.slice(0, 3).map((study) => (
               <article key={study.id} className="case-teaser-card">
                 <div className="case-badge-bar">
-                  <span className={`severity-tag severity-${study.severity.toLowerCase()}`}>
-                    {study.severity} Severity
+                  <span className={`severity-tag severity-${study.severity.toLowerCase().split(' ')[0]}`}>
+                    {study.severity}
                   </span>
                   <span className="platform-tag">{study.platform}</span>
                 </div>
@@ -153,6 +154,11 @@ export default function HomePage() {
                   <strong>Standard:</strong> {study.wcag}
                 </p>
                 <p>{study.problem}</p>
+                {study.businessImpact && (
+                  <div className="case-teaser-result">
+                    <strong>Business Outcome:</strong> {study.businessImpact}
+                  </div>
+                )}
               </article>
             ))}
           </div>
@@ -165,41 +171,65 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Social Proof & Testimonials ──────────────────────────── */}
-      <section className="section section-testimonials" aria-labelledby="testimonials-heading">
+      {/* ─── Meet the Expert Section ────────────────────────────── */}
+      <section className="section section-expert" aria-labelledby="expert-heading">
         <div className="container">
-          <div className="section-header">
-            <h2 id="testimonials-heading" className="section-heading">
-              Client &amp; Colleague Endorsements
-            </h2>
-            <p className="section-description">
-              Trusted by engineering managers, architects, and product leaders.
-            </p>
-          </div>
+          <div className="expert-card">
+            <div className="expert-avatar-wrap">
+              <div className="expert-avatar-badge" aria-hidden="true">
+                <span className="expert-initials">RS</span>
+                <span className="expert-status-dot" title="Available for Engagements" />
+              </div>
+            </div>
 
-          <div className="testimonials-grid">
-            {testimonials.map((t) => (
-              <blockquote key={t.id} className="testimonial-card">
-                <p className="quote-text">&ldquo;{t.quote}&rdquo;</p>
-                <footer className="quote-footer">
-                  <cite className="author-name">{t.author}</cite>
-                  <span className="author-role">{t.role}, <strong>{t.company}</strong></span>
-                </footer>
-              </blockquote>
-            ))}
+            <div className="expert-bio-content">
+              <div className="expert-label-pill">
+                <span className="pill-dot" aria-hidden="true" />
+                <span>Meet the Expert</span>
+              </div>
+              <h2 id="expert-heading" className="expert-name">
+                {expertBio.name}
+              </h2>
+              <p className="expert-role">{expertBio.role}</p>
+
+              <p className="expert-bio-text">
+                {expertBio.bioSummary}
+              </p>
+
+              <div className="expert-highlights-grid" role="list">
+                {expertBio.highlights.map((h, i) => (
+                  <div key={i} className="expert-highlight-item" role="listitem">
+                    <span className="expert-highlight-icon" aria-hidden="true">{h.icon}</span>
+                    <span>{h.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="expert-actions">
+                <Link to="/about" className="btn btn-secondary">
+                  Read Full Background &amp; Approach &rarr;
+                </Link>
+                <Link to="/contact" className="btn btn-primary">
+                  Work With Ryan
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* ─── Secondary Lead Magnet Section ──────────────────────── */}
+      <LeadMagnetSection />
 
       {/* ─── Bottom CTA Banner ────────────────────────────────────── */}
       <section className="section section-cta-banner" aria-labelledby="cta-banner-heading">
         <div className="container cta-banner-inner">
           <h2 id="cta-banner-heading">Ready to Make Your Product Accessible to Everyone?</h2>
           <p>
-            Get a comprehensive review of your web or mobile product with a free, no-obligation mini-audit.
+            Get a comprehensive review of your web or mobile product with a free, no-obligation mini-audit delivered in 48 hours.
           </p>
           <Link to="/contact" className="btn btn-primary btn-lg">
-            Request a Free Mini-Audit Now
+            Request a Free Mini-Audit (Delivered in 48 Hours)
           </Link>
         </div>
       </section>

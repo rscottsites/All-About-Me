@@ -5,7 +5,7 @@ import { axe } from 'vitest-axe';
 import AboutPage from './AboutPage';
 
 describe('AboutPage Component & Accessibility', () => {
-  it('renders Ryan Scott bio, PayPal experience, and competencies grid', () => {
+  it('renders Ryan Scott bio, Enterprise Experience, and competencies grid', () => {
     render(
       <MemoryRouter>
         <AboutPage />
@@ -14,7 +14,7 @@ describe('AboutPage Component & Accessibility', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: /About Ryan Scott/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: /Bridging the gap between compliance and code./i })).toBeInTheDocument();
-    expect(screen.getAllByText(/PayPal/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Enterprise Experience/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Year Up/i).length).toBeGreaterThan(0);
   });
 

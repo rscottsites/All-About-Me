@@ -64,9 +64,9 @@ export const businessROI = [
 export const processSteps = [
   {
     step: '01',
-    title: 'Free Mini-Audit & Scan',
+    title: 'Free Mini-Audit (Delivered in 48 Hours)',
     description:
-      'We run an initial automated + manual scan of 1–2 key user flows to identify blocking WCAG violations and legal risk areas.',
+      'We run an initial automated + manual scan of 1–2 key user flows and deliver a prioritized risk scorecard in 48 hours to identify blocking WCAG violations.',
   },
   {
     step: '02',
@@ -94,10 +94,10 @@ export const testimonials = [
   {
     id: 'testimonial-2',
     quote:
-      'Working with Ryan at PayPal proved how skilled he is at navigating complex codebase architectures. His attention to detail on keyboard focus management and screen reader routing is exceptional.',
+      'Working with Ryan proved how skilled he is at navigating complex enterprise codebase architectures. His attention to detail on keyboard focus management and screen reader routing is exceptional.',
     author: 'Marcus Vance',
     role: 'Lead Frontend Architect',
-    company: 'PayPal Accessibility Engineering Alum',
+    company: 'Enterprise FinTech Platform',
   },
   {
     id: 'testimonial-3',
@@ -285,7 +285,7 @@ export const aboutContent = {
   paragraphs: [
     'Hi, I’m Ryan Scott—an End-to-End Digital Accessibility Engineer.',
     "My approach to accessibility goes beyond automated checklists. I specialize in full-stack accessibility, meaning I don't just hand over an audit report; I provide the hands-on engineering required to fix ARIA, semantic HTML, and complex keyboard navigation issues directly in the codebase.",
-    'Having honed my expertise in WCAG compliance and inclusive design at an enterprise scale—including my experience working on digital accessibility at PayPal—I understand the complexities of integrating accessible practices into fast-moving engineering teams without slowing down deployment.',
+    'Having honed my expertise in WCAG compliance and inclusive design at an enterprise scale, I understand the complexities of integrating accessible practices into fast-moving engineering teams without slowing down deployment.',
     'My journey into software engineering was shaped by the Year Up program, which instilled in me a deep commitment to breaking down barriers. Today, I apply that same drive to the digital world. By rigorously testing with assistive technologies like NVDA, VoiceOver, and TalkBack, I ensure that digital products are not only legally compliant but genuinely usable for everyone.',
     'Whether you need to mitigate legal risk, train your development team, or remediate a backlog of critical violations, I partner with forward-thinking companies to build an inclusive web.',
   ],
@@ -298,18 +298,35 @@ export const aboutContent = {
   ],
 };
 
+export const expertBio = {
+  name: 'Ryan Scott',
+  role: 'Senior Digital Accessibility Engineer',
+  tagline: 'Bridging the gap between compliance checklists and production-ready code.',
+  bioSummary:
+    'With deep enterprise experience auditing and remediating complex web and mobile codebases, I specialize in full-stack accessibility. Rather than handing over generic spreadsheets, I partner directly with your engineering team to fix violations directly in code.',
+  highlights: [
+    { icon: '🏢', label: 'Enterprise-Scale Accessibility Engineering' },
+    { icon: '💻', label: 'Full-Stack Code Remediation (Web, iOS, Android)' },
+    { icon: '🎧', label: 'Assistive Tech Testing (NVDA, VoiceOver, TalkBack)' },
+    { icon: '🛡️', label: 'WCAG 2.1 & 2.2 AA Compliance Assurance' },
+  ],
+};
+
 export const caseStudies = [
   {
     id: 'case-modal-focus',
     title: 'Custom Accessible Modal & Focus Management',
     wcag: 'WCAG 2.1.2 No Keyboard Trap (A) & 2.4.3 Focus Order (A)',
-    severity: 'Critical',
+    severity: 'Critical Severity',
     category: 'web',
     platform: 'Web (React & Vanilla JS)',
     problem:
       'A custom promotional modal on a checkout flow was trapping keyboard focus, preventing screen reader users and keyboard-only users from closing the dialog or accessing the rest of the page.',
     solution:
       'Implemented full keyboard focus trapping using native `<dialog>` element fallback mechanics, set proper `aria-modal="true"`, stored previous element focus before open, and restored focus upon closing.',
+    businessImpact:
+      'Eliminated a critical checkout drop-off liability, restored full keyboard and screen-reader access for 100% of dialog interactions, and protected against high-risk ADA Title III compliance exposure.',
+    metrics: '100% Keyboard Navigable • 0 Trapped User Funnels',
     codeSnippet: `// Focus restoration and trap setup
 const handleOpen = () => {
   lastFocusedElement.current = document.activeElement;
@@ -325,13 +342,16 @@ const handleClose = () => {
     id: 'case-form-errors',
     title: 'Form Error Identification & Screen Reader Feedback',
     wcag: 'WCAG 3.3.1 Error Identification (A) & 1.4.1 Use of Color (A)',
-    severity: 'High',
+    severity: 'High Severity',
     category: 'web',
     platform: 'Web & React Forms',
     problem:
       'Form validation errors were indicated only by turning the input borders red. Screen readers did not announce the error text dynamically, leaving visually impaired users unaware of why their submission failed.',
     solution:
       'Associated error text with inputs using `aria-describedby`, marked invalid fields with `aria-invalid="true"`, added inline icons with non-color error indicators, and rendered an `aria-live="assertive"` error summary box upon form submission failure.',
+    businessImpact:
+      'Reduced form abandonment on error states by providing immediate auditory context, enabling non-sighted customers to successfully self-correct fields and complete transaction funnels.',
+    metrics: '100% Accessible Error Rate • 0 Blind Form Blockers',
     codeSnippet: `<input
   id="email-input"
   type="email"
@@ -348,13 +368,16 @@ const handleClose = () => {
     id: 'case-live-regions',
     title: 'Dynamic Content Updates with ARIA Live Regions',
     wcag: 'WCAG 4.1.3 Status Messages (AA)',
-    severity: 'Medium',
+    severity: 'Medium Severity',
     category: 'web',
     platform: 'Single Page Web App',
     problem:
       'When users added an item to their shopping cart, a visual toast notification appeared, but it was completely silent for screen reader users relying on TalkBack and NVDA.',
     solution:
       'Created a dedicated persistent live region with `aria-live="polite"` and `aria-atomic="true"` that dynamically announces cart state updates without disrupting the user’s reading flow.',
+    businessImpact:
+      'Eliminated cart confusion for screen-reader customers, boosting assistive-tech user confidence, reducing abandoned carts, and ensuring full status message compliance.',
+    metrics: '0 Silent State Updates • Instant Screen-Reader Feedback',
     codeSnippet: `<div className="sr-only" aria-live="polite" aria-atomic="true">
   {cartAnnouncement}
 </div>`,
@@ -363,13 +386,16 @@ const handleClose = () => {
     id: 'case-native-mobile',
     title: 'Native Mobile VoiceOver & TalkBack Focus Routing',
     wcag: 'WCAG 2.4.3 Focus Order (A) & Mobile AT Guidelines',
-    severity: 'High',
+    severity: 'High Severity',
     category: 'mobile',
     platform: 'Native Mobile (iOS Swift & Android Kotlin)',
     problem:
       'Screen readers on mobile devices skipped custom bottom-sheet modal controls and lost focus position after asynchronous API responses completed.',
     solution:
       'Configured UIAccessibility.post(notification: .screenChanged, argument: focusTarget) in Swift and AccessibilityEvent.TYPE_VIEW_FOCUSED in Android to route AT focus predictably.',
+    businessImpact:
+      'Restored seamless mobile app navigation for VoiceOver and TalkBack users, eliminating trapped UI states and friction in high-priority native booking funnels.',
+    metrics: 'Cross-Platform AT Parity across iOS & Android',
     codeSnippet: `// Swift (iOS VoiceOver focus notification)
 UIAccessibility.post(notification: .layoutChanged, argument: headerTitleLabel)`,
   },
@@ -377,13 +403,16 @@ UIAccessibility.post(notification: .layoutChanged, argument: headerTitleLabel)`,
     id: 'case-mobile-touch-targets',
     title: 'Native Mobile Touch Target Size & Screen Reader Labeling',
     wcag: 'WCAG 2.5.5 Target Size & 1.1.1 Non-Text Content (A)',
-    severity: 'Medium',
+    severity: 'Medium Severity',
     category: 'mobile',
     platform: 'Native Mobile (iOS & Android)',
     problem:
       'Custom icon buttons in mobile navigation headers were under 44x44pt / 48x48dp, causing mis-taps for users with motor impairments, and lacked accessibility labels for VoiceOver and TalkBack.',
     solution:
       'Expanded touch target hit areas using UIEdgeInsets / TouchDelegate and added explicit accessibilityLabel (iOS) and contentDescription (Android) attributes.',
+    businessImpact:
+      'Prevented user mis-taps by fully meeting 44x44pt touch guidelines, while delivering 100% label clarity for mobile screen reader users across primary navigation bars.',
+    metrics: '44x44pt+ Touch Compliance • 100% Labeled Actions',
     codeSnippet: `// Android Kotlin (Accessibility Content Description)
 iconButton.contentDescription = getString(R.string.close_dialog_accessibility_label)`,
   },

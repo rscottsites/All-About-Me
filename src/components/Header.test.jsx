@@ -17,9 +17,11 @@ describe('Header Component', () => {
     expect(screen.getByRole('link', { name: /^About$/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /^Examples$/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Request Mini-Audit/i })).toBeInTheDocument();
+    expect(screen.getByText(/Free PDF Guide/i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Download Free PDF/i })).toHaveAttribute('href', '#lead-magnet');
   });
 
-  it('marks active navigation link according to current router location', () => {
+  it('marks active navigation link according to current router location and hides home banner', () => {
     render(
       <MemoryRouter initialEntries={['/services']}>
         <Header />
@@ -28,6 +30,7 @@ describe('Header Component', () => {
 
     const servicesLink = screen.getByRole('link', { name: /Services & Packages/i });
     expect(servicesLink).toHaveClass('active');
+    expect(screen.queryByText(/Free PDF Guide/i)).not.toBeInTheDocument();
   });
 
   it('toggles mobile menu state and handles Escape key focus restoration', () => {

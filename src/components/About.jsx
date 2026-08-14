@@ -11,7 +11,7 @@ export default function About() {
           My approach to accessibility goes beyond automated checklists. I specialize in full-stack accessibility, meaning I don't just hand over an audit report; I provide the hands-on engineering required to fix ARIA, semantic HTML, and complex keyboard navigation issues directly in the codebase.
         </p>
         <p>
-          Having honed my expertise in WCAG compliance and inclusive design at an enterprise scale—including my experience working on digital accessibility at PayPal—I understand the complexities of integrating accessible practices into fast-moving engineering teams without slowing down deployment.
+          Having honed my expertise in WCAG compliance and inclusive design at an enterprise scale, I understand the complexities of integrating accessible practices into fast-moving engineering teams without slowing down deployment.
         </p>
         <p>
           My journey into software engineering was shaped by the Year Up program, which instilled in me a deep commitment to breaking down barriers. Today, I apply that same drive to the digital world. By rigorously testing with assistive technologies like NVDA, VoiceOver, and TalkBack, I ensure that digital products are not only legally compliant but genuinely usable for everyone.

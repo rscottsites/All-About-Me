@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { coreServices, sampleAuditDeliverable } from '../data/businessData';
 import PackagesTable from '../components/PackagesTable';
+import LeadMagnetSection from '../components/LeadMagnetSection';
 
 export default function ServicesPage() {
   return (
@@ -112,15 +113,18 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* ─── Secondary Lead Magnet Section ──────────────────────── */}
+      <LeadMagnetSection />
+
       {/* ─── Bottom CTA ──────────────────────────────────────────── */}
       <section className="section section-cta-banner">
         <div className="container cta-banner-inner">
           <h2>Need a Custom Engineering Engagement?</h2>
           <p>
-            Whether you need a full overhaul, a monthly retainer, or immediate fixes for critical violations, let&apos;s start with a free mini-audit of your site.
+            Whether you need a full overhaul, a monthly retainer, or immediate fixes for critical violations, let&apos;s start with a free mini-audit of your site—delivered in 48 hours.
           </p>
           <Link to="/contact" className="btn btn-primary btn-lg">
-            Request a Free Mini-Audit
+            Request a Free Mini-Audit (Delivered in 48 Hours)
           </Link>
         </div>
       </section>

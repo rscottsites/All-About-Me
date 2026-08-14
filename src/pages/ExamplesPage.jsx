@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import LeadMagnetDownloadModal from '../components/LeadMagnetDownloadModal';
 import { caseStudies } from '../data/businessData';
 
 export default function ExamplesPage() {
   const [activeTab, setActiveTab] = useState('all');
+  const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
 
   const filteredStudies =
     activeTab === 'all'
@@ -78,8 +80,12 @@ export default function ExamplesPage() {
               <article key={study.id} className="case-card-full" aria-labelledby={`study-title-${study.id}`}>
                 <div className="case-card-header">
                   <div className="case-meta">
-                    <span className={`severity-tag severity-${study.severity.toLowerCase()}`}>
-                      {study.severity} Severity
+                    <span
+                      className={`severity-tag severity-${study.severity.toLowerCase().split(' ')[0]}`}
+                      role="text"
+                      aria-label={study.severity}
+                    >
+                      {study.severity}
                     </span>
                     <span className="platform-tag">{study.platform}</span>
                   </div>
@@ -102,6 +108,21 @@ export default function ExamplesPage() {
                     <p>{study.solution}</p>
                   </div>
 
+                  {study.businessImpact && (
+                    <div className="case-section case-impact-section">
+                      <h3>
+                        <span className="impact-icon" aria-hidden="true">📈</span>
+                        Business Outcome &amp; Impact
+                      </h3>
+                      <p className="case-impact-text">{study.businessImpact}</p>
+                      {study.metrics && (
+                        <div className="case-impact-metric-badge">
+                          <strong>Key Result:</strong> {study.metrics}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
                   {study.codeSnippet && (
                     <div className="case-section code-section">
                       <h3>Engineering Code Snippet</h3>
@@ -118,17 +139,36 @@ export default function ExamplesPage() {
       </section>
 
       {/* ─── Bottom CTA ──────────────────────────────────────────── */}
-      <section className="section section-cta-banner">
+      <section className="section section-cta-banner" aria-labelledby="examples-cta-heading">
         <div className="container cta-banner-inner">
-          <h2>Have Similar Accessibility Challenges in Your Codebase?</h2>
+          <h2 id="examples-cta-heading">Have Similar Accessibility Challenges in Your Codebase?</h2>
           <p>
-            I can conduct a full audit and provide direct engineering fixes for your team.
+            I can conduct a full audit and provide direct engineering fixes for your team. Get a comprehensive review delivered in 48 hours.
           </p>
           <Link to="/contact" className="btn btn-primary btn-lg">
-            Request a Free Mini-Audit
+            Request a Free Mini-Audit &rarr;
           </Link>
+
+          <div className="cta-banner-secondary-note">
+            <p className="cta-secondary-prompt">
+              <strong>Not ready for an audit?</strong> Download the free guide: <em>The 5 Most Common Web Accessibility Challenges (And Their Solutions)</em>.
+            </p>
+            <button
+              type="button"
+              className="btn btn-secondary cta-secondary-btn"
+              onClick={() => setIsLeadModalOpen(true)}
+            >
+              📄 Download Free PDF Guide
+            </button>
+          </div>
         </div>
       </section>
+
+      {/* ─── Lead Magnet Download Modal Dialog ───────────────────── */}
+      <LeadMagnetDownloadModal
+        isOpen={isLeadModalOpen}
+        onClose={() => setIsLeadModalOpen(false)}
+      />
     </div>
   );
 }
