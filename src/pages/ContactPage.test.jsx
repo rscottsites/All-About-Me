@@ -15,6 +15,7 @@ describe('ContactPage Component & Accessibility', () => {
     expect(screen.getByRole('heading', { level: 1, name: /Request a Free Mini-Audit & Get in Touch/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: /Mini-Audit Request Intake Form/i })).toBeInTheDocument();
     expect(screen.getByText(/What's Included in Your Free Mini-Audit\?/i)).toBeInTheDocument();
+    expect(screen.getByText(/48-Hour Delivery:/i)).toBeInTheDocument();
   });
 
   it('has ZERO automated WCAG accessibility violations (axe test)', async () => {

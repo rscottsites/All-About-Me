@@ -167,8 +167,8 @@ Details:
           free mini-audit for <strong>{formData.websiteUrl}</strong>.
         </p>
         <p>
-          I will review your platform and get back to you at <strong>{formData.email}</strong> within
-          1–2 business days with an actionable initial audit overview.
+          I will review your platform and deliver your prioritized risk scorecard to <strong>{formData.email}</strong> within
+          48 hours with an actionable initial audit overview.
         </p>
         <button
           type="button"

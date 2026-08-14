@@ -42,7 +42,7 @@ export default function AboutPage() {
               <h3>Enterprise &amp; Community Experience</h3>
               <ul className="exp-list" role="list">
                 <li>
-                  <strong>PayPal</strong> — Digital Accessibility Engineering at Enterprise Scale
+                  <strong>Enterprise Experience</strong> — Digital Accessibility Engineering at Scale
                 </li>
                 <li>
                   <strong>Year Up Program</strong> — Foundation in Software Engineering &amp; Barrier Elimination

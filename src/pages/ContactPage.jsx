@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import MiniAuditForm from '../components/MiniAuditForm';
+import LeadMagnetSection from '../components/LeadMagnetSection';
 
 export default function ContactPage() {
   const [searchParams] = useSearchParams();
@@ -14,8 +15,7 @@ export default function ContactPage() {
             Request a Free Mini-Audit &amp; Get in Touch
           </h1>
           <p className="page-lead">
-            Take the first step toward WCAG 2.1/2.2 AA compliance. Request a free mini-audit of your key user flows,
-            or inquire about codebase remediation engineering and monthly retainers.
+            Take the first step toward WCAG 2.1/2.2 AA compliance. Request a free, zero-obligation mini-audit of your key user flows—delivered in 48 hours—or inquire about codebase remediation engineering and monthly retainers.
           </p>
         </div>
       </section>
@@ -28,7 +28,7 @@ export default function ContactPage() {
               Mini-Audit Request Intake Form
             </h2>
             <p className="form-intro">
-              Fill out the form below to receive a zero-obligation mini-audit of your digital product.
+              Fill out the form below to receive a zero-obligation mini-audit of your digital product, delivered in 48 hours.
             </p>
 
             <MiniAuditForm initialPackage={selectedPackage} />
@@ -38,6 +38,13 @@ export default function ContactPage() {
             <div className="sidebar-card highlight-card">
               <h3>What&apos;s Included in Your Free Mini-Audit?</h3>
               <ul className="audit-benefits-list" role="list">
+                <li>
+                  <span className="benefit-icon" aria-hidden="true">⏱</span>
+                  <div>
+                    <strong>48-Hour Delivery:</strong>
+                    <span>Rapid risk scorecard and remediation overview delivered directly to your inbox.</span>
+                  </div>
+                </li>
                 <li>
                   <span className="benefit-icon" aria-hidden="true">🎯</span>
                   <div>
@@ -60,6 +67,11 @@ export default function ContactPage() {
                   </div>
                 </li>
               </ul>
+            </div>
+
+            {/* Top-of-Funnel Alternative: Free React WCAG Cheatsheet */}
+            <div className="sidebar-card">
+              <LeadMagnetSection compact={true} />
             </div>
 
             <div className="sidebar-card">

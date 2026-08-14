@@ -21,6 +21,19 @@ describe('ExamplesPage Component & Accessibility', () => {
     const mobileTab = screen.getByRole('tab', { name: /Native Mobile \(iOS\/Android\)/i });
     fireEvent.click(mobileTab);
     expect(mobileTab).toHaveClass('active');
+
+    // Bottom CTA section & enhanced micro-copy
+    expect(screen.getByRole('heading', { level: 2, name: /Have Similar Accessibility Challenges in Your Codebase\?/i })).toBeInTheDocument();
+    expect(screen.getByText(/Get a comprehensive review delivered in 48 hours\./i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Request a Free Mini-Audit/i })).toHaveAttribute('href', '/contact');
+    expect(screen.getByText(/Not ready for an audit\?/i)).toBeInTheDocument();
+
+    // Clicking download opens the modal dialog
+    const downloadBtn = screen.getByRole('button', { name: /Download Free PDF Guide/i });
+    expect(downloadBtn).toBeInTheDocument();
+    fireEvent.click(downloadBtn);
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: /The 5 Most Common Web Accessibility Challenges/i })).toBeInTheDocument();
   });
 
   it('has ZERO automated WCAG accessibility violations (axe test)', async () => {

@@ -45,10 +45,15 @@ export default async function handler(req, res) {
     const resendKey = process.env.RESEND_API_KEY;
     const web3Key = process.env.WEB3FORMS_KEY;
 
-    const emailSubject = `[Mini-Audit Request] ${name.trim()} - ${platform.toUpperCase()}`;
+    const emailSubject =
+      platform === 'lead-magnet'
+        ? `[Lead Magnet Download] ${name.trim()} - 5 Common Web Accessibility Challenges PDF`
+        : `[Mini-Audit Request] ${name.trim()} - ${platform.toUpperCase()}`;
+
+    const headingTitle = platform === 'lead-magnet' ? 'New Lead Magnet Download' : 'New Mini-Audit Request';
 
     const emailText = `
-New Free Mini-Audit Request from RScott Sites Website
+${headingTitle} from RScott Sites Website
 
 Submitted Details:
 - Name: ${name.trim()}
@@ -62,7 +67,7 @@ Submitted Details:
 
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; color: #1E140A; max-width: 600px; margin: 0 auto; border: 1px solid #C8B89A; border-radius: 8px; padding: 24px; background-color: #FAF7F2;">
-        <h2 style="color: #7A5C1E; border-bottom: 2px solid #7A5C1E; padding-bottom: 8px;">New Mini-Audit Request</h2>
+        <h2 style="color: #7A5C1E; border-bottom: 2px solid #7A5C1E; padding-bottom: 8px;">${escapeHtml(headingTitle)}</h2>
         <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
           <tr>
             <td style="padding: 8px 0; font-weight: bold; width: 180px;">Client Name:</td>

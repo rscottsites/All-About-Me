@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 
 const NAV_LINKS = [
   { to: '/',          label: 'Home' },
@@ -13,6 +13,8 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const headerRef = useRef(null);
   const toggleRef = useRef(null);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   const closeMenu = useCallback(() => {
     setIsOpen(false);
@@ -108,6 +110,23 @@ export default function Header() {
           </ul>
         </nav>
       </div>
+
+      {isHomePage && (
+        <aside className="top-lead-banner" aria-label="Free Resource Announcement">
+          <div className="container top-lead-banner-inner">
+            <div className="top-lead-banner-content">
+              <span className="top-lead-banner-badge" aria-hidden="true">📘 Free PDF Guide</span>
+              <span className="top-lead-banner-text">
+                <strong>New:</strong> The 5 Most Common Web Accessibility Challenges (And Their Solutions)
+              </span>
+            </div>
+            <a href="#lead-magnet" className="top-lead-banner-cta">
+              <span>Download Free PDF</span>
+              <span className="top-lead-banner-arrow" aria-hidden="true">&darr;</span>
+            </a>
+          </div>
+        </aside>
+      )}
     </header>
   );
 }
