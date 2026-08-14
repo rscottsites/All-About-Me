@@ -32,7 +32,15 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!api/).*)",
+      "source": "/_va/script.js",
+      "destination": "https://va.vercel-scripts.com/v1/script.js"
+    },
+    {
+      "source": "/_va/insights/:path*",
+      "destination": "https://vitals.vercel-insights.com/v1/:path*"
+    },
+    {
+      "source": "/((?!api/|_va/).*)",
       "destination": "/index.html"
     }
   ]
