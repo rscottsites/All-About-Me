@@ -124,7 +124,7 @@ export default function ServicesPage() {
             Whether you need a full overhaul, a monthly retainer, or immediate fixes for critical violations, let&apos;s start with a free mini-audit of your site—delivered in 48 hours.
           </p>
           <Link to="/contact" className="btn btn-primary btn-lg">
-            Request a Free Mini-Audit (Delivered in 48 Hours)
+            Request a Free Mini-Audit
           </Link>
         </div>
       </section>

@@ -276,6 +276,7 @@ p { max-width: 68ch; }
 }
 
 .header-inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -878,10 +879,12 @@ p { max-width: 68ch; }
   gap: var(--space-sm);
 }
 
-.case-badge-bar {
+.case-badge-bar,
+.case-meta {
   display: flex;
   gap: var(--space-sm);
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .severity-tag {
@@ -1207,7 +1210,7 @@ p { max-width: 68ch; }
   font-size: 0.975rem;
   color: var(--color-text);
   line-height: 1.55;
-  margin-bottom: var(--space-sm);
+  margin-bottom: 0;
 }
 
 .case-impact-metric-badge {
@@ -1220,6 +1223,7 @@ p { max-width: 68ch; }
   font-size: 0.85rem;
   font-weight: 600;
   border: 1px solid var(--color-border);
+  margin-bottom: var(--space-xs);
 }
 
 .case-teaser-result {
@@ -1858,8 +1862,12 @@ p { max-width: 68ch; }
   margin-top: var(--space-xs);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-sm);
   transition: all var(--transition);
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .section-cta-banner .btn-primary:hover,
@@ -2078,7 +2086,6 @@ p { max-width: 68ch; }
 .nav-backdrop {
   position: fixed;
   inset: 0;
-  top: 70px;
   background-color: rgba(20, 14, 8, 0.6);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -2093,6 +2100,10 @@ p { max-width: 68ch; }
 
 /* ─── RESPONSIVE — Mobile & Tablet (< 900px) ──────────────── */
 @media (max-width: 899px) {
+  .header-inner {
+    position: relative;
+  }
+
   .nav-toggle {
     display: flex;
     align-items: center;
@@ -2109,8 +2120,8 @@ p { max-width: 68ch; }
     box-sizing: border-box;
     background-color: var(--color-bg);
     border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-    box-shadow: 0 12px 28px rgba(30, 20, 10, 0.15);
+    border-bottom: 2px solid var(--color-primary);
+    box-shadow: 0 16px 36px rgba(30, 20, 10, 0.2);
     display: none;
     z-index: 999;
     overflow-x: hidden;
@@ -2269,6 +2280,13 @@ p { max-width: 68ch; }
     gap: var(--space-md);
   }
 
+  .case-badge-bar,
+  .case-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+
   .filter-bar {
     display: flex;
     flex-wrap: nowrap;
@@ -2410,6 +2428,58 @@ p { max-width: 68ch; }
     display: inline-flex;
     align-items: center;
     padding: 0.5rem 0.75rem;
+  }
+
+  /* Bottom CTA Banner Mobile */
+  .section-cta-banner {
+    padding-block: var(--space-2xl);
+    padding-inline: var(--space-md);
+  }
+
+  .cta-banner-inner {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .cta-banner-inner h2 {
+    font-size: 1.35rem;
+    line-height: 1.3;
+  }
+
+  .cta-banner-inner p {
+    font-size: 0.98rem;
+    line-height: 1.5;
+  }
+
+  .section-cta-banner .btn-primary,
+  .section-cta-banner .btn-lg {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.9rem 1.25rem;
+    font-size: 1.05rem;
+    white-space: normal;
+    word-break: normal;
+    text-wrap: balance;
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta-banner-secondary-note {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .cta-banner-secondary-note .cta-secondary-btn {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    justify-content: center;
+    white-space: normal;
+    display: flex;
   }
 }
 
