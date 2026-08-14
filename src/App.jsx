@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import RouteAnnouncer from './components/RouteAnnouncer';
@@ -7,8 +10,13 @@ import ServicesPage from './pages/ServicesPage';
 import AboutPage from './pages/AboutPage';
 import ExamplesPage from './pages/ExamplesPage';
 import ContactPage from './pages/ContactPage';
+import { initCloudflareAnalytics } from './utils/analytics';
 
 export default function App() {
+  useEffect(() => {
+    initCloudflareAnalytics();
+  }, []);
+
   return (
     <Router>
       <a href="#main-content" className="skip-link">
@@ -27,6 +35,8 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <Analytics />
+      <SpeedInsights />
     </Router>
   );
 }
