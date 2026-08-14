@@ -229,7 +229,7 @@ export default function HomePage() {
             Get a comprehensive review of your web or mobile product with a free, no-obligation mini-audit delivered in 48 hours.
           </p>
           <Link to="/contact" className="btn btn-primary btn-lg">
-            Request a Free Mini-Audit (Delivered in 48 Hours)
+            Request a Free Mini-Audit
           </Link>
         </div>
       </section>

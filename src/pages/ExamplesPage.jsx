@@ -114,12 +114,12 @@ export default function ExamplesPage() {
                         <span className="impact-icon" aria-hidden="true">📈</span>
                         Business Outcome &amp; Impact
                       </h3>
-                      <p className="case-impact-text">{study.businessImpact}</p>
                       {study.metrics && (
                         <div className="case-impact-metric-badge">
                           <strong>Key Result:</strong> {study.metrics}
                         </div>
                       )}
+                      <p className="case-impact-text">{study.businessImpact}</p>
                     </div>
                   )}
 
