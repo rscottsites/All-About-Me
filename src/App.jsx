@@ -35,8 +35,8 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
-      <Analytics />
-      <SpeedInsights />
+      <Analytics debug={import.meta.env.DEV} />
+      <SpeedInsights debug={import.meta.env.DEV} />
     </Router>
   );
 }
