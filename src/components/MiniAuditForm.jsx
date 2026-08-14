@@ -98,7 +98,7 @@ export default function MiniAuditForm({ initialPackage = '' }) {
           subject: `[Mini-Audit Request] ${formData.name.trim()} - ${formData.platform.toUpperCase()}`,
           from_name: formData.name.trim(),
           email: formData.email.trim(),
-          to_email: 'rscott.sites@gmail.com',
+          to_email: 'ryanscott@rscottsites.com',
           message: `
 New Free Mini-Audit Request from RScott Sites Website
 
@@ -144,7 +144,7 @@ Details:
     }
   };
 
-  const mailtoLink = `mailto:rscott.sites@gmail.com?subject=${encodeURIComponent(
+  const mailtoLink = `mailto:ryanscott@rscottsites.com?subject=${encodeURIComponent(
     `[Mini-Audit Request] ${formData.name || 'New Lead'}`
   )}&body=${encodeURIComponent(
     `Hi Ryan,\n\nI would like to request a free mini-audit.\n\nName: ${formData.name}\nEmail: ${formData.email}\nWebsite/App URL: ${formData.websiteUrl}\nPlatform: ${formData.platform}\nPackage Interest: ${formData.selectedPackage}\nPrimary Goal: ${formData.primaryGoal}\nDetails: ${formData.message}\n`
@@ -225,7 +225,7 @@ Details:
             <div className="server-error-content">
               <p style={{ margin: 0, fontWeight: 600 }}>{serverError}</p>
               <p style={{ marginTop: '12px', fontSize: '0.95rem' }}>
-                Click below to send your request details directly to <strong>rscott.sites@gmail.com</strong>:
+                Click below to send your request details directly to <strong>ryanscott@rscottsites.com</strong>:
               </p>
               <a
                 href={mailtoLink}
