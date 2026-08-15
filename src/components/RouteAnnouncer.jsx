@@ -7,6 +7,12 @@ const PAGE_TITLES = {
   '/about': 'About Ryan Scott — End-to-End Accessibility Engineer',
   '/examples': 'Portfolio & Case Studies — Accessibility Engineering',
   '/contact': 'Request a Free Mini-Audit — RScott Sites',
+  '/privacy': 'Privacy Policy — RScott Sites',
+  '/privacy-policy': 'Privacy Policy — RScott Sites',
+  '/terms': 'Terms of Service — RScott Sites',
+  '/terms-of-service': 'Terms of Service — RScott Sites',
+  '/accessibility': 'Accessibility Statement — RScott Sites',
+  '/accessibility-statement': 'Accessibility Statement — RScott Sites',
 };
 
 export default function RouteAnnouncer() {
@@ -14,30 +20,20 @@ export default function RouteAnnouncer() {
   const [announcement, setAnnouncement] = useState('');
 
   useEffect(() => {
-    // 1. Scroll to top on route change
+    // 1. Scroll window to top of the page
     window.scrollTo(0, 0);
 
     // 2. Set document title
     const title = PAGE_TITLES[location.pathname] || 'RScott Sites — Digital Accessibility Engineering';
     document.title = title;
 
-    // 3. Set announcement for screen readers
+    // 3. Set live announcement for screen readers
     setAnnouncement(`Navigated to ${title}`);
 
-    // 4. Move focus to main heading or main container for keyboard users
-    setTimeout(() => {
-      const mainHeading = document.querySelector('h1');
-      if (mainHeading) {
-        mainHeading.setAttribute('tabIndex', '-1');
-        mainHeading.focus({ preventScroll: true });
-      } else {
-        const mainContent = document.getElementById('main-content');
-        if (mainContent) {
-          mainContent.setAttribute('tabIndex', '-1');
-          mainContent.focus({ preventScroll: true });
-        }
-      }
-    }, 100);
+    // 4. Reset focus to the top of the document (removes focus from clicked nav link/title)
+    if (document.activeElement && document.activeElement !== document.body) {
+      document.activeElement.blur();
+    }
   }, [location.pathname]);
 
   return (

@@ -7,7 +7,7 @@ const BADGES = [
 
 export default function Hero() {
   return (
-    <section id="home" className="section section-hero" aria-labelledby="hero-heading">
+    <section id="home" className="section section-hero">
       <div className="container hero-inner">
         <div className="hero-text">
           <p className="hero-eyebrow">Web Development &amp; Accessibility</p>

@@ -30,7 +30,7 @@ export default function ExamplesPage() {
   return (
     <div className="page-examples">
       {/* ─── Header Section ──────────────────────────────────────── */}
-      <section className="section page-header-section" aria-labelledby="examples-page-title">
+      <section className="section page-header-section">
         <div className="container">
           <h1 id="examples-page-title" className="page-title">
             Accessibility Engineering Portfolio
@@ -43,7 +43,7 @@ export default function ExamplesPage() {
       </section>
 
       {/* ─── Case Studies Gallery ─────────────────────────────────── */}
-      <section className="section section-cases-full" aria-labelledby="cases-heading">
+      <section className="section section-cases-full">
         <div className="container">
           <div className="filter-bar" role="tablist" aria-label="Filter case studies by platform">
             <button
@@ -139,7 +139,7 @@ export default function ExamplesPage() {
       </section>
 
       {/* ─── Bottom CTA ──────────────────────────────────────────── */}
-      <section className="section section-cta-banner" aria-labelledby="examples-cta-heading">
+      <section className="section section-cta-banner">
         <div className="container cta-banner-inner">
           <h2 id="examples-cta-heading">Have Similar Accessibility Challenges in Your Codebase?</h2>
           <p>

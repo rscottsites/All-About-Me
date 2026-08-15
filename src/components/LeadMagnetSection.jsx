@@ -134,7 +134,6 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
       <section
         id={compact ? undefined : 'lead-magnet'}
         className={`section-lead-magnet ${compact ? 'lead-magnet-compact' : ''} ${className}`}
-        aria-labelledby="lead-magnet-heading"
       >
         <div className={compact ? 'lead-magnet-compact-inner' : 'container lead-magnet-inner'}>
           <div className="lead-magnet-content">

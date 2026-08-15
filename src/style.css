@@ -416,7 +416,9 @@ p { max-width: 68ch; }
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex: 1;
+  min-width: 0;
 }
 
 .top-lead-banner-badge {
@@ -434,6 +436,7 @@ p { max-width: 68ch; }
 .top-lead-banner-text {
   color: #F3EBDD;
   line-height: 1.4;
+  white-space: normal;
 }
 
 .top-lead-banner-text strong {
@@ -2976,6 +2979,7 @@ p { max-width: 68ch; }
   margin-bottom: var(--space-xl);
 }
 
+.privacy-section h2,
 .privacy-section h3 {
   font-size: 1.22rem;
   font-weight: 700;

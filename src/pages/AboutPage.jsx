@@ -5,7 +5,7 @@ export default function AboutPage() {
   return (
     <div className="page-about">
       {/* ─── Header Section ──────────────────────────────────────── */}
-      <section className="section page-header-section" aria-labelledby="about-page-title">
+      <section className="section page-header-section">
         <div className="container">
           <h1 id="about-page-title" className="page-title">
             About Ryan Scott
@@ -17,7 +17,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─── Main Bio Section ────────────────────────────────────── */}
-      <section className="section section-about-body" aria-labelledby="about-headline">
+      <section className="section section-about-body">
         <div className="container about-grid">
           <div className="about-content">
             <h2 id="about-headline" className="about-subheadline">
@@ -69,7 +69,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─── Core Competencies Grid ──────────────────────────────── */}
-      <section className="section section-skills" aria-labelledby="skills-heading">
+      <section className="section section-skills">
         <div className="container">
           <h2 id="skills-heading" className="section-heading">
             Engineering &amp; Accessibility Competencies

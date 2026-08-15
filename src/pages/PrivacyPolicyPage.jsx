@@ -4,9 +4,9 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="page-privacy">
       {/* ─── Header Section ──────────────────────────────────────── */}
-      <section className="section page-header-section" aria-labelledby="privacy-page-title">
+      <section className="section page-header-section">
         <div className="container">
-          <span className="section-badge-pill" aria-hidden="true">Legal &amp; Transparency</span>
+          <span className="section-badge-pill">Legal &amp; Transparency</span>
           <h1 id="privacy-page-title" className="page-title">
             Privacy Policy
           </h1>
@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
       </section>
 
       {/* ─── Main Content Section ────────────────────────────────── */}
-      <section className="section section-privacy-content" aria-labelledby="privacy-content-heading">
+      <section className="section section-privacy-content">
         <div className="container container-prose">
           <div className="privacy-prose-card">
             <h2 id="privacy-content-heading" className="sr-only">

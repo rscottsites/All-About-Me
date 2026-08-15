@@ -2,7 +2,7 @@ import { services } from '../data/services';
 
 export default function Services() {
   return (
-    <section className="section section-services" aria-labelledby="services-heading">
+    <section className="section section-services">
       <div className="container">
         <h2 id="services-heading" className="sr-only">Services</h2>
         <ul className="services-list" role="list">

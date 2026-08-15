@@ -7,7 +7,7 @@ export default function ServicesPage() {
   return (
     <div className="page-services">
       {/* ─── Header Section ──────────────────────────────────────── */}
-      <section className="section page-header-section" aria-labelledby="services-page-title">
+      <section className="section page-header-section">
         <div className="container">
           <h1 id="services-page-title" className="page-title">
             Core Services &amp; Service Packages
@@ -20,7 +20,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ─── Core Services Detailed Breakdown ───────────────────────── */}
-      <section className="section section-services-list" aria-labelledby="core-services-heading">
+      <section className="section section-services-list">
         <div className="container">
           <h2 id="core-services-heading" className="section-heading">
             Core Engineering Services
@@ -72,7 +72,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ─── Sample Deliverable Section ───────────────────────────── */}
-      <section className="section section-deliverable" aria-labelledby="deliverable-heading">
+      <section className="section section-deliverable">
         <div className="container">
           <div className="section-header">
             <h2 id="deliverable-heading" className="section-heading">
@@ -98,7 +98,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ─── Service Packages Section ─────────────────────────────── */}
-      <section className="section section-packages" aria-labelledby="packages-heading">
+      <section className="section section-packages">
         <div className="container">
           <div className="section-header">
             <h2 id="packages-heading" className="section-heading">

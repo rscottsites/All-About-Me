@@ -14,10 +14,10 @@ export default function HomePage() {
   return (
     <div className="page-home">
       {/* ─── Hero Section ────────────────────────────────────────── */}
-      <section className="section section-hero" aria-labelledby="hero-heading">
+      <section className="section section-hero">
         <div className="container hero-inner">
           <div className="hero-text">
-            <div className="hero-badge-pill" aria-label="Role Identity">
+            <div className="hero-badge-pill">
               <span className="pill-dot" aria-hidden="true" />
               <span>{freelanceIdentity.title}</span>
             </div>
@@ -35,7 +35,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="hero-card-summary" aria-label="Identity Highlights">
+          <div className="hero-card-summary">
             <div className="summary-card-inner">
               <h2>{freelanceIdentity.title}</h2>
               <p>{freelanceIdentity.summary}</p>
@@ -52,7 +52,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── Business ROI & Bottom-Line Section ────────────────────── */}
-      <section className="section section-roi" aria-labelledby="roi-heading">
+      <section className="section section-roi">
         <div className="container">
           <div className="section-header">
             <h2 id="roi-heading" className="section-heading">
@@ -78,7 +78,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── Value Proposition Pillars ───────────────────────────── */}
-      <section className="section section-pillars" aria-labelledby="pillars-heading">
+      <section className="section section-pillars">
         <div className="container">
           <div className="section-header">
             <h2 id="pillars-heading" className="section-heading">
@@ -105,7 +105,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── 3-Step Process Flow ─────────────────────────────────── */}
-      <section className="section section-process" aria-labelledby="process-heading">
+      <section className="section section-process">
         <div className="container">
           <div className="section-header">
             <h2 id="process-heading" className="section-heading">
@@ -129,7 +129,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── Featured Case Studies Teaser ──────────────────────────── */}
-      <section className="section section-cases-teaser" aria-labelledby="cases-teaser-heading">
+      <section className="section section-cases-teaser">
         <div className="container">
           <div className="section-header">
             <h2 id="cases-teaser-heading" className="section-heading">
@@ -172,7 +172,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── Meet the Expert Section ────────────────────────────── */}
-      <section className="section section-expert" aria-labelledby="expert-heading">
+      <section className="section section-expert">
         <div className="container">
           <div className="expert-card">
             <div className="expert-avatar-wrap">
@@ -222,7 +222,7 @@ export default function HomePage() {
       <LeadMagnetSection />
 
       {/* ─── Bottom CTA Banner ────────────────────────────────────── */}
-      <section className="section section-cta-banner" aria-labelledby="cta-banner-heading">
+      <section className="section section-cta-banner">
         <div className="container cta-banner-inner">
           <h2 id="cta-banner-heading">Ready to Make Your Product Accessible to Everyone?</h2>
           <p>
