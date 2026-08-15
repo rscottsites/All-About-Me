@@ -102,7 +102,7 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          access_key: 'b9423c10-82a8-48b4-9279-8809f6d634db',
+          access_key: '76275ef7-c53f-42c2-aa0e-ec31e6d38627',
           subject: `[Lead Magnet] ${formData.name.trim()} downloaded Web Accessibility Challenges PDF`,
           from_name: formData.name.trim(),
           email: formData.email.trim(),
