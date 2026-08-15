@@ -4,9 +4,9 @@ export default function TermsOfServicePage() {
   return (
     <div className="page-terms">
       {/* ─── Header Section ──────────────────────────────────────── */}
-      <section className="section page-header-section" aria-labelledby="terms-page-title">
+      <section className="section page-header-section">
         <div className="container">
-          <span className="section-badge-pill" aria-hidden="true">Legal &amp; Transparency</span>
+          <span className="section-badge-pill">Legal &amp; Transparency</span>
           <h1 id="terms-page-title" className="page-title">
             Terms of Service
           </h1>
@@ -17,22 +17,18 @@ export default function TermsOfServicePage() {
       </section>
 
       {/* ─── Main Content Section ────────────────────────────────── */}
-      <section className="section section-privacy-content" aria-labelledby="terms-content-heading">
+      <section className="section section-privacy-content">
         <div className="container container-prose">
           <div className="privacy-prose-card">
-            <h2 id="terms-content-heading" className="sr-only">
-              Terms of Service Details
-            </h2>
-
             <div className="privacy-section">
-              <h3>1. Agreement to Terms</h3>
+              <h2>1. Agreement to Terms</h2>
               <p>
                 Welcome to <strong>RScott Sites</strong> (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;). By accessing or using <a href="https://rscottsites.com" target="_blank" rel="noopener noreferrer">rscottsites.com</a> (the &quot;Site&quot;) and our digital accessibility engineering services, code audits, or downloadable resources, you agree to be bound by these Terms of Service. If you do not agree with these terms, please do not use this Site.
               </p>
             </div>
 
             <div className="privacy-section">
-              <h3>2. Intellectual Property Rights</h3>
+              <h2>2. Intellectual Property Rights</h2>
               <p>
                 All content on this Site, including but not limited to text, case studies, engineering code snippets, designs, graphics, and downloadable materials (such as <em>The 5 Most Common Web Accessibility Challenges</em> PDF), is the intellectual property of RScott Sites.
               </p>
@@ -43,7 +39,7 @@ export default function TermsOfServicePage() {
             </div>
 
             <div className="privacy-section">
-              <h3>3. Professional Disclaimer and Limitations</h3>
+              <h2>3. Professional Disclaimer and Limitations</h2>
               <p>
                 Our digital accessibility audits, engineering fixes, and code snippets are provided for informational and educational purposes, or as part of a specific consulting engagement.
               </p>
@@ -58,35 +54,35 @@ export default function TermsOfServicePage() {
             </div>
 
             <div className="privacy-section">
-              <h3>4. Limitation of Liability</h3>
+              <h2>4. Limitation of Liability</h2>
               <p>
                 To the fullest extent permitted by applicable law, RScott Sites shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or business opportunities, arising from your use of the Site, reliance on our resources, or implementation of our accessibility recommendations outside of a formal, signed consulting contract.
               </p>
             </div>
 
             <div className="privacy-section">
-              <h3>5. Third-Party Links</h3>
+              <h2>5. Third-Party Links</h2>
               <p>
                 Our Site may contain links to third-party websites or services that are not owned or controlled by RScott Sites. We assume no responsibility for the content, privacy policies, or practices of any third-party websites.
               </p>
             </div>
 
             <div className="privacy-section">
-              <h3>6. Governing Law</h3>
+              <h2>6. Governing Law</h2>
               <p>
                 These Terms shall be governed and construed in accordance with the laws of the State of California, without regard to its conflict of law provisions. Any legal actions or proceedings arising out of these Terms shall be brought exclusively in the state or federal courts located in California.
               </p>
             </div>
 
             <div className="privacy-section">
-              <h3>7. Changes to Terms</h3>
+              <h2>7. Changes to Terms</h2>
               <p>
                 We reserve the right to modify or replace these Terms at any time. Any changes will be posted on this page with an updated &quot;Effective Date.&quot; Your continued use of the Site after any such changes constitutes your acceptance of the new Terms.
               </p>
             </div>
 
             <div className="privacy-section">
-              <h3>8. Contact Information</h3>
+              <h2>8. Contact Information</h2>
               <p>
                 If you have any questions about these Terms, please contact us:
               </p>

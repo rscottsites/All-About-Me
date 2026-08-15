@@ -2,11 +2,11 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 
 const NAV_LINKS = [
-  { to: '/',          label: 'Home' },
-  { to: '/services',  label: 'Services & Packages' },
-  { to: '/about',     label: 'About' },
-  { to: '/examples',  label: 'Examples' },
-  { to: '/contact',   label: 'Request Mini-Audit', cta: true },
+  { to: '/', label: 'Home' },
+  { to: '/services', label: 'Services & Packages' },
+  { to: '/about', label: 'About' },
+  { to: '/examples', label: 'Examples' },
+  { to: '/contact', label: 'Request Mini-Audit', cta: true },
 ];
 
 export default function Header() {
@@ -83,7 +83,6 @@ export default function Header() {
         <nav
           id="primary-nav"
           className={`primary-nav${isOpen ? ' is-open' : ''}`}
-          aria-label="Primary navigation"
         >
           <ul role="list">
             {NAV_LINKS.map(({ to, label, cta }) => (
@@ -112,12 +111,14 @@ export default function Header() {
       )}
 
       {isHomePage && (
-        <aside className="top-lead-banner" aria-label="Free Resource Announcement">
+        <aside className="top-lead-banner" aria-label="Free PDF Guide">
           <div className="container top-lead-banner-inner">
             <div className="top-lead-banner-content">
-              <span className="top-lead-banner-badge" aria-hidden="true">📘 Free PDF Guide</span>
+              <span className="top-lead-banner-badge" aria-hidden="true">
+                📘 Free PDF Guide
+              </span>
               <span className="top-lead-banner-text">
-                <strong>New:</strong> The 5 Most Common Web Accessibility Challenges (And Their Solutions)
+                The 5 Most Common Web Accessibility Challenges (And Their Solutions)
               </span>
             </div>
             <a href="#lead-magnet" className="top-lead-banner-cta">

@@ -9,7 +9,7 @@ export default function ContactPage() {
   return (
     <div className="page-contact">
       {/* ─── Page Header ────────────────────────────────────────── */}
-      <section className="section page-header-section" aria-labelledby="contact-page-title">
+      <section className="section page-header-section">
         <div className="container">
           <h1 id="contact-page-title" className="page-title">
             Request a Free Mini-Audit &amp; Get in Touch
@@ -21,7 +21,7 @@ export default function ContactPage() {
       </section>
 
       {/* ─── Contact Form & Sidebar Section ────────────────────────── */}
-      <section className="section section-contact-body" aria-labelledby="contact-form-heading">
+      <section className="section section-contact-body">
         <div className="container contact-grid">
           <div className="form-column">
             <h2 id="contact-form-heading" className="section-subheading">

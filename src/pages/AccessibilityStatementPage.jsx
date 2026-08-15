@@ -4,9 +4,9 @@ export default function AccessibilityStatementPage() {
   return (
     <div className="page-accessibility-statement">
       {/* ─── Header Section ──────────────────────────────────────── */}
-      <section className="section page-header-section" aria-labelledby="accessibility-page-title">
+      <section className="section page-header-section">
         <div className="container">
-          <span className="section-badge-pill" aria-hidden="true">Digital Inclusion</span>
+          <span className="section-badge-pill">Digital Inclusion</span>
           <h1 id="accessibility-page-title" className="page-title">
             Accessibility Statement
           </h1>
@@ -17,29 +17,25 @@ export default function AccessibilityStatementPage() {
       </section>
 
       {/* ─── Main Content Section ────────────────────────────────── */}
-      <section className="section section-privacy-content" aria-labelledby="accessibility-content-heading">
+      <section className="section section-privacy-content">
         <div className="container container-prose">
           <div className="privacy-prose-card">
-            <h2 id="accessibility-content-heading" className="sr-only">
-              Accessibility Statement Details
-            </h2>
-
             <div className="privacy-section">
-              <h3>1. Our Commitment</h3>
+              <h2>1. Our Commitment</h2>
               <p>
                 At <strong>RScott Sites</strong>, digital accessibility is not just an afterthought—it is the core of our engineering practice. We are firmly committed to ensuring digital inclusion for all individuals, regardless of ability or technology. We believe the web should be an empowering, barrier-free space for everyone.
               </p>
             </div>
 
             <div className="privacy-section">
-              <h3>2. Accessibility Standard</h3>
+              <h2>2. Accessibility Standard</h2>
               <p>
                 We actively work to ensure that this website (<a href="https://rscottsites.com" target="_blank" rel="noopener noreferrer">rscottsites.com</a>) conforms to the <strong>Web Content Accessibility Guidelines (WCAG) 2.2 Level AA</strong>. These guidelines, established by the World Wide Web Consortium (W3C), explain how to make web content more accessible for people with sensory, cognitive, and mobility disabilities.
               </p>
             </div>
 
             <div className="privacy-section">
-              <h3>3. Engineering Practices and Measures</h3>
+              <h2>3. Engineering Practices and Measures</h2>
               <p>
                 To maintain our WCAG 2.2 AA verification and ensure a seamless user experience, we employ the following practices:
               </p>
@@ -60,14 +56,14 @@ export default function AccessibilityStatementPage() {
             </div>
 
             <div className="privacy-section">
-              <h3>4. Known Limitations</h3>
+              <h2>4. Known Limitations</h2>
               <p>
                 While we strive for comprehensive accessibility across all pages and resources on rscottsites.com, the dynamic nature of web technologies means that occasional accessibility challenges may arise. If you encounter any barriers or have difficulty accessing specific content, including our downloadable PDF resources, please let us know so we can resolve the issue promptly.
               </p>
             </div>
 
             <div className="privacy-section">
-              <h3>5. Feedback and Contact Information</h3>
+              <h2>5. Feedback and Contact Information</h2>
               <p>
                 We welcome your feedback on the accessibility of RScott Sites. If you encounter any accessibility barriers, require an alternative format for any of our content, or have suggestions for improvement, please reach out directly:
               </p>
