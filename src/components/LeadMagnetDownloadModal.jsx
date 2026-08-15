@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { leadMagnetInfo } from '../data/leadMagnetData';
 import LeadMagnetGuideModal from './LeadMagnetGuideModal';
 import { trackEvent } from '../utils/analytics';
 
 export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
-  const [formData, setFormData] = useState({ name: '', email: '', bot_field: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', consent: false, bot_field: '' });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
@@ -61,6 +62,14 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
   const validate = () => {
     const errs = {};
     if (!formData.name.trim()) {
@@ -70,6 +79,9 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
       errs.email = 'Please enter your work email address.';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       errs.email = 'Please enter a valid work email address.';
+    }
+    if (!formData.consent) {
+      errs.consent = 'Please provide your consent to download the guide.';
     }
     return errs;
   };
@@ -126,18 +138,6 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
       triggerDownload();
     } finally {
       setSubmitting(false);
-    }
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next[name];
-        return next;
-      });
     }
   };
 
@@ -291,6 +291,32 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
                   )}
                 </div>
 
+                <div className="form-group form-group-checkbox">
+                  <div className="checkbox-control">
+                    <input
+                      id="modal-consent-checkbox"
+                      type="checkbox"
+                      name="consent"
+                      checked={formData.consent}
+                      onChange={handleChange}
+                      aria-invalid={Boolean(errors.consent)}
+                      aria-describedby={errors.consent ? 'modal-consent-error' : undefined}
+                      disabled={submitting}
+                    />
+                    <label htmlFor="modal-consent-checkbox" className="checkbox-label">
+                      I consent to receive this digital accessibility guide.
+                    </label>
+                  </div>
+                  <p className="checkbox-privacy-note">
+                    🔒 No spam, ever. Instant direct download. View our <Link to="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy <span className="sr-only">(opens in a new tab)</span></Link> and <Link to="/terms" target="_blank" rel="noopener noreferrer">Terms of Service <span className="sr-only">(opens in a new tab)</span></Link>.
+                  </p>
+                  {errors.consent && (
+                    <span id="modal-consent-error" className="field-error" role="alert">
+                      {errors.consent}
+                    </span>
+                  )}
+                </div>
+
                 <button
                   type="submit"
                   className="btn btn-primary btn-block"
@@ -299,10 +325,6 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
                 >
                   {submitting ? 'Generating Download Link...' : '📥 Download Free PDF Guide'}
                 </button>
-
-                <p className="privacy-micro-note">
-                  🔒 No spam, ever. Zero obligation. Instant direct PDF download.
-                </p>
               </form>
             )}
           </div>

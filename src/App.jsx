@@ -10,6 +10,9 @@ import ServicesPage from './pages/ServicesPage';
 import AboutPage from './pages/AboutPage';
 import ExamplesPage from './pages/ExamplesPage';
 import ContactPage from './pages/ContactPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
+import AccessibilityStatementPage from './pages/AccessibilityStatementPage';
 import { initCloudflareAnalytics } from './utils/analytics';
 
 export default function App() {
@@ -31,6 +34,12 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/examples" element={<ExamplesPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms" element={<TermsOfServicePage />} />
+          <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+          <Route path="/accessibility" element={<AccessibilityStatementPage />} />
+          <Route path="/accessibility-statement" element={<AccessibilityStatementPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </main>

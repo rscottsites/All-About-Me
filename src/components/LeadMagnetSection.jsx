@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { leadMagnetInfo } from '../data/leadMagnetData';
 import LeadMagnetGuideModal from './LeadMagnetGuideModal';
 import { trackEvent } from '../utils/analytics';
@@ -7,6 +8,7 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    consent: false,
     bot_field: '',
   });
   const [errors, setErrors] = useState({});
@@ -17,8 +19,8 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
   const errorSummaryRef = useRef(null);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -33,6 +35,9 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
       newErrors.email = 'Work email is required.';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       newErrors.email = 'Please provide a valid email address.';
+    }
+    if (!formData.consent) {
+      newErrors.consent = 'Please provide your consent to download the guide.';
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -277,6 +282,32 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
                     )}
                   </div>
 
+                  <div className="form-group form-group-checkbox">
+                    <div className="checkbox-control">
+                      <input
+                        id="lead-consent-checkbox"
+                        type="checkbox"
+                        name="consent"
+                        checked={formData.consent}
+                        onChange={handleChange}
+                        aria-invalid={Boolean(errors.consent)}
+                        aria-describedby={errors.consent ? 'lead-consent-error' : undefined}
+                        disabled={submitting}
+                      />
+                      <label htmlFor="lead-consent-checkbox" className="checkbox-label">
+                        I consent to receive this digital accessibility guide and occasional updates.
+                      </label>
+                    </div>
+                    <p className="checkbox-privacy-note">
+                      🔒 We respect your inbox privacy. Unsubscribe anytime. View our <Link to="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy <span className="sr-only">(opens in a new tab)</span></Link> and <Link to="/terms" target="_blank" rel="noopener noreferrer">Terms of Service <span className="sr-only">(opens in a new tab)</span></Link>.
+                    </p>
+                    {errors.consent && (
+                      <span id="lead-consent-error" role="alert" className="field-error-text">
+                        {errors.consent}
+                      </span>
+                    )}
+                  </div>
+
                   <button
                     type="submit"
                     disabled={submitting}
@@ -291,10 +322,6 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
                       '📥 Download Free PDF Guide'
                     )}
                   </button>
-
-                  <p className="privacy-microcopy">
-                    🔒 We respect your inbox privacy. Unsubscribe anytime.
-                  </p>
                 </form>
               )}
             </div>

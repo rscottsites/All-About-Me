@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { trackEvent } from '../utils/analytics';
 
 export default function MiniAuditForm({ initialPackage = '' }) {
@@ -10,6 +11,7 @@ export default function MiniAuditForm({ initialPackage = '' }) {
     selectedPackage: initialPackage || 'mini-audit',
     primaryGoal: 'compliance',
     message: '',
+    consent: false,
     bot_field: '', // Honeypot field for bot prevention
   });
 
@@ -20,8 +22,8 @@ export default function MiniAuditForm({ initialPackage = '' }) {
   const errorSummaryRef = useRef(null);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }));
     }
@@ -45,6 +47,9 @@ export default function MiniAuditForm({ initialPackage = '' }) {
       !/^[a-z0-9-]+(\.[a-z0-9-]+)+/i.test(formData.websiteUrl.trim())
     ) {
       newErrors.websiteUrl = 'Please enter a valid web URL or app store link.';
+    }
+    if (!formData.consent) {
+      newErrors.consent = 'Please provide your consent to submit this request.';
     }
     return newErrors;
   };
@@ -389,6 +394,32 @@ Details:
           placeholder="Tell me about your product, tech stack, key user flows, or specific accessibility challenges..."
           disabled={submitting}
         />
+      </div>
+
+      <div className="form-group form-group-checkbox">
+        <div className="checkbox-control">
+          <input
+            id="mini-audit-consent"
+            type="checkbox"
+            name="consent"
+            checked={formData.consent}
+            onChange={handleChange}
+            aria-invalid={Boolean(errors.consent)}
+            aria-describedby={errors.consent ? 'mini-audit-consent-error' : undefined}
+            disabled={submitting}
+          />
+          <label htmlFor="mini-audit-consent" className="checkbox-label">
+            I consent to being contacted regarding my audit request and project details.
+          </label>
+        </div>
+        <p className="checkbox-privacy-note">
+          🔒 We respect your inbox privacy. Zero spam. View our <Link to="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy <span className="sr-only">(opens in a new tab)</span></Link> and <Link to="/terms" target="_blank" rel="noopener noreferrer">Terms of Service <span className="sr-only">(opens in a new tab)</span></Link>.
+        </p>
+        {errors.consent && (
+          <span id="mini-audit-consent-error" role="alert" className="field-error-text">
+            {errors.consent}
+          </span>
+        )}
       </div>
 
       <button

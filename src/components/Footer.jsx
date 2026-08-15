@@ -6,6 +6,9 @@ const NAV_LINKS = [
   { to: '/about',    label: 'About' },
   { to: '/examples', label: 'Examples' },
   { to: '/contact',  label: 'Contact' },
+  { to: '/privacy',  label: 'Privacy Policy' },
+  { to: '/terms',    label: 'Terms of Service' },
+  { to: '/accessibility', label: 'Accessibility Statement' },
 ];
 
 export default function Footer() {

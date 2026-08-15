@@ -2950,6 +2950,173 @@ p { max-width: 68ch; }
   }
 }
 
+/* ─── Privacy Policy Page ────────────────────────────────── */
+.container-prose {
+  max-width: 860px;
+}
+
+.privacy-prose-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  box-shadow: 0 4px 16px rgba(30, 20, 10, 0.04);
+}
+
+.privacy-intro {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.privacy-section {
+  margin-bottom: var(--space-xl);
+}
+
+.privacy-section h3 {
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.privacy-section p {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin-bottom: var(--space-sm);
+}
+
+.privacy-section ul {
+  list-style-type: disc;
+  padding-left: var(--space-xl);
+  margin-bottom: var(--space-sm);
+}
+
+.privacy-section li {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.privacy-contact-box {
+  background-color: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-top: var(--space-md);
+}
+
+.privacy-contact-box p {
+  margin-bottom: var(--space-xs);
+}
+
+.privacy-contact-box p:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-back-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.privacy-microcopy,
+.privacy-micro-note {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-top: var(--space-sm);
+  line-height: 1.4;
+}
+
+.privacy-microcopy a,
+.privacy-micro-note a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.privacy-microcopy a:hover,
+.privacy-micro-note a:hover {
+  color: var(--color-primary-dark);
+}
+
+/* ─── Checkbox Form Controls ────────────────────────────── */
+.form-group-checkbox {
+  margin-block: var(--space-md);
+  text-align: left;
+}
+
+.checkbox-control {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  cursor: pointer;
+  text-align: left;
+}
+
+.checkbox-control input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  min-width: 1.2rem;
+  min-height: 1.2rem;
+  margin-top: 0.15rem;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.checkbox-control input[type="checkbox"]:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.checkbox-label {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--color-text);
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+}
+
+.checkbox-label a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.checkbox-label a:hover {
+  color: var(--color-primary-dark);
+}
+
+.checkbox-privacy-note {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  margin-top: var(--space-xs);
+  margin-left: 1.7rem;
+  text-align: left;
+}
+
+.checkbox-privacy-note a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.checkbox-privacy-note a:hover {
+  color: var(--color-primary-dark);
+}
+
 /* ─── Print styles ───────────────────────────────────────── */
 @media print {
   .site-header,
