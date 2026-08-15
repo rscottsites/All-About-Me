@@ -1,12 +1,17 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import { axe } from 'vitest-axe';
 import LeadMagnetSection from './LeadMagnetSection';
 
 describe('LeadMagnetSection Component & Accessibility', () => {
   it('renders lead magnet heading, input fields, and download button', () => {
-    render(<LeadMagnetSection />);
+    render(
+      <MemoryRouter>
+        <LeadMagnetSection />
+      </MemoryRouter>
+    );
 
     expect(
       screen.getByRole('heading', {
@@ -20,7 +25,11 @@ describe('LeadMagnetSection Component & Accessibility', () => {
   });
 
   it('shows accessible error summary on invalid or empty submission', async () => {
-    render(<LeadMagnetSection />);
+    render(
+      <MemoryRouter>
+        <LeadMagnetSection />
+      </MemoryRouter>
+    );
 
     const submitBtn = screen.getByRole('button', { name: /Download Free PDF Guide/i });
     fireEvent.click(submitBtn);
@@ -32,14 +41,20 @@ describe('LeadMagnetSection Component & Accessibility', () => {
   });
 
   it('allows filling inputs and triggers success state and download on submit', async () => {
-    render(<LeadMagnetSection />);
+    render(
+      <MemoryRouter>
+        <LeadMagnetSection />
+      </MemoryRouter>
+    );
 
     const nameInput = screen.getByLabelText(/First Name/i);
     const emailInput = screen.getByLabelText(/Work Email/i);
+    const consentCheckbox = screen.getByRole('checkbox', { name: /I consent to receive/i });
     const submitBtn = screen.getByRole('button', { name: /Download Free PDF Guide/i });
 
     await userEvent.type(nameInput, 'Taylor');
     await userEvent.type(emailInput, 'taylor@company.com');
+    fireEvent.click(consentCheckbox);
 
     fireEvent.click(submitBtn);
 
@@ -50,7 +65,11 @@ describe('LeadMagnetSection Component & Accessibility', () => {
   });
 
   it('has ZERO automated WCAG accessibility violations (axe test)', async () => {
-    const { container } = render(<LeadMagnetSection />);
+    const { container } = render(
+      <MemoryRouter>
+        <LeadMagnetSection />
+      </MemoryRouter>
+    );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
