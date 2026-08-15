@@ -105,7 +105,7 @@ export default function MiniAuditForm({ initialPackage = '' }) {
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          access_key: 'b9423c10-82a8-48b4-9279-8809f6d634db', // Web3Forms direct email key
+          access_key: '76275ef7-c53f-42c2-aa0e-ec31e6d38627', // Web3Forms direct email key
           subject: `[Mini-Audit Request] ${formData.name.trim()} - ${formData.platform.toUpperCase()}`,
           from_name: formData.name.trim(),
           email: formData.email.trim(),
@@ -255,7 +255,7 @@ Details:
             <ul>
               {Object.entries(errors).map(([field, msg]) => (
                 <li key={field}>
-                  <a href={`#${field}-input`}>{msg}</a>
+                  <a href={`#${field === 'consent' ? 'mini-audit-consent' : `${field}-input`}`}>{msg}</a>
                 </li>
               ))}
             </ul>
