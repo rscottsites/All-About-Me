@@ -3,10 +3,10 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 
 const NAV_LINKS = [
   { to: '/', label: 'Home' },
-  { to: '/services', label: 'Services & Packages' },
+  { to: '/services', label: 'Services & packages' },
   { to: '/about', label: 'About' },
   { to: '/examples', label: 'Examples' },
-  { to: '/contact', label: 'Request Mini-Audit', cta: true },
+  { to: '/contact', label: 'Request mini-audit', cta: true },
 ];
 
 export default function Header() {
@@ -111,18 +111,18 @@ export default function Header() {
       )}
 
       {isHomePage && (
-        <aside className="top-lead-banner" aria-label="Free PDF Guide">
+        <aside className="top-lead-banner" aria-label="Free PDF guide">
           <div className="container top-lead-banner-inner">
             <div className="top-lead-banner-content">
               <span className="top-lead-banner-badge" aria-hidden="true">
-                📘 Free PDF Guide
+                📘 Free guide
               </span>
               <span className="top-lead-banner-text">
-                The 5 Most Common Web Accessibility Challenges (And Their Solutions)
+                The 5 most common web accessibility challenges (and their solutions)
               </span>
             </div>
             <a href="#lead-magnet" className="top-lead-banner-cta">
-              <span>Download Free PDF</span>
+              <span>Download free guide</span>
               <span className="top-lead-banner-arrow" aria-hidden="true">&darr;</span>
             </a>
           </div>

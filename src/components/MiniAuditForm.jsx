@@ -172,18 +172,18 @@ Details:
         className="form-success-card"
         role="region"
         aria-live="polite"
-        aria-label="Mini-Audit Request Confirmation"
+        aria-label="Mini-audit request confirmation"
       >
         <div className="success-icon" aria-hidden="true">
           ✓
         </div>
-        <h3>Request Received!</h3>
+        <h3>Request received!</h3>
         <p>
-          Thank you, <strong>{formData.name}</strong>. I have received your request for a
+          Thank you, <strong>{formData.name}</strong>. We have received your request for a
           free mini-audit for <strong>{formData.websiteUrl}</strong>.
         </p>
         <p>
-          I will review your platform and deliver your prioritized risk scorecard to <strong>{formData.email}</strong> within
+          We will review your platform and deliver your prioritized risk scorecard to <strong>{formData.email}</strong> within
           48 hours with an actionable initial audit overview.
         </p>
         <button
@@ -203,7 +203,7 @@ Details:
             });
           }}
         >
-          Submit Another Request
+          Submit another request
         </button>
       </div>
     );
@@ -248,7 +248,7 @@ Details:
                 className="btn btn-primary"
                 style={{ marginTop: '8px', display: 'inline-flex', width: '100%', justifyContent: 'center' }}
               >
-                Send Request via Email App (1-Click)
+                Send request via email app (1-click)
               </a>
             </div>
           ) : (
@@ -358,11 +358,11 @@ Details:
             onChange={handleChange}
             disabled={submitting}
           >
-            <option value="mini-audit">Free Mini-Audit (Initial Review)</option>
-            <option value="package-a">Package A: The Complete Overhaul ($7,000–$15,000)</option>
-            <option value="package-b">Package B: Monthly Accessibility QA ($1,000–$4,000/mo)</option>
-            <option value="package-c">Package C: Targeted Fixes ($1,500–$3,500)</option>
-            <option value="hourly">Hourly Remediation Engineering ($75–$150/hr)</option>
+            <option value="mini-audit">Free mini-audit (initial review)</option>
+            <option value="package-a">Package A: The complete overhaul ($7,000–$15,000)</option>
+            <option value="package-b">Package B: Monthly accessibility QA ($1,000–$4,000/mo)</option>
+            <option value="package-c">Package C: Targeted fixes ($1,500–$3,500)</option>
+            <option value="hourly">Hourly remediation engineering ($75–$150/hr)</option>
           </select>
         </div>
       </div>
@@ -376,10 +376,10 @@ Details:
           onChange={handleChange}
           disabled={submitting}
         >
-          <option value="compliance">Achieve WCAG 2.1 / 2.2 AA Compliance</option>
-          <option value="legal-risk">Mitigate Legal Risk / Address Demand Letter</option>
-          <option value="code-remediation">Direct Codebase Remediation & ARIA Fixes</option>
-          <option value="qa-sprint">Ongoing Sprint & Assistive Tech QA Retainer</option>
+          <option value="compliance">Achieve WCAG 2.1 / 2.2 AA compliance</option>
+          <option value="legal-risk">Mitigate legal risk / address demand letter</option>
+          <option value="code-remediation">Direct codebase remediation & ARIA fixes</option>
+          <option value="qa-sprint">Ongoing sprint & assistive tech QA retainer</option>
         </select>
       </div>
 
@@ -391,7 +391,7 @@ Details:
           rows="4"
           value={formData.message}
           onChange={handleChange}
-          placeholder="Tell me about your product, tech stack, key user flows, or specific accessibility challenges..."
+          placeholder="Tell us about your product, tech stack, key user flows, or specific accessibility challenges..."
           disabled={submitting}
         />
       </div>
@@ -428,7 +428,7 @@ Details:
         disabled={submitting}
         aria-busy={submitting}
       >
-        {submitting ? 'Submitting Request...' : 'Request Free Mini-Audit'}
+        {submitting ? 'Submitting request...' : 'Request free mini-audit'}
       </button>
     </form>
   );

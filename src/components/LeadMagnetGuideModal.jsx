@@ -101,14 +101,14 @@ export default function LeadMagnetGuideModal({ isOpen, onClose }) {
             className="btn btn-primary btn-sm"
             onClick={handleDownloadPdf}
           >
-            <span aria-hidden="true">📥</span> Download PDF Guide
+            <span aria-hidden="true">📥</span> Download PDF guide
           </button>
           <button
             type="button"
             className="btn btn-secondary btn-sm"
             onClick={handlePrint}
           >
-            <span aria-hidden="true">🖨️</span> Print / Save to PDF
+            <span aria-hidden="true">🖨️</span> Print / save to PDF
           </button>
         </div>
 
@@ -163,14 +163,14 @@ export default function LeadMagnetGuideModal({ isOpen, onClose }) {
           </p>
           <div className="lead-modal-footer-actions">
             <a href="/contact" className="btn btn-primary btn-sm">
-              Request Free Mini-Audit
+              Request free mini-audit
             </a>
             <button
               type="button"
               className="btn btn-secondary btn-sm"
               onClick={onClose}
             >
-              Close Guide
+              Close guide
             </button>
           </div>
         </div>

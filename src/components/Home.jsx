@@ -3,17 +3,17 @@ export default function Home() {
     <section id="home" className="home-section">
       <div className="container">
         <div className="hero">
-          <h1 className="hero-heading">End-to-End Digital Accessibility Engineering</h1>
+          <h1 className="hero-heading">End-to-end digital accessibility engineering</h1>
           <p className="hero-description">
-            I help forward-thinking companies achieve WCAG compliance, mitigate legal risk, and build inclusive digital experiences.
+            We help forward-thinking companies achieve WCAG compliance, mitigate legal risk, and build inclusive digital experiences.
           </p>
           <div className="hero-cta">
-            <a href="#contact" className="btn btn-primary">Request a Free Mini-Audit</a>
+            <a href="#contact" className="btn btn-primary">Request a free mini-audit</a>
           </div>
         </div>
 
         <div className="value-props">
-          <h2 className="section-heading">Core Capabilities</h2>
+          <h2 className="section-heading">Core capabilities</h2>
           <div className="grid-3">
             <div className="card">
               <h3>🔍 Audit</h3>

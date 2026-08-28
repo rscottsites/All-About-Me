@@ -12,16 +12,16 @@ describe('PrivacyPolicyPage Component & Accessibility', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByRole('heading', { level: 1, name: /Privacy Policy/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: /Privacy policy/i })).toBeInTheDocument();
     expect(screen.getByText(/August 14, 2026/i)).toBeInTheDocument();
-    expect(screen.getByText(/1. Information Collected/i)).toBeInTheDocument();
-    expect(screen.getByText(/2. How Your Information is Used & Retained/i)).toBeInTheDocument();
-    expect(screen.getByText(/3. Cookies and Tracking Technologies/i)).toBeInTheDocument();
-    expect(screen.getByText(/4. Data Sharing and Disclosure/i)).toBeInTheDocument();
-    expect(screen.getByText(/5. Your Data Privacy Rights/i)).toBeInTheDocument();
-    expect(screen.getByText(/6. Children’s Privacy/i)).toBeInTheDocument();
-    expect(screen.getByText(/7. Changes to This Policy/i)).toBeInTheDocument();
-    expect(screen.getByText(/8. Contact Information/i)).toBeInTheDocument();
+    expect(screen.getByText(/1. Information collected/i)).toBeInTheDocument();
+    expect(screen.getByText(/2. How your information is used & retained/i)).toBeInTheDocument();
+    expect(screen.getByText(/3. Cookies and tracking technologies/i)).toBeInTheDocument();
+    expect(screen.getByText(/4. Data sharing and disclosure/i)).toBeInTheDocument();
+    expect(screen.getByText(/5. Your data privacy rights/i)).toBeInTheDocument();
+    expect(screen.getByText(/6. Children’s privacy/i)).toBeInTheDocument();
+    expect(screen.getByText(/7. Changes to this policy/i)).toBeInTheDocument();
+    expect(screen.getByText(/8. Contact information/i)).toBeInTheDocument();
     expect(screen.getByText(/ryanscott@rscottsites.com/i)).toBeInTheDocument();
     expect(screen.getByText(/4101 Dublin Blvd Ste F - 1080 Dublin, CA 94568-4603/i)).toBeInTheDocument();
   });

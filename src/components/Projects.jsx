@@ -2,14 +2,14 @@ export default function Projects() {
   return (
     <section id="projects" className="projects-section">
       <div className="container">
-        <h2 className="section-heading">Accessibility Portfolio</h2>
+        <h2 className="section-heading">Accessibility portfolio</h2>
         <p className="section-description">
           A selection of case studies demonstrating hands-on accessibility remediation and engineering solutions.
         </p>
 
         <div className="case-studies">
           <article className="case-study">
-            <h3>Custom Accessible Modal & Focus Management</h3>
+            <h3>Custom accessible modal & focus management</h3>
             <ul>
               <li><strong>WCAG Criterion:</strong> 2.1.2 No Keyboard Trap (A) & 2.4.3 Focus Order (A)</li>
               <li><strong>Severity:</strong> <span className="severity-critical">Critical</span></li>
@@ -18,7 +18,7 @@ export default function Projects() {
           </article>
 
           <article className="case-study">
-            <h3>Form Error Identification & Screen Reader Feedback</h3>
+            <h3>Form error identification & screen reader feedback</h3>
             <ul>
               <li><strong>WCAG Criterion:</strong> 3.3.1 Error Identification (A) & 1.4.1 Use of Color (A)</li>
               <li><strong>Severity:</strong> <span className="severity-high">High</span></li>
@@ -27,7 +27,7 @@ export default function Projects() {
           </article>
 
           <article className="case-study">
-            <h3>Dynamic Content Updates with ARIA Live Regions</h3>
+            <h3>Dynamic content updates with ARIA live regions</h3>
             <ul>
               <li><strong>WCAG Criterion:</strong> 4.1.3 Status Messages (AA)</li>
               <li><strong>Severity:</strong> <span className="severity-medium">Medium</span></li>

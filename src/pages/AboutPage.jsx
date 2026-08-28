@@ -38,8 +38,42 @@ export default function AboutPage() {
           </div>
 
           <aside className="about-sidebar">
+            {/* ─── Profile Headshot Spot ─────────────────────────────── */}
+            <div className="sidebar-card about-headshot-card">
+              <div className="about-headshot-frame">
+                {aboutContent.headshotUrl ? (
+                  <img
+                    src={aboutContent.headshotUrl}
+                    alt={aboutContent.headshotAlt || 'Ryan Scott'}
+                    className="about-headshot-img"
+                  />
+                ) : (
+                  <div
+                    role="img"
+                    aria-label="Ryan Scott headshot placeholder"
+                    className="about-headshot-placeholder"
+                  >
+                    <span className="about-headshot-initials" aria-hidden="true">
+                      {aboutContent.headshotInitials || 'RS'}
+                    </span>
+                    <span className="about-headshot-prompt" aria-hidden="true">
+                      📷 Headshot photo
+                    </span>
+                  </div>
+                )}
+              </div>
+              <div className="about-headshot-meta">
+                <h3 className="about-headshot-name">Ryan Scott</h3>
+                <p className="about-headshot-role">Senior Accessibility Engineer</p>
+                <div className="about-status-indicator">
+                  <span className="expert-status-dot" aria-hidden="true" />
+                  <span>Available for audits &amp; remediation</span>
+                </div>
+              </div>
+            </div>
+
             <div className="sidebar-card">
-              <h3>Enterprise &amp; Community Experience</h3>
+              <h3>Enterprise &amp; community experience</h3>
               <ul className="exp-list" role="list">
                 <li>
                   <strong>Enterprise Experience</strong> — Digital Accessibility Engineering at Scale
@@ -54,7 +88,7 @@ export default function AboutPage() {
             </div>
 
             <div className="sidebar-card">
-              <h3>Assistive Tech Stack</h3>
+              <h3>Assistive tech stack</h3>
               <div className="at-pill-grid">
                 <span className="at-pill">Desktop: NVDA</span>
                 <span className="at-pill">Mobile: VoiceOver (iOS)</span>
@@ -72,7 +106,7 @@ export default function AboutPage() {
       <section className="section section-skills">
         <div className="container">
           <h2 id="skills-heading" className="section-heading">
-            Engineering &amp; Accessibility Competencies
+            Engineering &amp; accessibility competencies
           </h2>
           <div className="skills-grid">
             {aboutContent.skills.map((skillGroup, idx) => (

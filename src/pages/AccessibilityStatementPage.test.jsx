@@ -12,13 +12,13 @@ describe('AccessibilityStatementPage Component & Accessibility', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByRole('heading', { level: 1, name: /Accessibility Statement/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: /Accessibility statement/i })).toBeInTheDocument();
     expect(screen.getByText(/August 14, 2026/i)).toBeInTheDocument();
-    expect(screen.getByText(/1. Our Commitment/i)).toBeInTheDocument();
-    expect(screen.getByText(/2. Accessibility Standard/i)).toBeInTheDocument();
-    expect(screen.getByText(/3. Engineering Practices and Measures/i)).toBeInTheDocument();
-    expect(screen.getByText(/4. Known Limitations/i)).toBeInTheDocument();
-    expect(screen.getByText(/5. Feedback and Contact Information/i)).toBeInTheDocument();
+    expect(screen.getByText(/1. Our commitment/i)).toBeInTheDocument();
+    expect(screen.getByText(/2. Accessibility standard/i)).toBeInTheDocument();
+    expect(screen.getByText(/3. Engineering practices and measures/i)).toBeInTheDocument();
+    expect(screen.getByText(/4. Known limitations/i)).toBeInTheDocument();
+    expect(screen.getByText(/5. Feedback and contact information/i)).toBeInTheDocument();
     expect(screen.getByText(/ryanscott@rscottsites.com/i)).toBeInTheDocument();
     expect(screen.getByText(/4101 Dublin Blvd Ste F - 1080 Dublin, CA 94568-4603/i)).toBeInTheDocument();
   });

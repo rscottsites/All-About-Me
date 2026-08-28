@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest';
 import {
-  freelanceIdentity,
   homepageContent,
   coreServices,
   servicePackages,
@@ -16,13 +15,9 @@ describe('businessData Integrity Tests', () => {
     expect(expertBio.bioSummary).toContain('enterprise');
     expect(expertBio.highlights.length).toBeGreaterThan(0);
   });
-  it('freelanceIdentity contains title and summary', () => {
-    expect(freelanceIdentity.title).toBe('End-to-End Accessibility Engineer');
-    expect(freelanceIdentity.summary).toContain('WCAG compliance');
-  });
 
   it('homepageContent contains valid headline, subheadline, and 3 value pillars', () => {
-    expect(homepageContent.headline).toContain('End-to-End Digital Accessibility Engineering.');
+    expect(homepageContent.headline).toContain('End-to-end digital accessibility engineering');
     expect(homepageContent.pillars).toHaveLength(3);
     const pillarIds = homepageContent.pillars.map((p) => p.id);
     expect(pillarIds).toEqual(['audit', 'remediate', 'maintain']);

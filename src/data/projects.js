@@ -34,7 +34,7 @@ export const projects = [
   },
   {
     id: 'js-course',
-    title: 'Complete JavaScript Course',
+    title: 'Complete JavaScript course',
     badge: 'JavaScript',
     summary:
       'Starter files and finished projects from a comprehensive JavaScript course, covering fundamentals through advanced topics such as closures, async/await, ES6+ features, DOM manipulation, and module bundling.',
@@ -45,7 +45,7 @@ export const projects = [
   },
   {
     id: 'car-search',
-    title: 'Car Search',
+    title: 'Car search',
     badge: 'Python',
     summary:
       'A Python-based vehicle search utility that queries and filters car listing data. Demonstrates scripting, data parsing, and command-line interface design for practical, everyday automation use cases.',
@@ -56,7 +56,7 @@ export const projects = [
   },
   {
     id: 'a11y-case-study',
-    title: 'Web Accessibility Project',
+    title: 'Web accessibility project',
     badge: 'Coming Soon',
     summary:
       'A dedicated web accessibility case study is being prepared for this slot — showcasing a full audit, remediation, and before/after accessibility improvements on a real-world site.',

@@ -12,7 +12,7 @@ export default function ContactPage() {
       <section className="section page-header-section">
         <div className="container">
           <h1 id="contact-page-title" className="page-title">
-            Request a Free Mini-Audit &amp; Get in Touch
+            Request a free mini-audit &amp; get in touch
           </h1>
           <p className="page-lead">
             Take the first step toward WCAG 2.1/2.2 AA compliance. Request a free, zero-obligation mini-audit of your key user flows—delivered in 48 hours—or inquire about codebase remediation engineering and monthly retainers.
@@ -25,7 +25,7 @@ export default function ContactPage() {
         <div className="container contact-grid">
           <div className="form-column">
             <h2 id="contact-form-heading" className="section-subheading">
-              Mini-Audit Request Intake Form
+              Mini-audit request intake form
             </h2>
             <p className="form-intro">
               Fill out the form below to receive a zero-obligation mini-audit of your digital product, delivered in 48 hours.
@@ -36,7 +36,7 @@ export default function ContactPage() {
 
           <aside className="contact-sidebar">
             <div className="sidebar-card highlight-card">
-              <h3>What&apos;s Included in Your Free Mini-Audit?</h3>
+              <h3>What&apos;s included in your free mini-audit?</h3>
               <ul className="audit-benefits-list" role="list">
                 <li>
                   <span className="benefit-icon" aria-hidden="true">⏱</span>
@@ -75,7 +75,7 @@ export default function ContactPage() {
             </div>
 
             <div className="sidebar-card">
-              <h3>Direct Contact Information</h3>
+              <h3>Direct contact information</h3>
               <p className="contact-info-line">
                 <strong>Email:</strong>{' '}
                 <a href="mailto:ryanscott@rscottsites.com" className="contact-link">

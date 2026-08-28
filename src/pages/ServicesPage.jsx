@@ -10,7 +10,7 @@ export default function ServicesPage() {
       <section className="section page-header-section">
         <div className="container">
           <h1 id="services-page-title" className="page-title">
-            Core Services &amp; Service Packages
+            Core services &amp; service packages
           </h1>
           <p className="page-lead">
             Comprehensive digital accessibility engineering tailored for web, iOS, and Android applications.
@@ -23,7 +23,7 @@ export default function ServicesPage() {
       <section className="section section-services-list">
         <div className="container">
           <h2 id="core-services-heading" className="section-heading">
-            Core Engineering Services
+            Core engineering services
           </h2>
           <p className="section-description">
             Tailored solutions covering audits, hands-on engineering remediation, and sprint QA testing across all major platforms.
@@ -55,7 +55,7 @@ export default function ServicesPage() {
 
                 <div className="service-detail-body">
                   <p className="service-desc">{service.summary}</p>
-                  <h4>Key Capabilities &amp; Deliverables:</h4>
+                  <h4>Key capabilities &amp; deliverables:</h4>
                   <ul className="highlights-list" role="list">
                     {service.highlights.map((h, i) => (
                       <li key={i}>
@@ -102,7 +102,7 @@ export default function ServicesPage() {
         <div className="container">
           <div className="section-header">
             <h2 id="packages-heading" className="section-heading">
-              Service Packages &amp; Pricing
+              Service packages &amp; pricing
             </h2>
             <p className="section-description">
               Choose the engagement model that best matches your organization&apos;s current compliance state and development goals.
@@ -119,12 +119,12 @@ export default function ServicesPage() {
       {/* ─── Bottom CTA ──────────────────────────────────────────── */}
       <section className="section section-cta-banner">
         <div className="container cta-banner-inner">
-          <h2>Need a Custom Engineering Engagement?</h2>
+          <h2>Need a custom engineering engagement?</h2>
           <p>
             Whether you need a full overhaul, a monthly retainer, or immediate fixes for critical violations, let&apos;s start with a free mini-audit of your site—delivered in 48 hours.
           </p>
           <Link to="/contact" className="btn btn-primary btn-lg">
-            Request a Free Mini-Audit
+            Request a free mini-audit
           </Link>
         </div>
       </section>
