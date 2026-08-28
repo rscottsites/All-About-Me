@@ -44,11 +44,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
-      <Analytics
-        scriptSrc="/_va/script.js"
-        endpoint="/_va/insights"
-        debug={import.meta.env.DEV}
-      />
+      <Analytics debug={import.meta.env.DEV} />
       <SpeedInsights debug={import.meta.env.DEV} />
     </Router>
   );
