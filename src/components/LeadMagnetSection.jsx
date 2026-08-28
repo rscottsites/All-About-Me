@@ -137,11 +137,6 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
       >
         <div className={compact ? 'lead-magnet-compact-inner' : 'container lead-magnet-inner'}>
           <div className="lead-magnet-content">
-            <div className="lead-magnet-badge" aria-label="Free Resource Type">
-              <span className="lead-badge-icon" aria-hidden="true">📄</span>
-              <span>{leadMagnetInfo.format} &bull; {leadMagnetInfo.readTime}</span>
-            </div>
-
             <h2 id="lead-magnet-heading" className="lead-magnet-title">
               {leadMagnetInfo.title}
             </h2>
@@ -149,19 +144,6 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
             <p className="lead-magnet-subtitle">
               {leadMagnetInfo.subtitle}
             </p>
-
-            {!compact && (
-              <ul className="lead-magnet-topics" aria-label="5 common challenges covered in this guide">
-                {leadMagnetInfo.highlights.slice(0, 4).map((h) => (
-                  <li key={h.number}>
-                    <span className="topic-icon" aria-hidden="true">✓</span>
-                    <span>
-                      <strong>{h.title}:</strong> {h.bestPractices}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
           </div>
 
           <div className="lead-magnet-card-wrapper">
@@ -169,7 +151,7 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
               {downloaded ? (
                 <div className="lead-magnet-success" role="region" aria-live="polite">
                   <div className="success-icon-badge" aria-hidden="true">🎉</div>
-                  <h3 className="success-title">Your PDF Guide is Ready!</h3>
+                  <h3 className="success-title">Your PDF guide is ready!</h3>
                   <p className="success-desc">
                     We've triggered your download of <strong>{leadMagnetInfo.pdfFileName}</strong>.
                   </p>
@@ -179,7 +161,7 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
                       className="btn btn-primary"
                       onClick={() => setModalOpen(true)}
                     >
-                      📖 Read Guide Online
+                      📖 Read guide online
                     </button>
                     <button
                       type="button"
@@ -197,7 +179,7 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
                   className="lead-magnet-form"
                   aria-label="Download 5 Common Web Accessibility Challenges PDF form"
                 >
-                  <h3 className="form-card-title">Get Free Instant Access</h3>
+                  <h3 className="form-card-title">Get free instant access</h3>
                   <p className="form-card-subtitle">
                     Zero spam. Download the PDF guide instantly to read or share with your team.
                   </p>
@@ -315,10 +297,10 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
                     {submitting ? (
                       <span className="btn-loading-state">
                         <span className="spinner" aria-hidden="true" />
-                        Preparing PDF Download...
+                        Preparing PDF download...
                       </span>
                     ) : (
-                      '📥 Download Free PDF Guide'
+                      '📥 Download free PDF guide'
                     )}
                   </button>
                 </form>

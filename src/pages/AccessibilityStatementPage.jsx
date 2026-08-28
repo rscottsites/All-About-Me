@@ -8,7 +8,7 @@ export default function AccessibilityStatementPage() {
         <div className="container">
           <span className="section-badge-pill">Digital Inclusion</span>
           <h1 id="accessibility-page-title" className="page-title">
-            Accessibility Statement
+            Accessibility statement
           </h1>
           <p className="page-lead">
             <strong>Effective Date:</strong> August 14, 2026
@@ -21,21 +21,21 @@ export default function AccessibilityStatementPage() {
         <div className="container container-prose">
           <div className="privacy-prose-card">
             <div className="privacy-section">
-              <h2>1. Our Commitment</h2>
+              <h2>1. Our commitment</h2>
               <p>
                 At <strong>RScott Sites</strong>, digital accessibility is not just an afterthought—it is the core of our engineering practice. We are firmly committed to ensuring digital inclusion for all individuals, regardless of ability or technology. We believe the web should be an empowering, barrier-free space for everyone.
               </p>
             </div>
 
             <div className="privacy-section">
-              <h2>2. Accessibility Standard</h2>
+              <h2>2. Accessibility standard</h2>
               <p>
                 We actively work to ensure that this website (<a href="https://rscottsites.com" target="_blank" rel="noopener noreferrer">rscottsites.com</a>) conforms to the <strong>Web Content Accessibility Guidelines (WCAG) 2.2 Level AA</strong>. These guidelines, established by the World Wide Web Consortium (W3C), explain how to make web content more accessible for people with sensory, cognitive, and mobility disabilities.
               </p>
             </div>
 
             <div className="privacy-section">
-              <h2>3. Engineering Practices and Measures</h2>
+              <h2>3. Engineering practices and measures</h2>
               <p>
                 To maintain our WCAG 2.2 AA verification and ensure a seamless user experience, we employ the following practices:
               </p>
@@ -56,14 +56,14 @@ export default function AccessibilityStatementPage() {
             </div>
 
             <div className="privacy-section">
-              <h2>4. Known Limitations</h2>
+              <h2>4. Known limitations</h2>
               <p>
                 While we strive for comprehensive accessibility across all pages and resources on rscottsites.com, the dynamic nature of web technologies means that occasional accessibility challenges may arise. If you encounter any barriers or have difficulty accessing specific content, including our downloadable PDF resources, please let us know so we can resolve the issue promptly.
               </p>
             </div>
 
             <div className="privacy-section">
-              <h2>5. Feedback and Contact Information</h2>
+              <h2>5. Feedback and contact information</h2>
               <p>
                 We welcome your feedback on the accessibility of RScott Sites. If you encounter any accessibility barriers, require an alternative format for any of our content, or have suggestions for improvement, please reach out directly:
               </p>
@@ -86,7 +86,7 @@ export default function AccessibilityStatementPage() {
                 Contact Ryan Scott &rarr;
               </Link>
               <Link to="/" className="btn btn-secondary">
-                &larr; Return to Home
+                &larr; Return to home
               </Link>
             </div>
           </div>

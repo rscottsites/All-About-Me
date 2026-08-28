@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 
 const NAV_LINKS = [
   { to: '/',         label: 'Home' },
-  { to: '/services', label: 'Services & Packages' },
+  { to: '/services', label: 'Services & packages' },
   { to: '/about',    label: 'About' },
   { to: '/examples', label: 'Examples' },
   { to: '/contact',  label: 'Contact' },
-  { to: '/privacy',  label: 'Privacy Policy' },
-  { to: '/terms',    label: 'Terms of Service' },
-  { to: '/accessibility', label: 'Accessibility Statement' },
+  { to: '/privacy',  label: 'Privacy policy' },
+  { to: '/terms',    label: 'Terms of service' },
+  { to: '/accessibility', label: 'Accessibility statement' },
 ];
 
 export default function Footer() {
@@ -21,7 +21,7 @@ export default function Footer() {
               RScott <span className="brand-accent">Sites</span>
             </p>
             <p className="footer-tagline">
-              End-to-End Digital Accessibility Engineering
+              End-to-end digital accessibility engineering
             </p>
           </div>
 

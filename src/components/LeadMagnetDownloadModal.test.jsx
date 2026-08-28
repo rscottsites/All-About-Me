@@ -25,12 +25,12 @@ describe('LeadMagnetDownloadModal Component & Accessibility', () => {
     expect(
       screen.getByRole('heading', {
         level: 2,
-        name: /The 5 Most Common Web Accessibility Challenges/i,
+        name: /The 5 most common web accessibility challenges/i,
       })
     ).toBeInTheDocument();
     expect(screen.getByLabelText(/Full Name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Work Email/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Download Free PDF Guide/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Download free PDF guide/i })).toBeInTheDocument();
   });
 
   it('calls onClose when close button or Escape key is pressed', () => {
@@ -59,7 +59,7 @@ describe('LeadMagnetDownloadModal Component & Accessibility', () => {
     const nameInput = screen.getByLabelText(/Full Name/i);
     const emailInput = screen.getByLabelText(/Work Email/i);
     const consentCheckbox = screen.getByRole('checkbox', { name: /I consent to receive/i });
-    const submitBtn = screen.getByRole('button', { name: /Download Free PDF Guide/i });
+    const submitBtn = screen.getByRole('button', { name: /Download free PDF guide/i });
 
     fireEvent.change(nameInput, { target: { value: 'Jordan Lee', name: 'name' } });
     fireEvent.change(emailInput, { target: { value: 'jordan@company.com', name: 'email' } });
@@ -68,7 +68,7 @@ describe('LeadMagnetDownloadModal Component & Accessibility', () => {
     fireEvent.click(submitBtn);
 
     await waitFor(() => {
-      expect(screen.getByText(/Your Free PDF Guide is Ready!/i)).toBeInTheDocument();
+      expect(screen.getByText(/Your free PDF guide is ready!/i)).toBeInTheDocument();
     });
   });
 

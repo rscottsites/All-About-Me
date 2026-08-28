@@ -15,7 +15,7 @@ describe('MiniAuditForm Component', () => {
     expect(screen.getByLabelText(/Full Name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Work Email Address/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Website or App URL/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Request Free Mini-Audit/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Request free mini-audit/i })).toBeInTheDocument();
   });
 
   it('displays error summary box when submitted with empty required fields', async () => {
@@ -25,7 +25,7 @@ describe('MiniAuditForm Component', () => {
       </MemoryRouter>
     );
 
-    const submitBtn = screen.getByRole('button', { name: /Request Free Mini-Audit/i });
+    const submitBtn = screen.getByRole('button', { name: /Request free mini-audit/i });
     fireEvent.click(submitBtn);
 
     const alerts = await screen.findAllByRole('alert');
@@ -47,7 +47,7 @@ describe('MiniAuditForm Component', () => {
     const emailInput = screen.getByLabelText(/Work Email Address/i);
     const urlInput = screen.getByLabelText(/Website or App URL/i);
     const consentCheckbox = screen.getByRole('checkbox', { name: /I consent to being contacted/i });
-    const submitBtn = screen.getByRole('button', { name: /Request Free Mini-Audit/i });
+    const submitBtn = screen.getByRole('button', { name: /Request free mini-audit/i });
 
     await userEvent.type(nameInput, 'Alex Morgan');
     await userEvent.type(emailInput, 'alex@acme.com');
@@ -57,7 +57,7 @@ describe('MiniAuditForm Component', () => {
     fireEvent.click(submitBtn);
 
     await waitFor(() => {
-      expect(screen.getByText(/Request Received!/i)).toBeInTheDocument();
+      expect(screen.getByText(/Request received!/i)).toBeInTheDocument();
       expect(screen.getByText(/Alex Morgan/i)).toBeInTheDocument();
     });
   });

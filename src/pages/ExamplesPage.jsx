@@ -33,7 +33,7 @@ export default function ExamplesPage() {
       <section className="section page-header-section">
         <div className="container">
           <h1 id="examples-page-title" className="page-title">
-            Accessibility Engineering Portfolio
+            Accessibility engineering portfolio
           </h1>
           <p className="page-lead">
             Real-world case studies demonstrating hands-on accessibility remediation, keyboard focus management,
@@ -53,7 +53,7 @@ export default function ExamplesPage() {
               className={`filter-btn ${activeTab === 'all' ? 'active' : ''}`}
               onClick={() => setActiveTab('all')}
             >
-              All Case Studies
+              All case studies
             </button>
             <button
               type="button"
@@ -71,7 +71,7 @@ export default function ExamplesPage() {
               className={`filter-btn ${activeTab === 'mobile' ? 'active' : ''}`}
               onClick={() => setActiveTab('mobile')}
             >
-              Native Mobile (iOS/Android)
+              Native mobile (iOS/Android)
             </button>
           </div>
 
@@ -99,12 +99,12 @@ export default function ExamplesPage() {
 
                 <div className="case-card-body">
                   <div className="case-section">
-                    <h3>The Problem</h3>
+                    <h3>The problem</h3>
                     <p>{study.problem}</p>
                   </div>
 
                   <div className="case-section">
-                    <h3>The Remediation Solution</h3>
+                    <h3>The remediation solution</h3>
                     <p>{study.solution}</p>
                   </div>
 
@@ -112,7 +112,7 @@ export default function ExamplesPage() {
                     <div className="case-section case-impact-section">
                       <h3>
                         <span className="impact-icon" aria-hidden="true">📈</span>
-                        Business Outcome &amp; Impact
+                        Business outcome &amp; impact
                       </h3>
                       {study.metrics && (
                         <div className="case-impact-metric-badge">
@@ -125,7 +125,7 @@ export default function ExamplesPage() {
 
                   {study.codeSnippet && (
                     <div className="case-section code-section">
-                      <h3>Engineering Code Snippet</h3>
+                      <h3>Engineering code snippet</h3>
                       <pre className="code-block">
                         <code>{study.codeSnippet}</code>
                       </pre>
@@ -141,24 +141,24 @@ export default function ExamplesPage() {
       {/* ─── Bottom CTA ──────────────────────────────────────────── */}
       <section className="section section-cta-banner">
         <div className="container cta-banner-inner">
-          <h2 id="examples-cta-heading">Have Similar Accessibility Challenges in Your Codebase?</h2>
+          <h2 id="examples-cta-heading">Have similar accessibility challenges in your codebase?</h2>
           <p>
-            I can conduct a full audit and provide direct engineering fixes for your team. Get a comprehensive review delivered in 48 hours.
+            We can conduct a full audit and provide direct engineering fixes for your team. Get a comprehensive review delivered in 48 hours.
           </p>
           <Link to="/contact" className="btn btn-primary btn-lg">
-            Request a Free Mini-Audit &rarr;
+            Request a free mini-audit &rarr;
           </Link>
 
           <div className="cta-banner-secondary-note">
             <p className="cta-secondary-prompt">
-              <strong>Not ready for an audit?</strong> Download the free guide: <em>The 5 Most Common Web Accessibility Challenges (And Their Solutions)</em>.
+              <strong>Not ready for an audit?</strong> Download the free guide: <em>The 5 most common web accessibility challenges (and their solutions)</em>.
             </p>
             <button
               type="button"
               className="btn btn-secondary cta-secondary-btn"
               onClick={() => setIsLeadModalOpen(true)}
             >
-              📄 Download Free PDF Guide
+              📄 Download free PDF guide
             </button>
           </div>
         </div>

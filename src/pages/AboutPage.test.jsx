@@ -14,6 +14,8 @@ describe('AboutPage Component & Accessibility', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: /About Ryan Scott/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: /Bridging the gap between compliance and code./i })).toBeInTheDocument();
+    expect(screen.getAllByText(/Ryan Scott/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Senior Accessibility Engineer/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Enterprise Experience/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Year Up/i).length).toBeGreaterThan(0);
   });

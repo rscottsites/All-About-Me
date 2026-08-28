@@ -1,6 +1,6 @@
 export const leadMagnetInfo = {
   id: 'common-web-accessibility-challenges',
-  title: 'The 5 Most Common Web Accessibility Challenges (And Their Solutions)',
+  title: 'The 5 most common web accessibility challenges (and their solutions)',
   subtitle: 'A practical, easy-to-read guide to essential web accessibility standards and solutions.',
   pdfFileName: 'The-5-Most-Common-Web-Accessibility-Challenges-And-Their-Solutions.pdf',
   pdfUrl: '/The-5-Most-Common-Web-Accessibility-Challenges-And-Their-Solutions.pdf',
@@ -13,7 +13,7 @@ export const leadMagnetInfo = {
   highlights: [
     {
       number: '1',
-      title: 'Modal Dialogs and Focus Management',
+      title: 'Modal dialogs and focus management',
       challenge:
         'When a modal dialog or pop-up appears, keyboard users may find that their focus remains on the underlying page content. This allows the cursor to "escape" the modal, leading to interactions with hidden elements and a confusing user experience.',
       bestPractices:
@@ -21,7 +21,7 @@ export const leadMagnetInfo = {
     },
     {
       number: '2',
-      title: 'Semantic HTML and Button Components',
+      title: 'Semantic HTML and button components',
       challenge:
         'It is common for developers to style generic elements, such as generic text containers, to visually resemble buttons. However, these elements lack the native functionality required for keyboard interaction, failing to respond to standard \'Enter\' or \'Space\' key presses.',
       bestPractices:
@@ -29,7 +29,7 @@ export const leadMagnetInfo = {
     },
     {
       number: '3',
-      title: 'Dynamic Content and ARIA Live Regions',
+      title: 'Dynamic content and ARIA live regions',
       challenge:
         'Modern web applications often update content dynamically—such as displaying a "Success" notification—without a full page reload. While these updates are visible to sighted users, screen readers may not detect the change unless specifically instructed to do so.',
       bestPractices:
@@ -37,7 +37,7 @@ export const leadMagnetInfo = {
     },
     {
       number: '4',
-      title: 'Accessible Naming for Icon-Only Buttons',
+      title: 'Accessible naming for icon-only buttons',
       challenge:
         'Buttons that rely solely on icons, such as a trash can for deletion, provide visual context but often lack a programmatic label. Without a text alternative, a screen reader may only announce the element as a "button," leaving the user without an understanding of its purpose.',
       bestPractices:
@@ -45,7 +45,7 @@ export const leadMagnetInfo = {
     },
     {
       number: '5',
-      title: 'Input Validation and Error Identification',
+      title: 'Input validation and error identification',
       challenge:
         'When form validation fails, error messages are often displayed visually near the relevant input field. If these errors are not programmatically linked to the input, a screen reader user may be unaware that an error has occurred or which specific field requires correction.',
       bestPractices:
@@ -53,7 +53,7 @@ export const leadMagnetInfo = {
     },
   ],
   services: {
-    title: 'Professional Accessibility Services',
+    title: 'Professional accessibility services',
     description:
       'If your team needs a hands-on audit, developer training, or help fixing code, get in touch with Ryan Scott (RScott Sites)!',
     website: 'https://rscottsites.com',

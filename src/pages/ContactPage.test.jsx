@@ -12,9 +12,9 @@ describe('ContactPage Component & Accessibility', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByRole('heading', { level: 1, name: /Request a Free Mini-Audit & Get in Touch/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: /Mini-Audit Request Intake Form/i })).toBeInTheDocument();
-    expect(screen.getByText(/What's Included in Your Free Mini-Audit\?/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: /Request a free mini-audit & get in touch/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: /Mini-audit request intake form/i })).toBeInTheDocument();
+    expect(screen.getByText(/What's included in your free mini-audit\?/i)).toBeInTheDocument();
     expect(screen.getByText(/48-Hour Delivery:/i)).toBeInTheDocument();
   });
 

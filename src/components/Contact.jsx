@@ -2,7 +2,7 @@ export default function Contact() {
   return (
     <section id="contact" className="contact-section">
       <div className="container">
-        <h2 className="section-heading">Get in Touch</h2>
+        <h2 className="section-heading">Get in touch</h2>
         <p className="section-description">
           Have questions about accessibility testing? Ready to start a project?
           Fill out the form below and we'll get back to you promptly.

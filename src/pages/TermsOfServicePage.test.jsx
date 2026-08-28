@@ -12,16 +12,16 @@ describe('TermsOfServicePage Component & Accessibility', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByRole('heading', { level: 1, name: /Terms of Service/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: /Terms of service/i })).toBeInTheDocument();
     expect(screen.getByText(/August 14, 2026/i)).toBeInTheDocument();
-    expect(screen.getByText(/1. Agreement to Terms/i)).toBeInTheDocument();
-    expect(screen.getByText(/2. Intellectual Property Rights/i)).toBeInTheDocument();
-    expect(screen.getByText(/3. Professional Disclaimer and Limitations/i)).toBeInTheDocument();
-    expect(screen.getByText(/4. Limitation of Liability/i)).toBeInTheDocument();
-    expect(screen.getByText(/5. Third-Party Links/i)).toBeInTheDocument();
-    expect(screen.getByText(/6. Governing Law/i)).toBeInTheDocument();
-    expect(screen.getByText(/7. Changes to Terms/i)).toBeInTheDocument();
-    expect(screen.getByText(/8. Contact Information/i)).toBeInTheDocument();
+    expect(screen.getByText(/1. Agreement to terms/i)).toBeInTheDocument();
+    expect(screen.getByText(/2. Intellectual property rights/i)).toBeInTheDocument();
+    expect(screen.getByText(/3. Professional disclaimer and limitations/i)).toBeInTheDocument();
+    expect(screen.getByText(/4. Limitation of liability/i)).toBeInTheDocument();
+    expect(screen.getByText(/5. Third-party links/i)).toBeInTheDocument();
+    expect(screen.getByText(/6. Governing law/i)).toBeInTheDocument();
+    expect(screen.getByText(/7. Changes to terms/i)).toBeInTheDocument();
+    expect(screen.getByText(/8. Contact information/i)).toBeInTheDocument();
     expect(screen.getByText(/ryanscott@rscottsites.com/i)).toBeInTheDocument();
     expect(screen.getByText(/4101 Dublin Blvd Ste F - 1080 Dublin, CA 94568-4603/i)).toBeInTheDocument();
   });

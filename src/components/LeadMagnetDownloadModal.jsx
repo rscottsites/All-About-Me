@@ -176,7 +176,7 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
             {downloaded ? (
               <div className="lead-magnet-success" role="region" aria-live="polite">
                 <div className="success-icon" aria-hidden="true">🎉</div>
-                <h3>Your Free PDF Guide is Ready!</h3>
+                <h3>Your free PDF guide is ready!</h3>
                 <p>
                   Your download of <strong>{leadMagnetInfo.pdfFileName}</strong> should start automatically.
                 </p>
@@ -186,14 +186,14 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
                     className="btn btn-primary"
                     onClick={triggerDownload}
                   >
-                    📥 Click Here If Download Didn&apos;t Start
+                    📥 Click here if download didn&apos;t start
                   </button>
                   <button
                     type="button"
                     className="btn btn-secondary"
                     onClick={() => setIsGuideOpen(true)}
                   >
-                    📖 Read Online in Browser
+                    📖 Read online in browser
                   </button>
                   <button
                     type="button"
@@ -323,7 +323,7 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
                   disabled={submitting}
                   aria-busy={submitting}
                 >
-                  {submitting ? 'Generating Download Link...' : '📥 Download Free PDF Guide'}
+                  {submitting ? 'Generating download link...' : '📥 Download free PDF guide'}
                 </button>
               </form>
             )}

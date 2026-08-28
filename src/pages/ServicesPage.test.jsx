@@ -12,9 +12,9 @@ describe('ServicesPage Component & Accessibility', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByRole('heading', { level: 1, name: /Core Services & Service Packages/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: /Core Engineering Services/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: /Service Packages & Pricing/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: /Core services & service packages/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: /Core engineering services/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: /Service packages & pricing/i })).toBeInTheDocument();
   });
 
   it('has ZERO automated WCAG accessibility violations (axe test)', async () => {

@@ -16,12 +16,12 @@ describe('LeadMagnetSection Component & Accessibility', () => {
     expect(
       screen.getByRole('heading', {
         level: 2,
-        name: /The 5 Most Common Web Accessibility Challenges \(And Their Solutions\)/i,
+        name: /The 5 most common web accessibility challenges \(and their solutions\)/i,
       })
     ).toBeInTheDocument();
     expect(screen.getByLabelText(/First Name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Work Email/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Download Free PDF Guide/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Download free PDF guide/i })).toBeInTheDocument();
   });
 
   it('shows accessible error summary on invalid or empty submission', async () => {
@@ -31,7 +31,7 @@ describe('LeadMagnetSection Component & Accessibility', () => {
       </MemoryRouter>
     );
 
-    const submitBtn = screen.getByRole('button', { name: /Download Free PDF Guide/i });
+    const submitBtn = screen.getByRole('button', { name: /Download free PDF guide/i });
     fireEvent.click(submitBtn);
 
     const alerts = await screen.findAllByRole('alert');
@@ -50,7 +50,7 @@ describe('LeadMagnetSection Component & Accessibility', () => {
     const nameInput = screen.getByLabelText(/First Name/i);
     const emailInput = screen.getByLabelText(/Work Email/i);
     const consentCheckbox = screen.getByRole('checkbox', { name: /I consent to receive/i });
-    const submitBtn = screen.getByRole('button', { name: /Download Free PDF Guide/i });
+    const submitBtn = screen.getByRole('button', { name: /Download free PDF guide/i });
 
     await userEvent.type(nameInput, 'Taylor');
     await userEvent.type(emailInput, 'taylor@company.com');
@@ -59,8 +59,8 @@ describe('LeadMagnetSection Component & Accessibility', () => {
     fireEvent.click(submitBtn);
 
     await waitFor(() => {
-      expect(screen.getByText(/Your PDF Guide is Ready!/i)).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: /Read Guide Online/i })).toBeInTheDocument();
+      expect(screen.getByText(/Your PDF guide is ready!/i)).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /Read guide online/i })).toBeInTheDocument();
     });
   });
 
