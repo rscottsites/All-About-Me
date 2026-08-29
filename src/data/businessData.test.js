@@ -49,7 +49,7 @@ describe('businessData Integrity Tests', () => {
   it('aboutContent includes bio paragraphs, enterprise experience, and Year Up foundation', () => {
     expect(aboutContent.headline).toBe('Bridging the gap between compliance and code.');
     const fullText = aboutContent.paragraphs.join(' ');
-    expect(fullText).toContain('enterprise scale');
+    expect(fullText).toContain('Fortune 500 fintech leader');
     expect(fullText).toContain('Year Up');
     expect(fullText).toContain('NVDA, VoiceOver, and TalkBack');
   });
