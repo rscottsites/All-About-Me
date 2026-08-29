@@ -63,10 +63,13 @@ export default function Header() {
     <header ref={headerRef} className="site-header">
       <div className="container header-inner">
         <Link to="/" className="brand" aria-label="RScott Sites — go to homepage" onClick={closeMenu}>
-          <span className="brand-name">
-            RScott <span className="brand-accent">Sites</span>
-          </span>
-          <span className="brand-subtitle">Accessibility Engineering</span>
+          <img
+            src="/Logo/rscott-final-logo.svg"
+            alt="RScott Sites — Accessibility Engineering"
+            className="brand-logo-img"
+            width="238"
+            height="68"
+          />
         </Link>
 
         <button

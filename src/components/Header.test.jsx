@@ -11,7 +11,7 @@ describe('Header Component', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText('RScott')).toBeInTheDocument();
+    expect(screen.getByAltText(/RScott Sites — Accessibility Engineering/i)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /^Home$/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Services & packages/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /^About$/i })).toBeInTheDocument();

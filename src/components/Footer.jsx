@@ -17,9 +17,15 @@ export default function Footer() {
       <div className="container footer-inner">
         <div className="footer-top">
           <div className="footer-brand-col">
-            <p className="footer-brand">
-              RScott <span className="brand-accent">Sites</span>
-            </p>
+            <Link to="/" className="footer-brand-link" aria-label="RScott Sites — go to homepage">
+              <img
+                src="/Logo/rscott-final-logo-dark-transparent.png"
+                alt="RScott Sites — Accessibility Engineering"
+                className="footer-logo-img"
+                width="250"
+                height="72"
+              />
+            </Link>
             <p className="footer-tagline">
               End-to-end digital accessibility engineering
             </p>
