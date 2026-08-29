@@ -914,13 +914,34 @@ p { max-width: 68ch; }
   color: var(--color-primary-dark);
 }
 
-.deliverable-item h3 {
+.deliverable-item h3,
+.deliverable-item h4 {
   color: var(--color-primary-dark);
+  font-size: 1.15rem;
+  margin: 0;
 }
 
 .deliverable-item p {
   color: var(--color-text-muted);
   font-size: 0.95rem;
+}
+
+.section-deliverable-inline {
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.section-deliverable-inline .section-description {
+  margin-bottom: var(--space-md);
+}
+
+.section-heading-sm {
+  font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  line-height: 1.25;
+  margin-bottom: var(--space-xs);
 }
 
 @media (min-width: 900px) {

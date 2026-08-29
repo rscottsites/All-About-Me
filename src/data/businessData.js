@@ -105,7 +105,8 @@ export const testimonials = [
 
 export const sampleAuditDeliverable = {
   title: 'What you receive: the comprehensive audit deliverable',
-  subtitle: 'A complete B2B remediation package designed for engineering leaders & executives.',
+  subtitle:
+    'A complete B2B remediation package designed for engineering leaders and executives, included exclusively in our standalone accessibility audits and Package A (The complete overhaul).',
   components: [
     {
       title: 'Executive Risk Scorecard',
@@ -141,7 +142,8 @@ export const coreServices = [
     highlights: [
       'WCAG 2.1/2.2 AA compliance tracking',
       'Manual + automated testing across devices',
-      'Assistive Tech (AT) testing (Desktop: NVDA; Mobile: VoiceOver, TalkBack)',
+      'Assistive tech (AT) testing (Desktop: NVDA, VoiceOver; Mobile: VoiceOver, TalkBack)',
+      'Keyboard-only navigation & focus management testing',
       'Severity scoring and cross-platform remediation roadmaps',
     ],
     summary:
@@ -193,7 +195,7 @@ export const servicePackages = [
     features: [
       'Full-stack WCAG 2.1/2.2 AA audit',
       'Hands-on codebase remediation (Web, iOS, or Android)',
-      'Desktop AT testing (NVDA) + Mobile AT (VoiceOver/TalkBack)',
+      'Desktop AT testing (NVDA, VoiceOver) + Mobile AT (VoiceOver/TalkBack)',
       'Post-remediation verification report',
       '30 days of post-launch engineering support',
     ],
