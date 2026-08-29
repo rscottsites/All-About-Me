@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import MiniAuditForm from '../components/MiniAuditForm';
 import LeadMagnetSection from '../components/LeadMagnetSection';
 
@@ -17,6 +17,11 @@ export default function ContactPage() {
           <p className="page-lead">
             Take the first step toward WCAG 2.1/2.2 AA compliance. Request a free, zero-obligation mini-audit of your key user flows—delivered in 48 hours—or inquire about codebase remediation engineering and monthly retainers.
           </p>
+          <div className="page-header-cta">
+            <Link to="/services" className="btn btn-secondary">
+              View services &amp; pricing
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -32,6 +37,22 @@ export default function ContactPage() {
             </p>
 
             <MiniAuditForm initialPackage={selectedPackage} />
+
+            <div className="direct-contact-card">
+              <h3>Direct contact information</h3>
+              <p className="contact-info-line">
+                <strong>Email:</strong>{' '}
+                <a href="mailto:ryanscott@rscottsites.com" className="contact-link">
+                  ryanscott@rscottsites.com
+                </a>
+              </p>
+              <p className="contact-info-line">
+                <strong>Response time:</strong> 1–2 business days guaranteed.
+              </p>
+              <p className="contact-info-line">
+                <strong>Location:</strong> Remote / U.S. West Coast
+              </p>
+            </div>
           </div>
 
           <aside className="contact-sidebar">
@@ -67,28 +88,15 @@ export default function ContactPage() {
                   </div>
                 </li>
               </ul>
+              <div className="sidebar-card-cta">
+                <Link to="/services" className="btn btn-secondary btn-block">
+                  View services &amp; pricing
+                </Link>
+              </div>
             </div>
 
             {/* Top-of-Funnel Alternative: Free React WCAG Cheatsheet */}
-            <div className="sidebar-card">
-              <LeadMagnetSection compact={true} />
-            </div>
-
-            <div className="sidebar-card">
-              <h3>Direct contact information</h3>
-              <p className="contact-info-line">
-                <strong>Email:</strong>{' '}
-                <a href="mailto:ryanscott@rscottsites.com" className="contact-link">
-                  ryanscott@rscottsites.com
-                </a>
-              </p>
-              <p className="contact-info-line">
-                <strong>Response Time:</strong> 1–2 business days guaranteed.
-              </p>
-              <p className="contact-info-line">
-                <strong>Location:</strong> Remote / U.S. West Coast
-              </p>
-            </div>
+            <LeadMagnetSection compact={true} />
           </aside>
         </div>
       </section>
