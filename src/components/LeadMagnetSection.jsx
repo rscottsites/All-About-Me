@@ -136,15 +136,17 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
         className={`section-lead-magnet ${compact ? 'lead-magnet-compact' : ''} ${className}`}
       >
         <div className={compact ? 'lead-magnet-compact-inner' : 'container lead-magnet-inner'}>
-          <div className="lead-magnet-content">
-            <h2 id="lead-magnet-heading" className="lead-magnet-title">
-              {leadMagnetInfo.title}
-            </h2>
+          {!compact && (
+            <div className="lead-magnet-content">
+              <h2 id="lead-magnet-heading" className="lead-magnet-title">
+                {leadMagnetInfo.title}
+              </h2>
 
-            <p className="lead-magnet-subtitle">
-              {leadMagnetInfo.subtitle}
-            </p>
-          </div>
+              <p className="lead-magnet-subtitle">
+                {leadMagnetInfo.subtitle}
+              </p>
+            </div>
+          )}
 
           <div className="lead-magnet-card-wrapper">
             <div className="lead-magnet-card">

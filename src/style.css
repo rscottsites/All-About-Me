@@ -216,6 +216,17 @@ p { max-width: 68ch; }
   padding-block: var(--space-xl);
 }
 
+.page-header-cta {
+  margin-top: var(--space-md);
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .page-header-cta {
+    display: none;
+  }
+}
+
 /* ─── Buttons ────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
@@ -2103,6 +2114,34 @@ p { max-width: 68ch; }
   color: rgba(250, 247, 242, 0.8);
 }
 
+.highlight-card .sidebar-card-cta {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(250, 247, 242, 0.15);
+}
+
+@media (max-width: 899px) {
+  .highlight-card .sidebar-card-cta {
+    display: none;
+  }
+}
+
+.highlight-card .btn-secondary {
+  color: var(--color-hero-text);
+  border-color: rgba(250, 247, 242, 0.4);
+  background-color: rgba(250, 247, 242, 0.08);
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+.highlight-card .btn-secondary:hover,
+.highlight-card .btn-secondary:focus-visible {
+  background-color: #FAF7F2 !important;
+  color: #2C1F0E !important;
+  border-color: #FAF7F2 !important;
+}
+
 .contact-info-line {
   margin-bottom: var(--space-sm);
   font-size: 0.95rem;
@@ -2111,6 +2150,19 @@ p { max-width: 68ch; }
 .contact-link {
   color: var(--color-primary);
   font-weight: 700;
+}
+
+.direct-contact-card {
+  margin-top: var(--space-xl);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+.direct-contact-card h3 {
+  color: var(--color-primary-dark);
+  margin-bottom: var(--space-sm);
 }
 
 /* ─── BOTTOM CTA BANNER ───────────────────────────────────── */
@@ -2989,13 +3041,11 @@ p { max-width: 68ch; }
 }
 
 .lead-magnet-compact .lead-magnet-card {
-  padding: var(--space-lg);
-  border-width: 1px;
-  box-shadow: none;
-}
-
-.lead-magnet-compact .lead-magnet-title {
-  font-size: 1.2rem;
+  background-color: #ffffff;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: 0 10px 25px rgba(44, 31, 14, 0.08);
 }
 
 .lead-magnet-compact .lead-magnet-subtitle {
