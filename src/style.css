@@ -837,6 +837,12 @@ p { max-width: 68ch; }
   outline: none;
 }
 
+.home-tab-panel:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: var(--radius-md);
+}
+
 .home-tab-panel[hidden] {
   display: none;
 }

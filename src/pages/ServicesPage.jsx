@@ -85,7 +85,6 @@ export default function ServicesPage() {
               id="services-panel-services"
               role="tabpanel"
               aria-labelledby="services-tab-services"
-              tabIndex={0}
               className="home-tab-panel"
               hidden={activeTab !== 'services'}
             >
@@ -168,7 +167,6 @@ export default function ServicesPage() {
               id="services-panel-packages"
               role="tabpanel"
               aria-labelledby="services-tab-packages"
-              tabIndex={0}
               className="home-tab-panel"
               hidden={activeTab !== 'packages'}
             >

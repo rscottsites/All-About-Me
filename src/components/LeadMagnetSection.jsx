@@ -151,7 +151,7 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
               {downloaded ? (
                 <div className="lead-magnet-success" role="region" aria-live="polite">
                   <div className="success-icon-badge" aria-hidden="true">🎉</div>
-                  <h3 className="success-title">Your PDF guide is ready!</h3>
+                  <h3 className="success-title">Your guide is ready!</h3>
                   <p className="success-desc">
                     We've triggered your download of <strong>{leadMagnetInfo.pdfFileName}</strong>.
                   </p>
@@ -168,7 +168,7 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
                       className="btn btn-secondary btn-sm"
                       onClick={triggerDownload}
                     >
-                      📥 Re-download PDF
+                      📥 Re-download guide
                     </button>
                   </div>
                 </div>
@@ -177,11 +177,11 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
                   onSubmit={handleSubmit}
                   noValidate
                   className="lead-magnet-form"
-                  aria-label="Download 5 Common Web Accessibility Challenges PDF form"
+                  aria-label="Download 5 Common Web Accessibility Challenges guide form"
                 >
                   <h3 className="form-card-title">Get free instant access</h3>
                   <p className="form-card-subtitle">
-                    Zero spam. Download the PDF guide instantly to read or share with your team.
+                    Zero spam. Download the guide instantly to read or share with your team.
                   </p>
 
                   {Object.keys(errors).length > 0 && (
@@ -297,10 +297,10 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
                     {submitting ? (
                       <span className="btn-loading-state">
                         <span className="spinner" aria-hidden="true" />
-                        Preparing PDF download...
+                        Preparing guide download...
                       </span>
                     ) : (
-                      '📥 Download free PDF guide'
+                      '📥 Download free guide'
                     )}
                   </button>
                 </form>
