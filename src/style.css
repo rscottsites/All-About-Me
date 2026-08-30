@@ -301,16 +301,8 @@ p { max-width: 68ch; }
   position: relative;
   z-index: 1002;
   text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-}
-
-.brand-logo-img {
-  display: block;
-  height: 68px;
-  width: auto;
-  max-width: 280px;
-  object-fit: contain;
+  display: flex;
+  flex-direction: column;
 }
 
 .brand-name {
@@ -2306,20 +2298,6 @@ p { max-width: 68ch; }
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-.footer-brand-link {
-  display: inline-block;
-  text-decoration: none;
-}
-
-.footer-logo-img {
-  display: block;
-  height: 72px;
-  width: auto;
-  max-width: 300px;
-  object-fit: contain;
-  margin-bottom: var(--space-sm);
 }
 
 .footer-brand {
