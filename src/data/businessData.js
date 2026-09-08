@@ -137,7 +137,7 @@ export const coreServices = [
     icon: '🧪',
     title: 'Accessibility audits',
     platforms: ['Web', 'iOS', 'Android Native'],
-    pricing: '$3,000–$10,000',
+    pricing: 'Starting at $3,000',
     timeframe: '10–20 hrs',
     highlights: [
       'WCAG 2.1/2.2 AA compliance tracking',
@@ -154,7 +154,7 @@ export const coreServices = [
     icon: '🛠',
     title: 'Remediation engineering',
     platforms: ['Web (HTML/ARIA)', 'iOS (Swift/UIKit)', 'Android (Kotlin)'],
-    pricing: '$75–$150/hr or $2,000–$15,000',
+    pricing: 'Starting at $2,000 (or $75/hr)',
     timeframe: 'Flexible',
     highlights: [
       'Cross-Platform Engineering: Direct codebase fixes for Web, iOS, and Android',
@@ -170,7 +170,7 @@ export const coreServices = [
     icon: '🔍',
     title: 'Accessibility testing',
     platforms: ['Web & Mobile Sprints'],
-    pricing: '$1,000–$4,000/mo',
+    pricing: 'Starting at $1,000/mo',
     timeframe: '5–10 hrs/week',
     highlights: [
       'Sprint and regression testing (Web & Mobile)',
@@ -187,7 +187,7 @@ export const servicePackages = [
   {
     id: 'package-a',
     name: 'Package A: The complete overhaul',
-    investment: '$7,000–$15,000',
+    investment: 'Starting at $7,000',
     timeline: '15–30 hrs',
     popular: true,
     scope:
@@ -203,7 +203,7 @@ export const servicePackages = [
   {
     id: 'package-b',
     name: 'Package B: Monthly accessibility QA',
-    investment: '$1,000–$4,000/mo',
+    investment: 'Starting at $1,000/mo',
     timeline: '5–10 hrs/week',
     popular: false,
     scope:
@@ -219,7 +219,7 @@ export const servicePackages = [
   {
     id: 'package-c',
     name: 'Package C: Targeted fixes',
-    investment: '$1,500–$3,500',
+    investment: 'Starting at $1,500',
     timeline: '5–10 hrs',
     popular: false,
     scope:
@@ -286,13 +286,13 @@ export const aboutContent = {
   headshotInitials: 'RS',
   headline: 'Bridging the gap between compliance and code.',
   paragraphs: [
-    'At RScott Sites, we provide end-to-end digital accessibility engineering led by Ryan Scott.',
-    "Our approach to accessibility goes beyond automated checklists. We specialize in full-stack accessibility, meaning we don't just hand over an audit report; we provide the hands-on engineering required to fix ARIA, semantic HTML, and complex keyboard navigation issues directly in the codebase.",
+    'I am Ryan Scott, a senior digital accessibility engineer and the founder of RScott Sites. I provide end-to-end digital accessibility engineering that bridges the gap between compliance audits and hands-on codebase remediation.',
+    "My approach to accessibility goes beyond automated checklists and generic spreadsheets. I specialize in full-stack accessibility—meaning I don't just hand over an audit report; I provide the hands-on engineering required to fix ARIA attributes, semantic HTML5, and complex keyboard navigation issues directly in your codebase.",
     'Having honed my expertise in WCAG compliance and inclusive design at a Fortune 500 fintech leader, I understand the complexities of integrating accessible practices into fast-moving engineering teams without slowing down deployment.',
-    'Our foundation in software engineering was shaped by the Year Up program, which instilled a deep commitment to breaking down barriers. Today, we apply that same drive to the digital world. By rigorously testing with assistive technologies like NVDA, VoiceOver, and TalkBack, we ensure that digital products are not only legally compliant but genuinely usable for everyone.',
-    'Whether you need to mitigate legal risk, train your development team, or remediate a backlog of critical violations, we partner with forward-thinking companies to build an inclusive web.',
+    'My foundation in software engineering was shaped by the Year Up program, which instilled a deep commitment to breaking down barriers. Today, I apply that same drive to the digital world. By rigorously testing with assistive technologies like NVDA, VoiceOver, and TalkBack, I ensure that digital products are not only legally compliant but genuinely usable for everyone.',
+    'Whether you need to mitigate legal risk, train your development team, or remediate a backlog of critical violations, I partner with forward-thinking companies to build an inclusive web.',
   ],
-  ctaLabel: "Let's review your site (request a mini-audit)",
+  ctaLabel: "Let's review your site (request a free mini-audit)",
   skills: [
     { title: 'Assistive tech testing', items: ['NVDA (Windows)', 'VoiceOver (macOS/iOS)', 'TalkBack (Android)'] },
     { title: 'Web accessibility engineering', items: ['ARIA Authoring 1.2', 'Semantic HTML5', 'Focus Trap & Loop Management', 'WCAG 2.1/2.2 AA'] },
@@ -306,7 +306,7 @@ export const expertBio = {
   role: 'Senior Digital Accessibility Engineer',
   tagline: 'Bridging the gap between compliance checklists and production-ready code.',
   bioSummary:
-    'With deep enterprise experience auditing and remediating complex web and mobile codebases, we specialize in full-stack accessibility. Rather than handing over generic spreadsheets, we partner directly with your engineering team to fix violations directly in code.',
+    'With deep enterprise experience auditing and remediating complex web and mobile codebases, I specialize in full-stack accessibility. Rather than handing over generic spreadsheets, I partner directly with your engineering team to fix violations directly in code.',
   highlights: [
     { icon: '🏢', label: 'Enterprise-Scale Accessibility Engineering' },
     { icon: '💻', label: 'Full-Stack Code Remediation (Web, iOS, Android)' },

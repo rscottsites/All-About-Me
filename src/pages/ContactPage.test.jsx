@@ -19,6 +19,17 @@ describe('ContactPage Component & Accessibility', () => {
     expect(screen.getAllByRole('link', { name: /View services & pricing/i }).length).toBeGreaterThanOrEqual(1);
   });
 
+  it('pre-selects the core service in the dropdown when navigated with ?service=audits', () => {
+    render(
+      <MemoryRouter initialEntries={['/contact?service=audits']}>
+        <ContactPage />
+      </MemoryRouter>
+    );
+
+    const packageSelect = screen.getByLabelText(/Service or package interest/i);
+    expect(packageSelect).toHaveValue('audits');
+  });
+
   it('has ZERO automated WCAG accessibility violations (axe test)', async () => {
     const { container } = render(
       <MemoryRouter initialEntries={['/contact']}>
