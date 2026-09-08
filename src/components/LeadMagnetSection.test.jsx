@@ -24,7 +24,7 @@ describe('LeadMagnetSection Component & Accessibility', () => {
     expect(screen.getByRole('button', { name: /Download free guide/i })).toBeInTheDocument();
   });
 
-  it('shows accessible error summary on invalid or empty submission', async () => {
+  it('shows field errors under invalid inputs and no error summary box on empty submission', async () => {
     render(
       <MemoryRouter>
         <LeadMagnetSection />
@@ -35,9 +35,13 @@ describe('LeadMagnetSection Component & Accessibility', () => {
     fireEvent.click(submitBtn);
 
     const alerts = await screen.findAllByRole('alert');
-    expect(alerts.length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/First name is required/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/Work email is required/i).length).toBeGreaterThan(0);
+    expect(alerts.length).toBe(3);
+    expect(screen.getByText(/First name is required/i)).toBeInTheDocument();
+    expect(screen.getByText(/Work email is required/i)).toBeInTheDocument();
+    expect(screen.getByText(/Please provide your consent to download the guide/i)).toBeInTheDocument();
+
+    // Ensure NO error summary box or top header exists
+    expect(screen.queryByText(/Please fix/i)).not.toBeInTheDocument();
   });
 
   it('allows filling inputs and triggers success state and download on submit', async () => {

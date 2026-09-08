@@ -14,7 +14,6 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
   const modalRef = useRef(null);
   const closeBtnRef = useRef(null);
   const triggerRef = useRef(null);
-  const errorSummaryRef = useRef(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -103,9 +102,17 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length > 0) {
-      setTimeout(() => {
-        errorSummaryRef.current?.focus();
-      }, 50);
+      const firstField = Object.keys(validationErrors)[0];
+      const fieldIdMap = {
+        name: 'modal-lead-name-input',
+        email: 'modal-lead-email-input',
+        consent: 'modal-consent-checkbox',
+      };
+      if (firstField && fieldIdMap[firstField]) {
+        setTimeout(() => {
+          document.getElementById(fieldIdMap[firstField])?.focus();
+        }, 50);
+      }
       return;
     }
 
@@ -220,25 +227,6 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
                   />
                 </div>
 
-                {Object.keys(errors).length > 0 && (
-                  <div
-                    ref={errorSummaryRef}
-                    className="error-summary-box"
-                    tabIndex="-1"
-                    role="alert"
-                    aria-live="assertive"
-                  >
-                    <h3>Please resolve the following:</h3>
-                    <ul>
-                      {Object.entries(errors).map(([field, msg]) => (
-                        <li key={field}>
-                          <a href={`#modal-lead-${field}-input`}>{msg}</a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
                 <p className="form-helper-note">
                   Enter your information below to instantly download the PDF guide.
                 </p>
@@ -253,7 +241,7 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
                     type="text"
                     required
                     aria-required="true"
-                    aria-invalid={!!errors.name}
+                    aria-invalid={Boolean(errors.name)}
                     aria-describedby={errors.name ? 'modal-lead-name-error' : undefined}
                     value={formData.name}
                     onChange={handleChange}
@@ -261,8 +249,8 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
                     disabled={submitting}
                   />
                   {errors.name && (
-                    <span id="modal-lead-name-error" className="field-error" role="alert">
-                      {errors.name}
+                    <span id="modal-lead-name-error" className="field-error-message" role="alert">
+                      <span aria-hidden="true">⚠️ </span>{errors.name}
                     </span>
                   )}
                 </div>
@@ -277,7 +265,7 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
                     type="email"
                     required
                     aria-required="true"
-                    aria-invalid={!!errors.email}
+                    aria-invalid={Boolean(errors.email)}
                     aria-describedby={errors.email ? 'modal-lead-email-error' : undefined}
                     value={formData.email}
                     onChange={handleChange}
@@ -285,8 +273,8 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
                     disabled={submitting}
                   />
                   {errors.email && (
-                    <span id="modal-lead-email-error" className="field-error" role="alert">
-                      {errors.email}
+                    <span id="modal-lead-email-error" className="field-error-message" role="alert">
+                      <span aria-hidden="true">⚠️ </span>{errors.email}
                     </span>
                   )}
                 </div>
@@ -311,8 +299,8 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
                     🔒 No spam, ever. Instant direct download. View our <Link to="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy <span className="sr-only">(opens in a new tab)</span></Link> and <Link to="/terms" target="_blank" rel="noopener noreferrer">Terms of Service <span className="sr-only">(opens in a new tab)</span></Link>.
                   </p>
                   {errors.consent && (
-                    <span id="modal-consent-error" className="field-error" role="alert">
-                      {errors.consent}
+                    <span id="modal-consent-error" className="field-error-message" role="alert">
+                      <span aria-hidden="true">⚠️ </span>{errors.consent}
                     </span>
                   )}
                 </div>

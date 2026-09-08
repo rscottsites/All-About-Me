@@ -2024,14 +2024,27 @@ p { max-width: 68ch; }
 
 .form-group input[aria-invalid="true"],
 .form-group select[aria-invalid="true"],
-.form-group textarea[aria-invalid="true"] {
+.form-group textarea[aria-invalid="true"],
+.form-input.input-error {
   border-color: var(--color-error);
 }
 
-.field-error-message {
+.form-group input[aria-invalid="true"]:focus,
+.form-group select[aria-invalid="true"]:focus,
+.form-group textarea[aria-invalid="true"]:focus,
+.form-input.input-error:focus {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(139, 31, 31, 0.25);
+}
+
+.field-error-message,
+.field-error-text,
+.field-error {
+  display: block;
   font-size: 0.875rem;
   color: var(--color-error);
   font-weight: 600;
+  margin-top: 4px;
 }
 
 .error-summary-box {
