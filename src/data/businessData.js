@@ -106,7 +106,7 @@ export const testimonials = [
 export const sampleAuditDeliverable = {
   title: 'What you receive: the comprehensive audit deliverable',
   subtitle:
-    'A complete B2B remediation package designed for engineering leaders and executives, included exclusively in our standalone accessibility audits and Package A (The complete overhaul).',
+    'A complete B2B remediation package designed for engineering leaders and executives, included exclusively in our standalone accessibility audits and Package C (The complete overhaul).',
   components: [
     {
       title: 'Executive Risk Scorecard',
@@ -186,18 +186,17 @@ export const coreServices = [
 export const servicePackages = [
   {
     id: 'package-a',
-    name: 'Package A: The complete overhaul',
-    investment: 'Starting at $7,000',
-    timeline: '15–30 hrs',
-    popular: true,
+    name: 'Package A: Targeted fixes',
+    investment: 'Starting at $1,500',
+    timeline: '5–10 hrs',
+    popular: false,
     scope:
-      'Comprehensive manual/automated testing, AT testing, remediation roadmap, hands-on codebase remediation (audit + fixes).',
+      'Focused audit on high-traffic flows, immediate engineering fixes for critical WCAG violations.',
     features: [
-      'Full-stack WCAG 2.1/2.2 AA audit',
-      'Hands-on codebase remediation (Web, iOS, or Android)',
-      'Desktop AT testing (NVDA, VoiceOver) + Mobile AT (VoiceOver/TalkBack)',
-      'Post-remediation verification report',
-      '30 days of post-launch engineering support',
+      'Mini-audit focusing on key user conversion funnels',
+      'Immediate code fixes for critical WCAG violations',
+      'Keyboard trap & screen reader bug fixes',
+      'Quick-turnaround delivery (under 2 weeks)',
     ],
   },
   {
@@ -218,17 +217,18 @@ export const servicePackages = [
   },
   {
     id: 'package-c',
-    name: 'Package C: Targeted fixes',
-    investment: 'Starting at $1,500',
-    timeline: '5–10 hrs',
-    popular: false,
+    name: 'Package C: The complete overhaul',
+    investment: 'Starting at $7,000',
+    timeline: '15–30 hrs',
+    popular: true,
     scope:
-      'Focused audit on high-traffic flows, immediate engineering fixes for critical WCAG violations.',
+      'Comprehensive manual/automated testing, AT testing, remediation roadmap, hands-on codebase remediation (audit + fixes).',
     features: [
-      'Mini-audit focusing on key user conversion funnels',
-      'Immediate code fixes for critical WCAG violations',
-      'Keyboard trap & screen reader bug fixes',
-      'Quick-turnaround delivery (under 2 weeks)',
+      'Full-stack WCAG 2.1/2.2 AA audit',
+      'Hands-on codebase remediation (Web, iOS, or Android)',
+      'Desktop AT testing (NVDA, VoiceOver) + Mobile AT (VoiceOver/TalkBack)',
+      'Post-remediation verification report',
+      '30 days of post-launch engineering support',
     ],
   },
 ];
