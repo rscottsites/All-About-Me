@@ -18,7 +18,7 @@ describe('MiniAuditForm Component', () => {
     expect(screen.getByRole('button', { name: /Request free mini-audit/i })).toBeInTheDocument();
   });
 
-  it('displays error summary box when submitted with empty required fields', async () => {
+  it('displays field errors under inputs and no error summary box when submitted with empty required fields', async () => {
     render(
       <MemoryRouter>
         <MiniAuditForm />
@@ -29,11 +29,14 @@ describe('MiniAuditForm Component', () => {
     fireEvent.click(submitBtn);
 
     const alerts = await screen.findAllByRole('alert');
-    expect(alerts.length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/Please enter your full name/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/Please enter your email address/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/Please enter your website or application URL/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/Please provide your consent/i).length).toBeGreaterThan(0);
+    expect(alerts.length).toBe(4);
+    expect(screen.getByText(/Please enter your full name/i)).toBeInTheDocument();
+    expect(screen.getByText(/Please enter your email address/i)).toBeInTheDocument();
+    expect(screen.getByText(/Please enter your website or application URL/i)).toBeInTheDocument();
+    expect(screen.getByText(/Please provide your consent/i)).toBeInTheDocument();
+
+    // Ensure NO error summary box or top header exists
+    expect(screen.queryByText(/Please review the following/i)).not.toBeInTheDocument();
   });
 
   it('allows filling inputs and submitting successfully', async () => {

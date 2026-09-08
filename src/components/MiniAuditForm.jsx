@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { trackEvent } from '../utils/analytics';
 
@@ -22,10 +22,8 @@ export default function MiniAuditForm({ initialPackage = '' }) {
   }, [initialPackage]);
 
   const [errors, setErrors] = useState({});
-  const [serverError, setServerError] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const errorSummaryRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -33,7 +31,6 @@ export default function MiniAuditForm({ initialPackage = '' }) {
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }));
     }
-    if (serverError) setServerError('');
   };
 
   const validate = () => {
@@ -62,15 +59,23 @@ export default function MiniAuditForm({ initialPackage = '' }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setServerError('');
     const validationErrors = validate();
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       setSubmitted(false);
-      setTimeout(() => {
-        errorSummaryRef.current?.focus();
-      }, 50);
+      const firstField = Object.keys(validationErrors)[0];
+      const fieldIdMap = {
+        name: 'name-input',
+        email: 'email-input',
+        websiteUrl: 'websiteUrl-input',
+        consent: 'mini-audit-consent',
+      };
+      if (firstField && fieldIdMap[firstField]) {
+        setTimeout(() => {
+          document.getElementById(fieldIdMap[firstField])?.focus();
+        }, 50);
+      }
       return;
     }
 
@@ -156,21 +161,12 @@ Details:
         console.log('Dev mode: Simulated successful mini-audit submission:', formData);
         setSubmitted(true);
       } else {
-        setServerError(err.message);
-        setTimeout(() => {
-          errorSummaryRef.current?.focus();
-        }, 50);
+        console.error('Submission error:', err);
       }
     } finally {
       setSubmitting(false);
     }
   };
-
-  const mailtoLink = `mailto:ryanscott@rscottsites.com?subject=${encodeURIComponent(
-    `[Mini-Audit Request] ${formData.name || 'New Lead'}`
-  )}&body=${encodeURIComponent(
-    `Hi Ryan,\n\nI would like to request a free mini-audit.\n\nName: ${formData.name}\nEmail: ${formData.email}\nWebsite/App URL: ${formData.websiteUrl}\nPlatform: ${formData.platform}\nPackage Interest: ${formData.selectedPackage}\nPrimary Goal: ${formData.primaryGoal}\nDetails: ${formData.message}\n`
-  )}`;
 
   if (submitted) {
     return (
@@ -214,8 +210,6 @@ Details:
       </div>
     );
   }
-
-  const hasErrors = Object.keys(errors).length > 0 || !!serverError;
 
   return (
     <form className="mini-audit-form" onSubmit={handleSubmit} noValidate>
@@ -280,13 +274,13 @@ Details:
           value={formData.name}
           onChange={handleChange}
           aria-required="true"
-          aria-invalid={!!errors.name}
+          aria-invalid={Boolean(errors.name)}
           aria-describedby={errors.name ? 'name-error' : undefined}
           placeholder="e.g. Jane Doe"
           disabled={submitting}
         />
         {errors.name && (
-          <span id="name-error" className="field-error-message">
+          <span id="name-error" role="alert" className="field-error-message">
             <span aria-hidden="true">⚠️ </span>{errors.name}
           </span>
         )}
@@ -303,13 +297,13 @@ Details:
           value={formData.email}
           onChange={handleChange}
           aria-required="true"
-          aria-invalid={!!errors.email}
+          aria-invalid={Boolean(errors.email)}
           aria-describedby={errors.email ? 'email-error' : undefined}
           placeholder="e.g. jane@company.com"
           disabled={submitting}
         />
         {errors.email && (
-          <span id="email-error" className="field-error-message">
+          <span id="email-error" role="alert" className="field-error-message">
             <span aria-hidden="true">⚠️ </span>{errors.email}
           </span>
         )}
@@ -326,13 +320,13 @@ Details:
           value={formData.websiteUrl}
           onChange={handleChange}
           aria-required="true"
-          aria-invalid={!!errors.websiteUrl}
+          aria-invalid={Boolean(errors.websiteUrl)}
           aria-describedby={errors.websiteUrl ? 'websiteUrl-error' : undefined}
           placeholder="https://yourcompany.com"
           disabled={submitting}
         />
         {errors.websiteUrl && (
-          <span id="websiteUrl-error" className="field-error-message">
+          <span id="websiteUrl-error" role="alert" className="field-error-message">
             <span aria-hidden="true">⚠️ </span>{errors.websiteUrl}
           </span>
         )}
@@ -428,8 +422,8 @@ Details:
           🔒 We respect your inbox privacy. Zero spam. View our <Link to="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy <span className="sr-only">(opens in a new tab)</span></Link> and <Link to="/terms" target="_blank" rel="noopener noreferrer">Terms of Service <span className="sr-only">(opens in a new tab)</span></Link>.
         </p>
         {errors.consent && (
-          <span id="mini-audit-consent-error" role="alert" className="field-error-text">
-            {errors.consent}
+          <span id="mini-audit-consent-error" role="alert" className="field-error-message">
+            <span aria-hidden="true">⚠️ </span>{errors.consent}
           </span>
         )}
       </div>

@@ -49,6 +49,26 @@ describe('LeadMagnetDownloadModal Component & Accessibility', () => {
     expect(onClose).toHaveBeenCalledTimes(2);
   });
 
+  it('displays field errors under inputs and no error summary box when submitted with empty fields', async () => {
+    render(
+      <MemoryRouter>
+        <LeadMagnetDownloadModal isOpen={true} onClose={vi.fn()} />
+      </MemoryRouter>
+    );
+
+    const submitBtn = screen.getByRole('button', { name: /Download free PDF guide/i });
+    fireEvent.click(submitBtn);
+
+    const alerts = await screen.findAllByRole('alert');
+    expect(alerts.length).toBe(3);
+    expect(screen.getByText(/Please enter your full name/i)).toBeInTheDocument();
+    expect(screen.getByText(/Please enter your work email address/i)).toBeInTheDocument();
+    expect(screen.getByText(/Please provide your consent to download the guide/i)).toBeInTheDocument();
+
+    // Ensure NO error summary box exists
+    expect(screen.queryByText(/Please resolve the following/i)).not.toBeInTheDocument();
+  });
+
   it('allows filling inputs and submitting successfully', async () => {
     render(
       <MemoryRouter>

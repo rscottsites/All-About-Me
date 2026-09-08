@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { leadMagnetInfo } from '../data/leadMagnetData';
 import LeadMagnetGuideModal from './LeadMagnetGuideModal';
@@ -15,8 +15,6 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
   const [submitting, setSubmitting] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-
-  const errorSummaryRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -40,7 +38,7 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
       newErrors.consent = 'Please provide your consent to download the guide.';
     }
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return newErrors;
   };
 
   const triggerDownload = () => {
@@ -54,10 +52,19 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validate()) {
-      setTimeout(() => {
-        errorSummaryRef.current?.focus();
-      }, 50);
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      const firstField = Object.keys(validationErrors)[0];
+      const fieldIdMap = {
+        name: 'lead-name',
+        email: 'lead-email',
+        consent: 'lead-consent-checkbox',
+      };
+      if (firstField && fieldIdMap[firstField]) {
+        setTimeout(() => {
+          document.getElementById(fieldIdMap[firstField])?.focus();
+        }, 50);
+      }
       return;
     }
 
@@ -186,23 +193,6 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
                     Zero spam. Download the guide instantly to read or share with your team.
                   </p>
 
-                  {Object.keys(errors).length > 0 && (
-                    <div
-                      ref={errorSummaryRef}
-                      tabIndex={-1}
-                      className="error-summary-box"
-                      role="alert"
-                      aria-live="assertive"
-                    >
-                      <h4 style={{ margin: '0 0 4px 0', fontSize: '0.95rem' }}>Please fix:</h4>
-                      <ul style={{ margin: 0, paddingLeft: '1.2rem', fontSize: '0.85rem' }}>
-                        {Object.entries(errors).map(([k, msg]) => (
-                          <li key={k}>{msg}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
                   {/* Honeypot field */}
                   <div style={{ display: 'none' }} aria-hidden="true">
                     <label htmlFor="lead-bot-field">Do not fill this field:</label>
@@ -235,8 +225,8 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
                       aria-describedby={errors.name ? 'lead-name-error' : undefined}
                     />
                     {errors.name && (
-                      <span id="lead-name-error" role="alert" className="field-error-text">
-                        {errors.name}
+                      <span id="lead-name-error" role="alert" className="field-error-message">
+                        <span aria-hidden="true">⚠️ </span>{errors.name}
                       </span>
                     )}
                   </div>
@@ -259,8 +249,8 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
                       aria-describedby={errors.email ? 'lead-email-error' : undefined}
                     />
                     {errors.email && (
-                      <span id="lead-email-error" role="alert" className="field-error-text">
-                        {errors.email}
+                      <span id="lead-email-error" role="alert" className="field-error-message">
+                        <span aria-hidden="true">⚠️ </span>{errors.email}
                       </span>
                     )}
                   </div>
@@ -285,8 +275,8 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
                       🔒 We respect your inbox privacy. Unsubscribe anytime. View our <Link to="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy <span className="sr-only">(opens in a new tab)</span></Link> and <Link to="/terms" target="_blank" rel="noopener noreferrer">Terms of Service <span className="sr-only">(opens in a new tab)</span></Link>.
                     </p>
                     {errors.consent && (
-                      <span id="lead-consent-error" role="alert" className="field-error-text">
-                        {errors.consent}
+                      <span id="lead-consent-error" role="alert" className="field-error-message">
+                        <span aria-hidden="true">⚠️ </span>{errors.consent}
                       </span>
                     )}
                   </div>
