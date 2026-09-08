@@ -116,7 +116,7 @@ export default function MiniAuditForm({ initialPackage = '' }) {
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          access_key: 'b9423c10-82a8-48b4-9279-8809f6d634db', // Web3Forms direct email key
+          access_key: '76275ef7-c53f-42c2-aa0e-ec31e6d38627', // Web3Forms direct email key
           subject: `[Mini-Audit Request] ${formData.name.trim()} - ${formData.platform.toUpperCase()}`,
           from_name: formData.name.trim(),
           email: formData.email.trim(),
@@ -226,6 +226,42 @@ Details:
           onChange={handleChange}
         />
       </div>
+
+      {hasErrors && (
+        <div
+          ref={errorSummaryRef}
+          className="error-summary-box"
+          tabIndex="-1"
+          role="alert"
+          aria-live="assertive"
+          aria-labelledby="error-summary-heading"
+        >
+          <h3 id="error-summary-heading">Please review the following:</h3>
+          {serverError ? (
+            <div className="server-error-content">
+              <p style={{ margin: 0, fontWeight: 600 }}>{serverError}</p>
+              <p style={{ marginTop: '12px', fontSize: '0.95rem' }}>
+                Click below to send your request details directly to <strong>ryanscott@rscottsites.com</strong>:
+              </p>
+              <a
+                href={mailtoLink}
+                className="btn btn-primary"
+                style={{ marginTop: '8px', display: 'inline-flex', width: '100%', justifyContent: 'center' }}
+              >
+                Send request via email app (1-click)
+              </a>
+            </div>
+          ) : (
+            <ul>
+              {Object.entries(errors).map(([field, msg]) => (
+                <li key={field}>
+                  <a href={`#${field === 'consent' ? 'mini-audit-consent' : `${field}-input`}`}>{msg}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
 
       <div className="form-group">
         <label htmlFor="name-input">
