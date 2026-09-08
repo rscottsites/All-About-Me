@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { trackEvent } from '../utils/analytics';
 
@@ -14,6 +14,12 @@ export default function MiniAuditForm({ initialPackage = '' }) {
     consent: false,
     bot_field: '', // Honeypot field for bot prevention
   });
+
+  useEffect(() => {
+    if (initialPackage) {
+      setFormData((prev) => ({ ...prev, selectedPackage: initialPackage }));
+    }
+  }, [initialPackage]);
 
   const [errors, setErrors] = useState({});
   const [serverError, setServerError] = useState('');
@@ -350,7 +356,7 @@ Details:
         </div>
 
         <div className="form-group">
-          <label htmlFor="package-input">Service Package Interest</label>
+          <label htmlFor="package-input">Service or package interest</label>
           <select
             id="package-input"
             name="selectedPackage"
@@ -358,11 +364,18 @@ Details:
             onChange={handleChange}
             disabled={submitting}
           >
-            <option value="mini-audit">Free mini-audit (initial review)</option>
-            <option value="package-a">Package A: The complete overhaul ($7,000–$15,000)</option>
-            <option value="package-b">Package B: Monthly accessibility QA ($1,000–$4,000/mo)</option>
-            <option value="package-c">Package C: Targeted fixes ($1,500–$3,500)</option>
-            <option value="hourly">Hourly remediation engineering ($75–$150/hr)</option>
+            <optgroup label="Core engineering services">
+              <option value="audits">Accessibility audits</option>
+              <option value="remediation">Remediation engineering</option>
+              <option value="testing">Accessibility testing retainer</option>
+            </optgroup>
+            <optgroup label="Service packages">
+              <option value="mini-audit">Free mini-audit (initial review)</option>
+              <option value="package-a">Package A: The complete overhaul</option>
+              <option value="package-b">Package B: Monthly accessibility QA</option>
+              <option value="package-c">Package C: Targeted fixes</option>
+              <option value="hourly">Hourly remediation engineering</option>
+            </optgroup>
           </select>
         </div>
       </div>

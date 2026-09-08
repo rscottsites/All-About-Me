@@ -4,7 +4,8 @@ import LeadMagnetSection from '../components/LeadMagnetSection';
 
 export default function ContactPage() {
   const [searchParams] = useSearchParams();
-  const selectedPackage = searchParams.get('package') || 'mini-audit';
+  const selectedPackage =
+    searchParams.get('package') || searchParams.get('service') || 'mini-audit';
 
   return (
     <div className="page-contact">

@@ -15,6 +15,33 @@ const SERVICES_TABS = [
   },
 ];
 
+function AuditDeliverableSection({ idPrefix = 'services' }) {
+  return (
+    <div className="section-deliverable-inline">
+      <div className="section-header">
+        <h3 id={`deliverable-heading-${idPrefix}`} className="section-heading-sm">
+          {sampleAuditDeliverable.title}
+        </h3>
+        <p className="section-description">
+          {sampleAuditDeliverable.subtitle}
+        </p>
+      </div>
+
+      <div className="deliverable-card">
+        <div className="deliverable-grid">
+          {sampleAuditDeliverable.components.map((comp, idx) => (
+            <div key={idx} className="deliverable-item">
+              <span className="deliverable-num" aria-hidden="true">0{idx + 1}</span>
+              <h4>{comp.title}</h4>
+              <p>{comp.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ServicesPage() {
   const [activeTab, setActiveTab] = useState('services');
   const tabRefs = useRef([]);
@@ -133,33 +160,21 @@ export default function ServicesPage() {
                         ))}
                       </ul>
                     </div>
+
+                    <div className="service-detail-footer">
+                      <Link
+                        to={`/contact?service=${service.id}`}
+                        className="btn btn-secondary"
+                      >
+                        Inquire about {service.title.toLowerCase()}
+                      </Link>
+                    </div>
                   </article>
                 ))}
               </div>
 
               {/* Sample Deliverable Section within Core Services */}
-              <div className="section-deliverable-inline">
-                <div className="section-header">
-                  <h3 id="deliverable-heading" className="section-heading-sm">
-                    {sampleAuditDeliverable.title}
-                  </h3>
-                  <p className="section-description">
-                    {sampleAuditDeliverable.subtitle}
-                  </p>
-                </div>
-
-                <div className="deliverable-card">
-                  <div className="deliverable-grid">
-                    {sampleAuditDeliverable.components.map((comp, idx) => (
-                      <div key={idx} className="deliverable-item">
-                        <span className="deliverable-num" aria-hidden="true">0{idx + 1}</span>
-                        <h4>{comp.title}</h4>
-                        <p>{comp.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <AuditDeliverableSection idPrefix="services" />
             </div>
 
             {/* Tab Panel 2: Service Packages and Pricing */}
@@ -180,6 +195,9 @@ export default function ServicesPage() {
               </div>
 
               <PackagesTable />
+
+              {/* Sample Deliverable Section within Service Packages */}
+              <AuditDeliverableSection idPrefix="packages" />
             </div>
           </div>
         </div>

@@ -61,4 +61,15 @@ describe('MiniAuditForm Component', () => {
       expect(screen.getByText(/Alex Morgan/i)).toBeInTheDocument();
     });
   });
+
+  it('correctly sets initialPackage when passed as a prop', () => {
+    render(
+      <MemoryRouter>
+        <MiniAuditForm initialPackage="remediation" />
+      </MemoryRouter>
+    );
+
+    const packageSelect = screen.getByLabelText(/Service or package interest/i);
+    expect(packageSelect).toHaveValue('remediation');
+  });
 });
