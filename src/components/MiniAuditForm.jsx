@@ -371,10 +371,9 @@ Details:
             </optgroup>
             <optgroup label="Service packages">
               <option value="mini-audit">Free mini-audit (initial review)</option>
-              <option value="package-a">Package A: The complete overhaul</option>
+              <option value="package-a">Package A: Targeted fixes</option>
               <option value="package-b">Package B: Monthly accessibility QA</option>
-              <option value="package-c">Package C: Targeted fixes</option>
-              <option value="hourly">Hourly remediation engineering</option>
+              <option value="package-c">Package C: The complete overhaul</option>
             </optgroup>
           </select>
         </div>

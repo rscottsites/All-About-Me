@@ -21,7 +21,7 @@ export default function Footer() {
               RScott <span className="brand-accent">Sites</span>
             </p>
             <p className="footer-tagline">
-              End-to-end digital accessibility engineering
+              Accessibility engineering
             </p>
           </div>
 
