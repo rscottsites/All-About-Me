@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import handler from './contact';
 
 function createMockReqRes(method = 'POST', body = {}) {
@@ -25,6 +25,7 @@ function createMockReqRes(method = 'POST', body = {}) {
 }
 
 describe('Serverless Handler api/contact.js', () => {
+  afterEach(() => vi.unstubAllEnvs());
   it('rejects non-POST requests with 405 Method Not Allowed', async () => {
     const { req, res } = createMockReqRes('GET');
     await handler(req, res);
@@ -66,7 +67,10 @@ describe('Serverless Handler api/contact.js', () => {
     expect(res.responseData.error).toContain('Valid email address is required');
   });
 
-  it('handles valid submission payload in dev mode when RESEND_API_KEY is unset', async () => {
+  it('does not report lead capture when no email provider is configured', async () => {
+    for (const key of ['ICLOUD_APP_PASS', 'ICLOUD_APP_PASSWORD', 'SMTP_HOST', 'SMTP_PASS', 'SMTP_PASSWORD', 'RESEND_API_KEY', 'WEB3FORMS_KEY']) {
+      vi.stubEnv(key, '');
+    }
     const { req, res } = createMockReqRes('POST', {
       name: 'Jane Doe',
       email: 'jane@company.com',
@@ -77,5 +81,6 @@ describe('Serverless Handler api/contact.js', () => {
     await handler(req, res);
     expect(res.statusCode).toBe(200);
     expect(res.responseData.success).toBe(true);
+    expect(res.responseData.leadCaptured).toBe(false);
   });
 });

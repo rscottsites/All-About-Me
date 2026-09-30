@@ -137,7 +137,7 @@ export const coreServices = [
     icon: '🧪',
     title: 'Accessibility audits',
     platforms: ['Web', 'iOS', 'Android Native'],
-    pricing: 'Starting at $3,000',
+    pricing: 'Contact for pricing',
     timeframe: '10–20 hrs',
     highlights: [
       'WCAG 2.1/2.2 AA compliance tracking',
@@ -154,7 +154,7 @@ export const coreServices = [
     icon: '🛠',
     title: 'Remediation engineering',
     platforms: ['Web (HTML/ARIA)', 'iOS (Swift/UIKit)', 'Android (Kotlin)'],
-    pricing: 'Starting at $2,000 (or $75/hr)',
+    pricing: 'Contact for pricing',
     timeframe: 'Flexible',
     highlights: [
       'Cross-Platform Engineering: Direct codebase fixes for Web, iOS, and Android',
@@ -170,7 +170,7 @@ export const coreServices = [
     icon: '🔍',
     title: 'Accessibility testing',
     platforms: ['Web & Mobile Sprints'],
-    pricing: 'Starting at $1,000/mo',
+    pricing: 'Contact for pricing',
     timeframe: '5–10 hrs/week',
     highlights: [
       'Sprint and regression testing (Web & Mobile)',
@@ -187,7 +187,7 @@ export const servicePackages = [
   {
     id: 'package-a',
     name: 'Package A: Targeted fixes',
-    investment: 'Starting at $1,500',
+    investment: 'Contact for pricing',
     timeline: '5–10 hrs',
     popular: false,
     scope:
@@ -202,7 +202,7 @@ export const servicePackages = [
   {
     id: 'package-b',
     name: 'Package B: Monthly accessibility QA',
-    investment: 'Starting at $1,000/mo',
+    investment: 'Contact for pricing',
     timeline: '5–10 hrs/week',
     popular: false,
     scope:
@@ -218,7 +218,7 @@ export const servicePackages = [
   {
     id: 'package-c',
     name: 'Package C: The complete overhaul',
-    investment: 'Starting at $7,000',
+    investment: 'Contact for pricing',
     timeline: '15–30 hrs',
     popular: true,
     scope:
@@ -241,7 +241,7 @@ export const launchRoadmap = [
       'Add accessibility positioning across site copy',
       'Create comprehensive services & packages pages',
       'Build standardized free mini-audit intake template',
-      'Publish service package options with transparent pricing',
+      'Publish service package options with flexible engagement scopes',
       'Draft initial accessibility engineering case study portfolio',
     ],
   },

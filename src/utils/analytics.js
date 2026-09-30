@@ -1,7 +1,7 @@
 import { track } from '@vercel/analytics';
 
 /**
- * Universal event tracker for Vercel & Cloudflare Web Analytics.
+ * Event tracker for Vercel Web Analytics and local listeners.
  * @param {string} eventName - Name of the conversion or interaction event.
  * @param {Record<string, any>} [properties] - Optional metadata payload.
  */
@@ -24,23 +24,4 @@ export function trackEvent(eventName, properties = {}) {
       console.warn(`[Analytics] Track event failed: ${eventName}`, err);
     }
   }
-}
-
-/**
- * Initialize Cloudflare Web Analytics if beacon token is configured in environment.
- */
-export function initCloudflareAnalytics() {
-  if (typeof window === 'undefined') return;
-
-  const cfToken = import.meta.env.VITE_CLOUDFLARE_BEACON_TOKEN;
-  if (!cfToken) return;
-
-  // Prevent duplicate script injection
-  if (document.querySelector('script[data-cf-beacon]')) return;
-
-  const script = document.createElement('script');
-  script.defer = true;
-  script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
-  script.setAttribute('data-cf-beacon', JSON.stringify({ token: cfToken }));
-  document.head.appendChild(script);
 }

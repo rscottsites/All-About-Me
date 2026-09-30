@@ -15,8 +15,7 @@ describe('PackagesTable Component', () => {
     expect(screen.getByText(/Package B: Monthly Accessibility QA/i)).toBeInTheDocument();
     expect(screen.getByText(/Package C: The Complete Overhaul/i)).toBeInTheDocument();
 
-    expect(screen.getByText(/Starting at \$7,000/i)).toBeInTheDocument();
-    expect(screen.getByText(/Starting at \$1,000\/mo/i)).toBeInTheDocument();
-    expect(screen.getByText(/Starting at \$1,500/i)).toBeInTheDocument();
+    const pricingElements = screen.getAllByText(/Contact for pricing/i);
+    expect(pricingElements).toHaveLength(3);
   });
 });

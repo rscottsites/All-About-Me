@@ -92,6 +92,10 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    trackEvent('guide_download_started', {
+      formType: 'modal',
+      resource: leadMagnetInfo.title,
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -122,29 +126,32 @@ export default function LeadMagnetDownloadModal({ isOpen, onClose }) {
       const payload = {
         name: formData.name.trim(),
         email: formData.email.trim(),
-        resource: leadMagnetInfo.title,
-        downloadTime: new Date().toISOString(),
-        formType: 'lead-magnet-modal',
+        websiteUrl: 'Lead Magnet Download (Web Accessibility Challenges PDF)',
+        platform: 'lead-magnet',
+        selectedPackage: 'Lead Magnet: 5 Common Web Accessibility Challenges',
+        primaryGoal: 'lead-magnet-download',
+        message: `User requested '${leadMagnetInfo.title}' from the download modal.`,
       };
 
-      await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
-      trackEvent('pdf_guide_downloaded', {
-        formType: 'modal',
-        resource: leadMagnetInfo.title,
-      });
-
-      setDownloaded(true);
-      triggerDownload();
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success === true && data.leadCaptured !== false) {
+        trackEvent('guide_lead_captured', {
+          formType: 'modal',
+          resource: leadMagnetInfo.title,
+        });
+      }
     } catch {
-      setDownloaded(true);
-      triggerDownload();
+      // A failed lead submission must not block access to the guide.
     } finally {
       setSubmitting(false);
+      setDownloaded(true);
+      triggerDownload();
     }
   };
 
