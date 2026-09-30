@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { leadMagnetInfo } from '../data/leadMagnetData';
+import { trackEvent } from '../utils/analytics';
 
 export default function LeadMagnetGuideModal({ isOpen, onClose }) {
   const modalRef = useRef(null);
@@ -55,6 +56,10 @@ export default function LeadMagnetGuideModal({ isOpen, onClose }) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    trackEvent('guide_download_started', {
+      formType: 'guide-reader',
+      resource: leadMagnetInfo.title,
+    });
   };
 
   const handlePrint = () => {

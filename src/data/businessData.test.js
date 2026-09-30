@@ -28,7 +28,7 @@ describe('businessData Integrity Tests', () => {
     coreServices.forEach((service) => {
       expect(service.id).toBeDefined();
       expect(service.title).toBeDefined();
-      expect(service.pricing).toBeDefined();
+      expect(service.pricing).toBe('Contact for pricing');
       expect(service.timeframe).toBeDefined();
       expect(service.highlights.length).toBeGreaterThan(0);
     });
@@ -40,7 +40,7 @@ describe('businessData Integrity Tests', () => {
     expect(packageIds).toEqual(['package-a', 'package-b', 'package-c']);
     servicePackages.forEach((pkg) => {
       expect(pkg.name).toBeDefined();
-      expect(pkg.investment).toBeDefined();
+      expect(pkg.investment).toBe('Contact for pricing');
       expect(pkg.timeline).toBeDefined();
       expect(pkg.features.length).toBeGreaterThan(0);
     });

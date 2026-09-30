@@ -48,6 +48,10 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    trackEvent('guide_download_started', {
+      formType: compact ? 'compact-section' : 'lead-section',
+      resource: leadMagnetInfo.title,
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -93,14 +97,11 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
 
       const data = await res.json().catch(() => ({}));
 
-      trackEvent('pdf_guide_downloaded', {
-        formType: compact ? 'compact-section' : 'lead-section',
-        resource: leadMagnetInfo.title,
-      });
-
-      if (res.ok && data.success) {
-        setDownloaded(true);
-        triggerDownload();
+      if (res.ok && data.success === true && data.leadCaptured !== false) {
+        trackEvent('guide_lead_captured', {
+          formType: compact ? 'compact-section' : 'lead-section',
+          resource: leadMagnetInfo.title,
+        });
         return;
       }
 
@@ -118,21 +119,20 @@ export default function LeadMagnetSection({ compact = false, className = '' }) {
         }),
       });
 
-      if (web3Res.ok) {
-        setDownloaded(true);
-        triggerDownload();
-        return;
+      const web3Data = await web3Res.json().catch(() => ({}));
+      if (web3Res.ok && web3Data.success === true) {
+        trackEvent('guide_lead_captured', {
+          formType: compact ? 'compact-section' : 'lead-section',
+          resource: leadMagnetInfo.title,
+        });
       }
-
-      // Always deliver the PDF even if network notifications fail
-      setDownloaded(true);
-      triggerDownload();
     } catch (err) {
       console.warn('Lead magnet dispatch note:', err.message);
-      setDownloaded(true);
-      triggerDownload();
     } finally {
       setSubmitting(false);
+      // Offer the download even when lead capture fails.
+      setDownloaded(true);
+      triggerDownload();
     }
   };
 

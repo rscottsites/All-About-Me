@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { trackEvent, initCloudflareAnalytics } from './analytics';
+import { trackEvent } from './analytics';
 
 vi.mock('@vercel/analytics', () => ({
   track: vi.fn(),
@@ -24,9 +24,4 @@ describe('Analytics Utility', () => {
     window.removeEventListener('app:analytics', listener);
   });
 
-  it('handles missing Cloudflare token safely without injecting scripts', () => {
-    document.head.innerHTML = '';
-    initCloudflareAnalytics();
-    expect(document.querySelector('script[data-cf-beacon]')).toBeNull();
-  });
 });

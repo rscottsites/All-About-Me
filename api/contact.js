@@ -206,6 +206,7 @@ Submitted Details:
     // Fallback notice if no email provider key is configured
     return res.status(200).json({
       success: true,
+      leadCaptured: false,
       message: 'Form submission received (notice: add ICLOUD_APP_PASS to Vercel environment variables for live iCloud dispatch)',
     });
   } catch (err) {

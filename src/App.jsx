@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
@@ -13,13 +12,8 @@ import ContactPage from './pages/ContactPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import AccessibilityStatementPage from './pages/AccessibilityStatementPage';
-import { initCloudflareAnalytics } from './utils/analytics';
 
 export default function App() {
-  useEffect(() => {
-    initCloudflareAnalytics();
-  }, []);
-
   return (
     <Router>
       <a href="#main-content" className="skip-link">
