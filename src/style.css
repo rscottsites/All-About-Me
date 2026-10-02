@@ -1308,6 +1308,7 @@ p { max-width: 68ch; }
 }
 
 .filter-btn.active,
+.filter-btn[aria-pressed="true"],
 .filter-btn:hover {
   background-color: var(--color-primary);
   color: #FAF7F2;
@@ -2017,9 +2018,10 @@ p { max-width: 68ch; }
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  outline: none;
+  /* Solid outline: 7.4:1+ against the form and page backgrounds (WCAG 1.4.11) */
+  outline: 3px solid var(--color-primary-dark);
+  outline-offset: 2px;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(122, 92, 30, 0.25);
 }
 
 .form-group input[aria-invalid="true"],
@@ -2033,8 +2035,8 @@ p { max-width: 68ch; }
 .form-group select[aria-invalid="true"]:focus,
 .form-group textarea[aria-invalid="true"]:focus,
 .form-input.input-error:focus {
+  outline-color: var(--color-error);
   border-color: var(--color-error);
-  box-shadow: 0 0 0 3px rgba(139, 31, 31, 0.25);
 }
 
 .field-error-message,
@@ -3373,6 +3375,12 @@ p { max-width: 68ch; }
 
 .privacy-contact-box p {
   margin-bottom: var(--space-xs);
+}
+
+/* Primary (#7A5C1E) is only 4.45:1 on surface-alt; use the darker
+   shade (6.62:1) so links in this box pass WCAG 1.4.3. */
+.privacy-contact-box a {
+  color: var(--color-primary-dark);
 }
 
 .privacy-contact-box p:last-child {

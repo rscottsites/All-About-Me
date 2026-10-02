@@ -45,11 +45,10 @@ export default function ExamplesPage() {
       {/* ─── Case Studies Gallery ─────────────────────────────────── */}
       <section className="section section-cases-full">
         <div className="container">
-          <div className="filter-bar" role="tablist" aria-label="Filter case studies by platform">
+          <div className="filter-bar" role="group" aria-label="Filter case studies by platform">
             <button
               type="button"
-              role="tab"
-              aria-selected={activeTab === 'all'}
+              aria-pressed={activeTab === 'all'}
               className={`filter-btn ${activeTab === 'all' ? 'active' : ''}`}
               onClick={() => setActiveTab('all')}
             >
@@ -57,8 +56,7 @@ export default function ExamplesPage() {
             </button>
             <button
               type="button"
-              role="tab"
-              aria-selected={activeTab === 'web'}
+              aria-pressed={activeTab === 'web'}
               className={`filter-btn ${activeTab === 'web' ? 'active' : ''}`}
               onClick={() => setActiveTab('web')}
             >
@@ -66,14 +64,17 @@ export default function ExamplesPage() {
             </button>
             <button
               type="button"
-              role="tab"
-              aria-selected={activeTab === 'mobile'}
+              aria-pressed={activeTab === 'mobile'}
               className={`filter-btn ${activeTab === 'mobile' ? 'active' : ''}`}
               onClick={() => setActiveTab('mobile')}
             >
               Native mobile (iOS/Android)
             </button>
           </div>
+
+          <p className="sr-only" role="status" aria-live="polite">
+            {`Showing ${filteredStudies.length} case ${filteredStudies.length === 1 ? 'study' : 'studies'}`}
+          </p>
 
           <div className="cases-detail-list">
             {filteredStudies.map((study) => (
@@ -82,8 +83,6 @@ export default function ExamplesPage() {
                   <div className="case-meta">
                     <span
                       className={`severity-tag severity-${study.severity.toLowerCase().split(' ')[0]}`}
-                      role="text"
-                      aria-label={study.severity}
                     >
                       {study.severity}
                     </span>

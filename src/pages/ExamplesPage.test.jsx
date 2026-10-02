@@ -5,7 +5,7 @@ import { axe } from 'vitest-axe';
 import ExamplesPage from './ExamplesPage';
 
 describe('ExamplesPage Component & Accessibility', () => {
-  it('renders case studies gallery and handles tab filtering', () => {
+  it('renders case studies gallery and handles platform filtering', () => {
     render(
       <MemoryRouter>
         <ExamplesPage />
@@ -13,14 +13,27 @@ describe('ExamplesPage Component & Accessibility', () => {
     );
 
     expect(screen.getByRole('heading', { level: 1, name: /Accessibility engineering portfolio/i })).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: /All case studies/i })).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: /Web & ARIA/i })).toBeInTheDocument();
-    expect(screen.getByRole('tab', { name: /Native mobile \(iOS\/Android\)/i })).toBeInTheDocument();
+    const filters = screen.getByRole('group', { name: /Filter case studies by platform/i });
+    expect(filters).toBeInTheDocument();
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument();
+
+    const allBtn = screen.getByRole('button', { name: /All case studies/i });
+    const webBtn = screen.getByRole('button', { name: /Web & ARIA/i });
+    const mobileBtn = screen.getByRole('button', { name: /Native mobile \(iOS\/Android\)/i });
+    expect(allBtn).toHaveAttribute('aria-pressed', 'true');
+    expect(webBtn).toHaveAttribute('aria-pressed', 'false');
 
     // Filter to Native Mobile
-    const mobileTab = screen.getByRole('tab', { name: /Native mobile \(iOS\/Android\)/i });
-    fireEvent.click(mobileTab);
-    expect(mobileTab).toHaveClass('active');
+    fireEvent.click(mobileBtn);
+    expect(mobileBtn).toHaveClass('active');
+    expect(mobileBtn).toHaveAttribute('aria-pressed', 'true');
+    expect(allBtn).toHaveAttribute('aria-pressed', 'false');
+    expect(screen.getByRole('status')).toHaveTextContent(/Showing \d+ case stud(y|ies)/i);
+
+    // Severity tags expose their visible text with no invalid role
+    const severityTags = document.querySelectorAll('.severity-tag');
+    expect(severityTags.length).toBeGreaterThan(0);
+    severityTags.forEach((tag) => expect(tag).not.toHaveAttribute('role'));
 
     // Bottom CTA section & enhanced micro-copy
     expect(screen.getByRole('heading', { level: 2, name: /Have similar accessibility challenges in your codebase\?/i })).toBeInTheDocument();
